@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{416C125F-4826-49BD-BCD3-9C35C2037494}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>View</RootNamespace>
+    <AssemblyName>View</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Game\ViewGame.cs" />
+    <Compile Include="Menu\ViewMenu.cs" />
+    <Compile Include="Game\View.cs" />
+    <Compile Include="Menu\ViewRecords.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brick1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brick2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clue.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy0.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy-left1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy-left2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy-left3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy-right1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy-right2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy-right3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy-rope-left1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy-rope-left2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy-rope-left3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy-rope-right1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy-rope-right2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy-rope-right3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy-stairs1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy-stairs2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hole0.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hole1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hole2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hole3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hole4.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hole5.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lode.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\null.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\picture.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rope.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rope-left1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rope-left2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rope-left3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rope-right1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rope-right2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rope-right3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rop-right1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\runner0.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\runner-left1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\runner-left2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\runner-left3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\runner-right1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\runner-right2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\runner-right3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stair.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stairs1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stairs2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{805b99b8-c817-4c87-8aee-6c77817831ea}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
