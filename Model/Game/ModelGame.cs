@@ -16,7 +16,7 @@ namespace Model
         /// <summary>
         /// Уровень игры
         /// </summary>
-        public MapLevel _mapLevel { get; set; }
+        public MapLevel _mapLevel;
 
         /// <summary>
         /// Делагат на движение
@@ -66,8 +66,11 @@ namespace Model
         /// </summary>
         public void StartGame()
         {
-            OnDraw();
-            onMove();
+            if (_mapLevel != null)
+            {
+                OnDraw();
+                onMove();
+            }        
         }
 
         /// <summary>

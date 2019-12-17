@@ -15,6 +15,11 @@ namespace Controller
     public class MainController
     {
         /// <summary>
+        /// Контроллер рекордов
+        /// </summary>
+        private RecordController _recordName;
+
+        /// <summary>
         /// Контроллер меню
         /// </summary>
         private MenuController _menu;
@@ -23,11 +28,6 @@ namespace Controller
         /// 
         /// </summary>
         GameController _game = new GameController();
-
-        /// <summary>
-        /// Контроллер рекордов
-        /// </summary>
-        private RecordController _recordName;
 
         /// <summary>
         /// 
@@ -44,6 +44,8 @@ namespace Controller
             View.View.SetFormParameters(Controller.FormMain);
 
             Controller.FormMain.Shown += StartApplication;
+
+
 
         }
 
@@ -79,7 +81,6 @@ namespace Controller
         {
             //_menu.Init();     
             _game.Init();
-            //GameController.
         }
     }
 }

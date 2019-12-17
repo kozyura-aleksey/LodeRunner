@@ -22,93 +22,11 @@ namespace Model.Game
         /// </summary>
         private static MapLevel mapLevel = null;
 
-        /// <summary>
-        /// Делегат на отрисовку
-        /// </summary>
-        public delegate void DrawwGame();
-
-        /// <summary>
-        /// Событие на отрисовку
-        /// </summary>
-        public event DrawwGame draw;
-
-        /// <summary>
-        /// Событие на передвижение игрока
-        /// </summary>
-        public event DrawwGame move;
-
-        /// <summary>
-        /// Запуск события на отрисовку
-        /// </summary>
-        public void OnDraw()
-        {
-            if (draw != null)
-            {
-                draw.Invoke();
-            }
-        }
-
+       
         /// <summary>
         /// Создать поле игры
         /// </summary>
         public MapLevel()
-        {
-            //ViewGame.DrawGame();
-        }
-
-        /// <summary>
-        /// Запуск события на движение
-        /// </summary>
-        public void onMove()
-        {
-            if (move != null)
-            {
-                move.Invoke();
-            }
-        }
-
-        /// <summary>
-        /// Запустить игру в игровом потоке
-        /// </summary>
-        public void Start()
-        {
-            _gameThread = new Thread(StartGame);
-            _gameThread.Name = "Game";
-            _gameThread.Start();
-        }
-
-        /// <summary>
-        /// Поток игры
-        /// </summary>
-        public Thread _gameThread;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void StartGame()
-        {
-            OnDraw();
-            onMove();
-        }
-
-        /// <summary>
-        /// Получить экземпляр уровня
-        /// </summary>
-        /// <returns></returns>
-        public static MapLevel GetMapLevel()
-        {
-            if (mapLevel == null)
-            {
-                mapLevel = new MapLevel();
-            }
-            return mapLevel;
-        }
-        
-
-        /// <summary>
-        /// Загрузка уровня 
-        /// </summary>
-        public static List<Model.Game.Objects.GameObject> LoadMapLevel()
         {
             string[] lines = File.ReadAllLines(@"C:\Users\Aleksey\source\repos\LodeRunner\levels\level1.txt");
             String[,] num = new String[lines.Length, lines[0].Split(' ').Length];
@@ -130,15 +48,126 @@ namespace Model.Game
                     objects.Add(GameObject.CreateObject(num[i, j], 16 * i, 16 * j));
                 }
             }
+        }
+        
+        /// <summary>
+        /// Получить экземпляр уровня
+        /// </summary>
+        /// <returns></returns>
+        public static MapLevel GetMapLevel()
+        {
+            if (mapLevel == null)
+            {
+                mapLevel = new MapLevel();
+            }
+            return mapLevel;
+        }
+
+        private static string[] lines = File.ReadAllLines(@"C:\Users\Aleksey\source\repos\LodeRunner\levels\level1.txt");
+        private static String[,] num = new String[lines.Length, lines[0].Split(' ').Length];
+        private static List<Model.Game.Objects.GameObject> objects = new List<Model.Game.Objects.GameObject>();
+
+        /// <summary>
+        /// Загрузка уровня 
+        /// </summary>
+        public static List<Model.Game.Objects.GameObject> LoadMapLevel()
+        {      
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string[] temp = lines[i].Split(' ');
+                for (int j = 0; j < temp.Length; j++)
+                {
+                    num[i, j] = Convert.ToString(temp[j]);
+                }
+            }
+            for (int i = 0; i < num.GetLength(0); i++)
+            {
+                for (int j = 0; j < num.GetLength(1); j++)
+                {
+                    objects.Add(GameObject.CreateObject(num[i, j], 16 * i, 16 * j));
+                }
+            }
             return objects;
         }
 
         /// <summary>
+        /// Отрисовка уровня
+        /// </summary>
+        /// <param name="parForm"></param>
+        public void draw(Form parForm)
+        {
+            //Form parForm = View.Game.ViewForm;
+            List<Model.Game.Objects.GameObject> parObjects = LoadMapLevel();
+            Graphics graphics = parForm.CreateGraphics();
+            Rectangle clientRectangle = parForm.ClientRectangle;
+            BufferedGraphics bufferedGraphics = BufferedGraphicsManager.Current.Allocate(graphics, clientRectangle);
+            bufferedGraphics.Graphics.Clear(Color.Black);
+
+            foreach (Model.Game.Objects.GameObject objects in parObjects)
+            {
+                Image image = null;
+                if (objects != null)
+                {
+                    if (objects.NameObject() == "Brick")
+                    {
+                        image = Properties.Resources.brick1;
+                        bufferedGraphics.Graphics.DrawImage(image, objects.X, objects.Y);
+                    }
+
+                    if (objects.NameObject() == "Concrete")
+                    {
+                        image = Properties.Resources.brick2;
+                        bufferedGraphics.Graphics.DrawImage(image, objects.X, objects.Y);
+                    }
+
+                    if (objects.NameObject() == "Enemy")
+                    {
+                        image = Properties.Resources.enemy0;
+                        bufferedGraphics.Graphics.DrawImage(image, objects.X, objects.Y);
+                    }
+
+                    if (objects.NameObject() == "Gold")
+                    {
+                        image = Properties.Resources.lode;
+                        bufferedGraphics.Graphics.DrawImage(image, objects.X, objects.Y);
+                    }
+
+                    if (objects.NameObject() == "Man")
+                    {
+                        image = Properties.Resources.runner0;
+                        bufferedGraphics.Graphics.DrawImage(image, objects.X, objects.Y);
+                    }
+
+                    if (objects.NameObject() == "Rope")
+                    {
+                        image = Properties.Resources.rope;
+                        bufferedGraphics.Graphics.DrawImage(image, objects.X, objects.Y);
+                    }
+
+                    if (objects.NameObject() == "Stairs")
+                    {
+                        image = Properties.Resources.stair;
+                        bufferedGraphics.Graphics.DrawImage(image, objects.X, objects.Y);
+                    }
+                }
+                else
+                {
+                    image = Properties.Resources._null;
+                    bufferedGraphics.Graphics.DrawImage(image, 0, 0);
+                }
+            }
+            bufferedGraphics.Render();
+            graphics.Dispose();
+            bufferedGraphics.Dispose();
+        }
+
+
+        /// <summary>
         /// Движение вправо
         /// </summary>
-        public static float moveRightRunner()
+        public void moveRightRunner()
         {
-            List<Model.Game.Objects.GameObject> parObjects = MapLevel.LoadMapLevel();
+            List<Model.Game.Objects.GameObject> parObjects = LoadMapLevel();
             float dX = 0;
             foreach (Model.Game.Objects.GameObject aaa in parObjects)
             {
@@ -151,15 +180,14 @@ namespace Model.Game
                     }                   
                 }
             }
-            return dX;
         }
 
         /// <summary>
-        /// Движение вправо
+        /// Движение влево
         /// </summary>
-        public static float moveLeftRunner()
+        public void moveLeftRunner()
         {
-            List<Model.Game.Objects.GameObject> parObjects = MapLevel.LoadMapLevel();
+            List<Model.Game.Objects.GameObject> parObjects = LoadMapLevel();
             float dX = 0;
             foreach (Model.Game.Objects.GameObject aaa in parObjects)
             {
@@ -172,7 +200,6 @@ namespace Model.Game
                     }
                 }
             }
-            return dX;
         }
     }
 }

@@ -24,7 +24,11 @@ namespace Controller.Game
         /// </summary>
         public View.Game.ViewGame viewGame;
 
+  
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Model.Game.MapLevel _mapLevel;
 
         /// <summary>
@@ -51,10 +55,10 @@ namespace Controller.Game
         public void DefineInteraction()
         {
             _keysDict = new Dictionary<Keys, dKeyHandler>();
-            _keysDict.Add(Keys.Right, ViewGame.reDrawRight);
+            _keysDict.Add(Keys.Right, _mapLevel.moveRightRunner);
             //_keysDict.Add(Keys.Up, ViewGame.reDrawRight);
             //_keysDict.Add(Keys.Down, ViewGame.reDrawRight);
-            //_keysDict.Add(Keys.Left, ViewGame.reDrawLeft);
+            _keysDict.Add(Keys.Left, _mapLevel.moveLeftRunner);
         }
 
         /// <summary> 
@@ -70,11 +74,9 @@ namespace Controller.Game
         /// </summary>
         public override void Init()
         {
-            ViewGame.DrawGame();
-            _gameModel.Start();
-            MapLevel mapLevel = new MapLevel();
-            //mapLevel.Start();
             FormMain.KeyDown += KeyDown;
+            viewGame.DrawGame();
+            _gameModel.Start();
         }
 
         /// <summary>
