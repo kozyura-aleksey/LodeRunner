@@ -22,9 +22,7 @@ namespace Controller.Game
         /// <summary>
         /// Представление игры 
         /// </summary>
-        public View.Game.ViewGame viewGame;
-
-  
+        public View.Game.ViewGame _viewGame;
 
         /// <summary>
         /// 
@@ -44,7 +42,7 @@ namespace Controller.Game
         public GameController()
         {
             _gameModel = new Model.ModelGame();
-            viewGame = new View.Game.ViewGame(_gameModel);
+            _viewGame = new View.Game.ViewGame(_gameModel);
             _gameModel.Move += DefineInteraction;
 
         }
@@ -55,10 +53,10 @@ namespace Controller.Game
         public void DefineInteraction()
         {
             _keysDict = new Dictionary<Keys, dKeyHandler>();
-            _keysDict.Add(Keys.Right, _mapLevel.moveRightRunner);
-            //_keysDict.Add(Keys.Up, ViewGame.reDrawRight);
-            //_keysDict.Add(Keys.Down, ViewGame.reDrawRight);
-            _keysDict.Add(Keys.Left, _mapLevel.moveLeftRunner);
+            _keysDict.Add(Keys.Right, _gameModel._mapLevel.MoveRightRunner);
+            _keysDict.Add(Keys.Up, _gameModel._mapLevel.MoveUpRunner);
+            _keysDict.Add(Keys.Down, _gameModel._mapLevel.MoveDownRunner);
+            _keysDict.Add(Keys.Left, _gameModel._mapLevel.MoveLeftRunner);
         }
 
         /// <summary> 
@@ -75,7 +73,7 @@ namespace Controller.Game
         public override void Init()
         {
             FormMain.KeyDown += KeyDown;
-            viewGame.DrawGame();
+            _viewGame.DrawGame();
             _gameModel.Start();
         }
 

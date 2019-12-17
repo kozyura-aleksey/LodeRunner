@@ -19,6 +19,11 @@ namespace Model
         public MapLevel _mapLevel;
 
         /// <summary>
+        /// Делегат на создание уровня
+        /// </summary>
+        public delegate void createMap();
+
+        /// <summary>
         /// Делагат на движение
         /// </summary>
         public delegate void moveObjects();
@@ -31,12 +36,12 @@ namespace Model
         /// <summary>
         /// Событие на движение
         /// </summary>
-        public event moveObjects draw;
+        public event moveObjects Draw;
 
         /// <summary>
-        /// Игрок
+        /// Событие на создание уровня
         /// </summary>
-        public Model.Game.Objects.Man objectMan;
+        public event createMap CreateMapLevel;
 
         /// <summary>
         /// Поток игры
@@ -57,7 +62,7 @@ namespace Model
         public void Start()
         {
             _gameThread = new Thread(StartGame);
-            _gameThread.Name = "Game";
+            _gameThread.Name = "LodeRunner";
             _gameThread.Start();
         }
 
@@ -68,8 +73,8 @@ namespace Model
         {
             if (_mapLevel != null)
             {
-                OnDraw();
-                onMove();
+                OnCreateMapLevel();
+                OnMove();
             }        
         }
 
@@ -78,20 +83,31 @@ namespace Model
         /// </summary>
         public void OnDraw()
         {
-            if (draw != null)
+            if (Draw != null)
             {
-                draw.Invoke();
+                Draw.Invoke();
             }
         }
         /// <summary>
         /// Запуск собьытия на движение
         /// </summary>
-        public void onMove()
+        public void OnMove()
         {
             if (Move != null)
             {
                 Move.Invoke();
             }
-        }               
+        }   
+        
+        /// <summary>
+        /// Запуск события на создание уровня
+        /// </summary>
+        public void OnCreateMapLevel()
+        {
+            if (CreateMapLevel != null)
+            {
+                CreateMapLevel.Invoke();
+            }
+        }
     }
 }

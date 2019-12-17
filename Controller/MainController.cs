@@ -27,7 +27,7 @@ namespace Controller
         /// <summary>
         /// 
         /// </summary>
-        GameController _game = new GameController();
+        private GameController _game = new GameController();
 
         /// <summary>
         /// 

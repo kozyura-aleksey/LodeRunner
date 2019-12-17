@@ -24,26 +24,7 @@ namespace View.Game
         /// </summary>
         public MapLevel _mapLevel;
 
-        /// <summary>
-        /// Делагат на движение
-        /// </summary>
-        public delegate void moveObjects();
-
-        /// <summary>
-        /// Событие на движение
-        /// </summary>
-        public event moveObjects Move;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void onMove()
-        {
-            if (Move != null)
-            {
-                Move.Invoke();
-            }
-        }
+       
         /// <summary>
         /// 
         /// </summary>
@@ -51,8 +32,17 @@ namespace View.Game
         public ViewGame(Model.ModelGame parModelGame)
         {
             _modelGame = parModelGame;
-            _modelGame.draw += DrawGame;
-            _modelGame.Move += reDrawGame;         
+            //_modelGame.Draw += DrawGame;
+            _modelGame.CreateMapLevel += CreateMap;
+            _modelGame.Move += ReDrawGame;         
+            _mapLevel = new MapLevel();
+        }
+
+        /// <summary>
+        /// Создание уровня
+        /// </summary>
+        public void CreateMap()
+        {
             _mapLevel = new MapLevel();
         }
 
@@ -62,18 +52,18 @@ namespace View.Game
         /// <param name="parObjects"></param>
         public void DrawGame()
         {
-            _mapLevel.draw(View.ViewForm);
+            _mapLevel.Draw(View.ViewForm);
         }
 
         /// <summary>
         /// Перерисовка уровня
         /// </summary>
         /// <param name="parObjects"></param>
-        public void reDrawGame()
+        public void ReDrawGame()
         {
             if (_mapLevel != null)
             {
-                _mapLevel.draw(View.ViewForm);
+                _mapLevel.Draw(View.ViewForm);
             }
         }
        

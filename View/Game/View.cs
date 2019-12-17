@@ -34,7 +34,6 @@ namespace View
         /// </summary>
         public static void InitConsole()
         {
-            Console.WriteLine(MapLevel.LoadMapLevel().ToString());
             Console.ReadKey();
         }
 
