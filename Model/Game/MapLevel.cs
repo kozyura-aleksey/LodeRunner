@@ -142,14 +142,14 @@ namespace Model.Game
         /// </summary>
         public void MoveRightRunner()
         {
-            foreach (Model.Game.Objects.GameObject aaa in objects)
+            foreach (Model.Game.Objects.GameObject parOb in objects)
             {
-                if (aaa != null)
+                if (parOb != null)
                 {
-                    if (aaa.NameObject() == "Man")
+                    if (parOb.NameObject() == "Man")
                     {
                         //aaa.X += aaa.moveRightObject();
-                        objects[20].X -= aaa.moveRightObject();
+                        objects[20].X -= parOb.moveRightObject();
                     }
                 }
             }
@@ -160,14 +160,14 @@ namespace Model.Game
         /// </summary>
         public void MoveLeftRunner()
         {
-            foreach (Model.Game.Objects.GameObject aaa in objects)
+            foreach (Model.Game.Objects.GameObject parOb in objects)
             {
-                if (aaa != null)
+                if (parOb != null)
                 {
-                    if (aaa.NameObject() == "Man")
+                    if (parOb.NameObject() == "Man")
                     {
                         //aaa.X -= aaa.moveLeftObject();
-                        objects[20].X += aaa.moveLeftObject();
+                        objects[20].X += parOb.moveLeftObject();
                     }
                 }
             }
@@ -178,14 +178,14 @@ namespace Model.Game
         /// </summary>
         public void MoveUpRunner()
         {
-            foreach (Model.Game.Objects.GameObject aaa in objects)
+            foreach (Model.Game.Objects.GameObject parOb in objects)
             {
-                if (aaa != null)
+                if (parOb != null)
                 {
-                    if (aaa.NameObject() == "Man")
+                    if (parOb.NameObject() == "Man")
                     {
                         //aaa.Y -= aaa.moveUpObject();
-                        objects[20].X -= aaa.moveUpObject();
+                        objects[20].X -= parOb.moveUpObject();
                     }
                 }
             }
@@ -196,14 +196,14 @@ namespace Model.Game
         /// </summary>
         public void MoveDownRunner()
         {
-            foreach (Model.Game.Objects.GameObject aaa in objects)
+            foreach (Model.Game.Objects.GameObject parOb in objects)
             {
-                if (aaa != null)
+                if (parOb != null)
                 {
-                    if (aaa.NameObject() == "Man")
+                    if (parOb.NameObject() == "Man")
                     {
                         //aaa.Y -= aaa.moveDownObject();
-                        objects[20].X -= aaa.moveDownObject();
+                        objects[20].X -= parOb.moveDownObject();
                     }
                 }               
             }
