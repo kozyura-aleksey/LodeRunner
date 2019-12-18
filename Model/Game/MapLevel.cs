@@ -22,7 +22,6 @@ namespace Model.Game
         /// </summary>
         private static MapLevel mapLevel = null;
 
-
         private static string[] lines;
         private static String[,] num;
         private static List<Model.Game.Objects.GameObject> objects;
@@ -148,7 +147,7 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        //aaa.X += aaa.moveRightObject();
+                        //aaa.X += aaa.moveRightObject();                      
                         objects[20].X -= parOb.moveRightObject();
                     }
                 }
@@ -185,7 +184,7 @@ namespace Model.Game
                     if (parOb.NameObject() == "Man")
                     {
                         //aaa.Y -= aaa.moveUpObject();
-                        objects[20].X -= parOb.moveUpObject();
+                        objects[20].Y -= parOb.moveUpObject();
                     }
                 }
             }
@@ -203,7 +202,7 @@ namespace Model.Game
                     if (parOb.NameObject() == "Man")
                     {
                         //aaa.Y -= aaa.moveDownObject();
-                        objects[20].X -= parOb.moveDownObject();
+                        objects[20].Y -= parOb.moveDownObject();
                     }
                 }               
             }

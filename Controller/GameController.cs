@@ -53,10 +53,10 @@ namespace Controller.Game
         public void DefineInteraction()
         {
             _keysDict = new Dictionary<Keys, dKeyHandler>();
-            _keysDict.Add(Keys.Right, _gameModel._mapLevel.MoveRightRunner);
+            _keysDict.Add(Keys.Right, _viewGame.MoveRightRunner);
             _keysDict.Add(Keys.Up, _gameModel._mapLevel.MoveUpRunner);
             _keysDict.Add(Keys.Down, _gameModel._mapLevel.MoveDownRunner);
-            _keysDict.Add(Keys.Left, _gameModel._mapLevel.MoveLeftRunner);
+            _keysDict.Add(Keys.Left, _viewGame.MoveLeftRunner);
         }
 
         /// <summary> 

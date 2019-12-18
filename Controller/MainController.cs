@@ -42,7 +42,6 @@ namespace Controller
         {
             Controller.CreateForm();
             View.View.SetFormParameters(Controller.FormMain);
-
             Controller.FormMain.Shown += StartApplication;
 
 

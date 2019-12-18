@@ -32,8 +32,8 @@ namespace View.Game
         public ViewGame(Model.ModelGame parModelGame)
         {
             _modelGame = parModelGame;
-            //_modelGame.Draw += DrawGame;
             _modelGame.CreateMapLevel += CreateMap;
+            _modelGame.Draw += DrawGame;            
             _modelGame.Move += ReDrawGame;         
             _mapLevel = new MapLevel();
         }
@@ -61,11 +61,48 @@ namespace View.Game
         /// <param name="parObjects"></param>
         public void ReDrawGame()
         {
-            if (_mapLevel != null)
+            if (_modelGame._mapLevel != null)
             {
-                _mapLevel.Draw(View.ViewForm);
+                _modelGame._mapLevel.Draw(View.ViewForm);
             }
         }
-       
-    }
+
+        /// <summary>
+        /// Передвижение вправо
+        /// </summary>
+        public void MoveRightRunner()
+        {
+            _modelGame._mapLevel.MoveRightRunner();
+            ReDrawGame();
+        }
+
+        /// <summary>
+        /// Передвижение влево
+        /// </summary>
+        public void MoveLeftRunner()
+        {
+            _modelGame._mapLevel.MoveLeftRunner();
+            ReDrawGame();
+        }
+
+        /// <summary>
+        /// Передвижение вверх
+        /// </summary>
+        public void MoveUpRunner()
+        {
+            _modelGame._mapLevel.MoveUpRunner();
+            ReDrawGame();
+        }
+
+        /// <summary>
+        /// Передвижение вниз
+        /// </summary>
+        public void MoveDownRunner()
+        {
+            _modelGame._mapLevel.MoveDownRunner();
+            ReDrawGame();
+        }
+
+
+        }
 }

@@ -74,6 +74,7 @@ namespace Model
             if (_mapLevel != null)
             {
                 OnCreateMapLevel();
+                OnDraw();
                 OnMove();
             }        
         }
@@ -89,7 +90,7 @@ namespace Model
             }
         }
         /// <summary>
-        /// Запуск собьытия на движение
+        /// Запуск события на движение
         /// </summary>
         public void OnMove()
         {
