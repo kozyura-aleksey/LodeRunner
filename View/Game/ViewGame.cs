@@ -22,8 +22,7 @@ namespace View.Game
         /// <summary>
         /// Представление уровня игры
         /// </summary>
-        public MapLevel _mapLevel;
-
+        public MapLevel _mapLevel;        
        
         /// <summary>
         /// 

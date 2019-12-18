@@ -25,12 +25,12 @@ namespace Controller
         private MenuController _menu;
 
         /// <summary>
-        /// 
+        /// Контроллер игры
         /// </summary>
         private GameController _game = new GameController();
 
         /// <summary>
-        /// 
+        /// Уровень игры
         /// </summary>
         public MapLevel _mapLevel;
 
@@ -45,11 +45,10 @@ namespace Controller
             Controller.FormMain.Shown += StartApplication;
 
 
-
         }
 
         /// <summary>
-        /// 
+        /// Метод старта игры
         /// </summary>
         private void StartGame()
         {

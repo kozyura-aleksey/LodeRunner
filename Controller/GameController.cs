@@ -54,8 +54,8 @@ namespace Controller.Game
         {
             _keysDict = new Dictionary<Keys, dKeyHandler>();
             _keysDict.Add(Keys.Right, _viewGame.MoveRightRunner);
-            _keysDict.Add(Keys.Up, _gameModel._mapLevel.MoveUpRunner);
-            _keysDict.Add(Keys.Down, _gameModel._mapLevel.MoveDownRunner);
+            _keysDict.Add(Keys.Up, _viewGame.MoveUpRunner);
+            _keysDict.Add(Keys.Down, _viewGame.MoveDownRunner);
             _keysDict.Add(Keys.Left, _viewGame.MoveLeftRunner);
         }
 

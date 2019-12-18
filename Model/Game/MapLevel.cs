@@ -22,8 +22,29 @@ namespace Model.Game
         /// </summary>
         private static MapLevel mapLevel = null;
 
+        /// <summary>
+        /// Позиция персонажа в карте
+        /// </summary>
+        private static int MAN_POS = 20;
+
+        /// <summary>
+        /// Шаг игры
+        /// </summary>
+        private static int STEP = 16;
+
+        /// <summary>
+        /// Массив линий
+        /// </summary>
         private static string[] lines;
+
+        /// <summary>
+        /// Массив локаторов
+        /// </summary>
         private static String[,] num;
+
+        /// <summary>
+        /// Лист объектов соответственно массиву локаторов
+        /// </summary>
         private static List<Model.Game.Objects.GameObject> objects;
 
         /// <summary>
@@ -147,8 +168,10 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        //aaa.X += aaa.moveRightObject();                      
-                        objects[20].X -= parOb.moveRightObject();
+                        if ((objects[MAN_POS].X <= 480) & (objects[MAN_POS].X >= 0))
+                        {
+                            objects[MAN_POS].X += STEP;
+                        }
                     }
                 }
             }
@@ -165,8 +188,10 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        //aaa.X -= aaa.moveLeftObject();
-                        objects[20].X += parOb.moveLeftObject();
+                        if ((objects[MAN_POS].X <= 480) & (objects[MAN_POS].X >= 0))
+                        {
+                            objects[MAN_POS].X -= STEP;
+                        }
                     }
                 }
             }
@@ -183,8 +208,10 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        //aaa.Y -= aaa.moveUpObject();
-                        objects[20].Y -= parOb.moveUpObject();
+                        if ((objects[MAN_POS].Y <= 320) & (objects[MAN_POS].Y >= 0))
+                        { 
+                            objects[MAN_POS].Y -= STEP;
+                        }
                     }
                 }
             }
@@ -201,8 +228,10 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        //aaa.Y -= aaa.moveDownObject();
-                        objects[20].Y -= parOb.moveDownObject();
+                        if ((objects[MAN_POS].Y <= 320) & (objects[MAN_POS].Y >= 0))
+                        { 
+                            objects[MAN_POS].Y += STEP;
+                        }
                     }
                 }               
             }

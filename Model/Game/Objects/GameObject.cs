@@ -91,7 +91,7 @@ namespace Model.Game.Objects
         /// <param name="parY"></param>
         public float moveUpObject()
         {
-            Y -= 16;
+            Y += 16;
             return Y;
         }
 
@@ -102,7 +102,7 @@ namespace Model.Game.Objects
         /// <param name="parY"></param>
         public float moveLeftObject()
         {
-            X -= 16;
+            X += 16;
             return Y;
         }
 
