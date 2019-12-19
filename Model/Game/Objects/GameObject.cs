@@ -14,18 +14,18 @@ namespace Model.Game.Objects
         /// <summary>
         /// Координата x
         /// </summary>
-        public float X { get; set; }
+        public int X { get; set; }
         /// <summary>
         /// Координата y
         /// </summary>
-        public float Y { get; set; }
+        public int Y { get; set; }
 
         /// <summary>
         /// Конструктор объекта
         /// </summary>
         /// <param name="parX"></param>
         /// <param name="parY"></param>
-        public GameObject(float parX, float parY)
+        public GameObject(int parX, int parY)
         {
             X = parX;
             Y = parY;
@@ -38,7 +38,7 @@ namespace Model.Game.Objects
         /// <param name="parX"></param>
         /// <param name="parY"></param>
         /// <returns></returns>
-        public static GameObject CreateObject(String parType, float parX, float parY)
+        public static GameObject CreateObject(String parType, int parX, int parY)
         {
             GameObject object1 = null;
             switch (parType)
@@ -74,12 +74,14 @@ namespace Model.Game.Objects
             return object1;
         }
 
+
+
         /// <summary>
         /// Движение объекта игры вправо
         /// </summary>
         /// <param name="parX"></param>
         /// <param name="parY"></param>
-        public float moveRightObject()
+        public int moveRightObject()
         {
             X += 16;
             return X;
@@ -89,7 +91,7 @@ namespace Model.Game.Objects
         /// Движение объекта игры вверх
         /// </summary>
         /// <param name="parY"></param>
-        public float moveUpObject()
+        public int moveUpObject()
         {
             Y -= 16;
             return Y;
@@ -100,7 +102,7 @@ namespace Model.Game.Objects
         /// </summary>
         /// <param name="parX"></param>
         /// <param name="parY"></param>
-        public float moveLeftObject()
+        public int moveLeftObject()
         {
             X -= 16;
             return Y;
@@ -111,7 +113,7 @@ namespace Model.Game.Objects
         /// </summary>
         /// <param name="parX"></param>
         /// <param name="parY"></param>
-        public float moveDownObject()
+        public int moveDownObject()
         {
             Y += 16;
             return Y;

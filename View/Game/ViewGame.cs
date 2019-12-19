@@ -63,8 +63,44 @@ namespace View.Game
         {
             if (_mapLevel != null)
             {
-                _mapLevel.Draw(View.ViewForm);
+                _modelGame._mapLevel.Draw(View.ViewForm);
             }
+        }
+
+        /// <summary>
+        /// Передвижение вправо
+        /// </summary>
+        public void MoveRightRunner()
+        {
+            _modelGame._mapLevel.MoveRightRunner();
+            ReDrawGame();
+        }
+
+        /// <summary>
+        /// Передвижение влево
+        /// </summary>
+        public void MoveLeftRunner()
+        {
+            _modelGame._mapLevel.MoveLeftRunner();
+            ReDrawGame();
+        }
+
+        /// <summary>
+        /// Передвижение вверх
+        /// </summary>
+        public void MoveUpRunner()
+        {
+            _modelGame._mapLevel.MoveUpRunner();
+            ReDrawGame();
+        }
+
+        /// <summary>
+        /// Передвижение вниз
+        /// </summary>
+        public void MoveDownRunner()
+        {
+            _modelGame._mapLevel.MoveDownRunner();
+            ReDrawGame();
         }
        
     }

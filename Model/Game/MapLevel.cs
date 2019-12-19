@@ -25,7 +25,16 @@ namespace Model.Game
 
         private static string[] lines;
         private static String[,] num;
+
+        /// <summary>
+        /// Лист объектов соответственно массиву локаторов
+        /// </summary>
         private static List<Model.Game.Objects.GameObject> objects;
+
+        /// <summary>
+        /// Лист объектов соответственно массиву локаторов для консоли
+        /// </summary>
+        private static Model.Game.Objects.GameObject[,] consoleObjects;
 
         /// <summary>
         /// Создать поле игры
@@ -68,16 +77,30 @@ namespace Model.Game
         }
 
         /// <summary>
-        /// Отрисовка уровня
+        /// Отрисовка в консоли
         /// </summary>
-        /// <param name="parForm"></param>
-        public void Draw(Form parForm)
+        public void DrawConsole()
+        {
+
+            for (int i = 0; i < num.GetLength(0); i++)
+            {
+                for (int j = 0; j < num.GetLength(1); j++)
+                {
+                    //consoleObjects.[i, j] = GameObject.CreateObject();
+                }
+            }
+
+
+            /// <summary>
+            /// Отрисовка уровня
+            /// </summary>
+            /// <param name="parForm"></param>
+            public void Draw(Form parForm)
         {
             Graphics graphics = parForm.CreateGraphics();
             Rectangle clientRectangle = parForm.ClientRectangle;
             BufferedGraphics bufferedGraphics = BufferedGraphicsManager.Current.Allocate(graphics, clientRectangle);
             bufferedGraphics.Graphics.Clear(Color.Black);
-
             foreach (Model.Game.Objects.GameObject obj in objects)
             {
                 Image image = null;
