@@ -35,24 +35,25 @@ namespace Model.Game
         /// <summary>
         /// Массив линий
         /// </summary>
-        private static string[] lines;
+        public static string[] lines;
 
         /// <summary>
         /// Массив локаторов
         /// </summary>
-        private static String[,] num;
+        public static String[,] num;
 
         /// <summary>
         /// Лист объектов соответственно массиву локаторов
         /// </summary>
-        private static List<Model.Game.Objects.GameObject> objects;
+        public static List<Model.Game.Objects.GameObject> objects;
 
         /// <summary>
         /// Создать поле игры
         /// </summary>
         public MapLevel()
         {
-            lines = File.ReadAllLines(@"C:\LodeRunner\levels\level4.txt");
+            //String file = Properties.Resources.level1;
+            lines = File.ReadAllLines(@"C:\LodeRunner\levels\level1.txt");
             num = new String[lines.Length, lines[0].Split(' ').Length];
             for (int i = 0; i < lines.Length; i++)
             {
@@ -65,9 +66,9 @@ namespace Model.Game
 
             objects = new List<Model.Game.Objects.GameObject>();
 
-            for (int j = 0; j < num.GetLength(1); j++)
+            for (int i = 0; i < num.GetLength(0); i++)
             {
-                for (int i = 0; i < num.GetLength(0); i++)
+                for (int j = 0; j < num.GetLength(1); j++)
                 {
                     objects.Add(GameObject.CreateObject(num[i, j], 16 * i, 16 * j));
                 }
@@ -87,74 +88,6 @@ namespace Model.Game
             return mapLevel;
         }
 
-        /// <summary>
-        /// Отрисовка уровня
-        /// </summary>
-        /// <param name="parForm"></param>
-        public void Draw(Form parForm)
-        {
-            Graphics graphics = parForm.CreateGraphics();
-            Rectangle clientRectangle = parForm.ClientRectangle;
-            BufferedGraphics bufferedGraphics = BufferedGraphicsManager.Current.Allocate(graphics, clientRectangle);
-            bufferedGraphics.Graphics.Clear(Color.Black);
-
-            foreach (Model.Game.Objects.GameObject obj in objects)
-            {
-                Image image = null;
-                if (obj != null)
-                {
-                    if (obj.NameObject() == "Brick")
-                    {
-                        image = Properties.Resources.brick1;
-                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
-                    }
-
-                    if (obj.NameObject() == "Concrete")
-                    {
-                        image = Properties.Resources.brick2;
-                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
-                    }
-
-                    if (obj.NameObject() == "Enemy")
-                    {
-                        image = Properties.Resources.enemy0;
-                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
-                    }
-
-                    if (obj.NameObject() == "Gold")
-                    {
-                        image = Properties.Resources.lode;
-                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
-                    }
-
-                    if (obj.NameObject() == "Man")
-                    {
-                        image = Properties.Resources.runner0;
-                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
-                    }
-
-                    if (obj.NameObject() == "Rope")
-                    {
-                        image = Properties.Resources.rope;
-                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
-                    }
-
-                    if (obj.NameObject() == "Stairs")
-                    {
-                        image = Properties.Resources.stair;
-                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
-                    }
-                }
-                else
-                {
-                    image = Properties.Resources._null;
-                    bufferedGraphics.Graphics.DrawImage(image, 0, 0);
-                }
-            }
-            bufferedGraphics.Render();
-            graphics.Dispose();
-            bufferedGraphics.Dispose();
-        }
 
 
         /// <summary>
@@ -168,10 +101,7 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        if ((objects[MAN_POS].X <= 480) & (objects[MAN_POS].X >= 0))
-                        {
-                            objects[MAN_POS].X += STEP;
-                        }
+                        objects[MAN_POS].X += STEP;
                     }
                 }
             }
@@ -188,10 +118,7 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        if ((objects[MAN_POS].X <= 480) & (objects[MAN_POS].X >= 0))
-                        {
-                            objects[MAN_POS].X -= STEP;
-                        }
+                       objects[MAN_POS].X -= STEP;
                     }
                 }
             }
@@ -207,11 +134,8 @@ namespace Model.Game
                 if (parOb != null)
                 {
                     if (parOb.NameObject() == "Man")
-                    {
-                        if ((objects[MAN_POS].Y <= 320) & (objects[MAN_POS].Y >= 0))
-                        { 
-                            objects[MAN_POS].Y -= STEP;
-                        }
+                    { 
+                       objects[MAN_POS].Y -= STEP;
                     }
                 }
             }
@@ -228,10 +152,7 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        if ((objects[MAN_POS].Y <= 320) & (objects[MAN_POS].Y >= 0))
-                        { 
-                            objects[MAN_POS].Y += STEP;
-                        }
+                       objects[MAN_POS].Y += STEP;
                     }
                 }               
             }

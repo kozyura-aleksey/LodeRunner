@@ -22,7 +22,12 @@ namespace View.Game
         /// <summary>
         /// Представление уровня игры
         /// </summary>
-        public MapLevel _mapLevel;        
+        public MapLevel _mapLevel;
+
+        /// <summary>
+        /// Таймер для перерисовки
+        /// </summary>
+        public Timer timer = new Timer() { Enabled = true, Interval = 200 };
        
         /// <summary>
         /// 
@@ -32,9 +37,10 @@ namespace View.Game
         {
             _modelGame = parModelGame;
             _modelGame.CreateMapLevel += CreateMap;
-            _modelGame.Draw += DrawGame;            
-            _modelGame.Move += ReDrawGame;         
-            _mapLevel = new MapLevel();
+            _modelGame.Draw += DrawGame;
+            timer.Start();
+            timer.Tick += ReDrawGame;
+            //_modelGame.Move += DrawWithReDraw;           
         }
 
         /// <summary>
@@ -46,62 +52,97 @@ namespace View.Game
         }
 
         /// <summary>
-        /// Прорисовка уровня
+        /// Отрисовка уровня
         /// </summary>
-        /// <param name="parObjects"></param>
+        /// <param name="parForm"></param>
         public void DrawGame()
         {
-            _mapLevel.Draw(View.ViewForm);
+            Form parForm = View.ViewForm;
+            Graphics graphics = parForm.CreateGraphics();
+            Rectangle clientRectangle = parForm.ClientRectangle;
+            BufferedGraphics bufferedGraphics = BufferedGraphicsManager.Current.Allocate(graphics, clientRectangle);
+            bufferedGraphics.Graphics.Clear(Color.Black);
+
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.objects)
+            {
+                Image image = null;
+                if (obj != null)
+                {
+                    if (obj.NameObject() == "Brick")
+                    {
+                        image = Properties.Resources.brick1;
+                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
+                    }
+
+                    if (obj.NameObject() == "Concrete")
+                    {
+                        image = Properties.Resources.brick2;
+                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
+                    }
+
+                    if (obj.NameObject() == "Enemy")
+                    {
+                        image = Properties.Resources.enemy0;
+                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
+                    }
+
+                    if (obj.NameObject() == "Gold")
+                    {
+                        image = Properties.Resources.lode;
+                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
+                    }
+
+                    if (obj.NameObject() == "Man")
+                    {
+                        image = Properties.Resources.runner0;
+                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
+                    }
+
+                    if (obj.NameObject() == "Rope")
+                    {
+                        image = Properties.Resources.rope;
+                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
+                    }
+
+                    if (obj.NameObject() == "Stairs")
+                    {
+                        image = Properties.Resources.stair;
+                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
+                    }
+                }
+                else
+                {
+                    image = Properties.Resources._null;
+                    bufferedGraphics.Graphics.DrawImage(image, 0, 0);
+                }
+            }
+            bufferedGraphics.Render();
+            graphics.Dispose();
+            bufferedGraphics.Dispose();
         }
 
         /// <summary>
         /// Перерисовка уровня
         /// </summary>
         /// <param name="parObjects"></param>
-        public void ReDrawGame()
+        public void ReDrawGame(object sender, EventArgs e)
         {
             if (_modelGame._mapLevel != null)
             {
-                _modelGame._mapLevel.Draw(View.ViewForm);
+                DrawGame();
             }
         }
 
         /// <summary>
-        /// Передвижение вправо
+        /// Перерисовка
         /// </summary>
-        public void MoveRightRunner()
+        public void DrawWithReDraw()
         {
-            _modelGame._mapLevel.MoveRightRunner();
-            ReDrawGame();
-        }
-
-        /// <summary>
-        /// Передвижение влево
-        /// </summary>
-        public void MoveLeftRunner()
-        {
-            _modelGame._mapLevel.MoveLeftRunner();
-            ReDrawGame();
-        }
-
-        /// <summary>
-        /// Передвижение вверх
-        /// </summary>
-        public void MoveUpRunner()
-        {
-            _modelGame._mapLevel.MoveUpRunner();
-            ReDrawGame();
-        }
-
-        /// <summary>
-        /// Передвижение вниз
-        /// </summary>
-        public void MoveDownRunner()
-        {
-            _modelGame._mapLevel.MoveDownRunner();
-            ReDrawGame();
-        }
-
-
-        }
+            Timer timer = new Timer();
+            timer.Enabled = true;
+            timer.Interval = 200;
+            timer.Start();
+            timer.Tick += new EventHandler(ReDrawGame);          
+        }      
+    }
 }
