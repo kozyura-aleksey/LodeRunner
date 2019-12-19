@@ -24,7 +24,7 @@ namespace Model.Game
 
 
         private static string[] lines;
-        private static String[,] num;
+        public static String[,] num;
 
         /// <summary>
         /// Лист объектов соответственно массиву локаторов
@@ -41,7 +41,7 @@ namespace Model.Game
         /// </summary>
         public MapLevel()
         {
-            lines = File.ReadAllLines(@"levels\level1.txt");
+            lines = File.ReadAllLines(@"C:\LodeRunner\levels\level4.txt");
             num = new String[lines.Length, lines[0].Split(' ').Length];
             for (int i = 0; i < lines.Length; i++)
             {
@@ -89,13 +89,14 @@ namespace Model.Game
                     //consoleObjects.[i, j] = GameObject.CreateObject();
                 }
             }
+        }
 
 
-            /// <summary>
-            /// Отрисовка уровня
-            /// </summary>
-            /// <param name="parForm"></param>
-            public void Draw(Form parForm)
+        /// <summary>
+        /// Отрисовка уровня
+        /// </summary>
+        /// <param name="parForm"></param>
+        public void Draw(Form parForm)
         {
             Graphics graphics = parForm.CreateGraphics();
             Rectangle clientRectangle = parForm.ClientRectangle;

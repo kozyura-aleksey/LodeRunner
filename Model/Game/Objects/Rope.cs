@@ -11,7 +11,7 @@ namespace Model.Game.Objects
     /// </summary>
     public class Rope : GameObject
     {
-        public Rope(float parX, float parY) : base(parX, parY)
+        public Rope(int parX, int parY) : base(parX, parY)
         {
         }
 

@@ -11,7 +11,7 @@ namespace Model.Game.Objects
     /// </summary>
     public class Brick : GameObject
     {
-        public Brick(float parX, float parY) : base(parX, parY)
+        public Brick(int parX, int parY) : base(parX, parY)
         {
         }
 

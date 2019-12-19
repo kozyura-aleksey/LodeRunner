@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{416C125F-4826-49BD-BCD3-9C35C2037494}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LodeRunnerConsole", "LodeRunnerConsole\LodeRunnerConsole.csproj", "{283BA417-1D19-4CFD-BE8D-07815FDFC24E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{416C125F-4826-49BD-BCD3-9C35C2037494}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{416C125F-4826-49BD-BCD3-9C35C2037494}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{416C125F-4826-49BD-BCD3-9C35C2037494}.Release|Any CPU.Build.0 = Release|Any CPU
+		{283BA417-1D19-4CFD-BE8D-07815FDFC24E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{283BA417-1D19-4CFD-BE8D-07815FDFC24E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{283BA417-1D19-4CFD-BE8D-07815FDFC24E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{283BA417-1D19-4CFD-BE8D-07815FDFC24E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

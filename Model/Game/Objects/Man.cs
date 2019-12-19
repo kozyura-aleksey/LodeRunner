@@ -11,7 +11,7 @@ namespace Model.Game.Objects
     /// </summary>
     public class Man : GameObject
     {
-        public Man(float parX, float parY) : base(parX, parY)
+        public Man(int parX, int parY) : base(parX, parY)
         {
         }
 
