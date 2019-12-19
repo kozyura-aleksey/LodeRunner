@@ -52,7 +52,7 @@ namespace Model.Game
         /// </summary>
         public MapLevel()
         {
-            lines = File.ReadAllLines(@"levels\level1.txt");
+            lines = File.ReadAllLines(@"C:\LodeRunner\levels\level4.txt");
             num = new String[lines.Length, lines[0].Split(' ').Length];
             for (int i = 0; i < lines.Length; i++)
             {
@@ -65,9 +65,9 @@ namespace Model.Game
 
             objects = new List<Model.Game.Objects.GameObject>();
 
-            for (int i = 0; i < num.GetLength(0); i++)
+            for (int j = 0; j < num.GetLength(1); j++)
             {
-                for (int j = 0; j < num.GetLength(1); j++)
+                for (int i = 0; i < num.GetLength(0); i++)
                 {
                     objects.Add(GameObject.CreateObject(num[i, j], 16 * i, 16 * j));
                 }
