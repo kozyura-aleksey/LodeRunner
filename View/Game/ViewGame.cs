@@ -27,7 +27,7 @@ namespace View.Game
         /// <summary>
         /// Таймер для перерисовки
         /// </summary>
-        public Timer timer = new Timer() { Enabled = true, Interval = 200 };
+        public Timer timer = new Timer() { Enabled = true, Interval = 50 };
        
         /// <summary>
         /// 
@@ -94,13 +94,14 @@ namespace View.Game
 
                     if (obj.NameObject() == "Man")
                     {
-                        image = Properties.Resources.runner0;
-                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
+                        Image imageMan;
+                        imageMan = Properties.Resources.runner0;
+                        bufferedGraphics.Graphics.DrawImage(imageMan, obj.X, obj.Y);
                     }
 
                     if (obj.NameObject() == "Rope")
                     {
-                        image = Properties.Resources.rope;
+                        image = Properties.Resources.rope;                       
                         bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
                     }
 
