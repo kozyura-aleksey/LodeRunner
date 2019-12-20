@@ -74,7 +74,7 @@ namespace Model.Game
                 }
             }
         }
-        
+
         /// <summary>
         /// Получить экземпляр уровня
         /// </summary>
@@ -101,7 +101,7 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        if ((objects[MAN_POS].X < ((num.GetLength(0)*STEP)-STEP)) & CheckSutuationRightLeft())
+                        if ((objects[MAN_POS].X < ((num.GetLength(0) * STEP) - STEP)) & CheckSutuationRightLeft())
                         {
                             objects[MAN_POS].X += STEP;
                         }
@@ -152,7 +152,7 @@ namespace Model.Game
             }
             //if (Gravitation() == false)
             //{
-             //   Landing();
+            //   Landing();
             //}
         }
 
@@ -170,13 +170,13 @@ namespace Model.Game
                         if ((objects[MAN_POS].Y <= ((num.GetLength(1) * STEP) - STEP)) & (CheckSutuationDown()))
                         {
                             objects[MAN_POS].Y += STEP;
-                        } 
+                        }
                     }
-                }               
+                }
             }
             //if (Gravitation() == false)
             //{
-              //  Landing();
+            //  Landing();
             //}
         }
 
@@ -188,10 +188,10 @@ namespace Model.Game
         {
             bool loc = true;
             foreach (Model.Game.Objects.GameObject parOb in objects)
-            {              
+            {
                 if (parOb != null)
                 {
-                    if (parOb.NameObject() == "Stairs") 
+                    if (parOb.NameObject() == "Stairs")
                     {
                         if ((objects[MAN_POS].Y == parOb.Y) & (objects[MAN_POS].X == parOb.X))
                         {
@@ -250,7 +250,7 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Brick")
                     {
-                        if (objects[MAN_POS].X < parOb.X) 
+                        if (objects[MAN_POS].X < parOb.X)
                         {
                             loc = true;
                             break;
@@ -278,7 +278,7 @@ namespace Model.Game
                 {
                     if ((parOb.NameObject() == "Brick") || (parOb.NameObject() == "Concrete"))
                     {
-                        if ((objects[MAN_POS].Y == (parOb.Y-STEP)) & (objects[MAN_POS].X == parOb.X))
+                        if ((objects[MAN_POS].Y == (parOb.Y - STEP)) & (objects[MAN_POS].X == parOb.X))
                         {
                             loc = true;
                         }
@@ -313,18 +313,16 @@ namespace Model.Game
         /// </summary>
         public void CollectLodes()
         {
-            
-            foreach (Model.Game.Objects.GameObject parOb in objects)
+            foreach (Model.Game.Objects.GameObject parOb in objects.ToArray())
             {
                 if ((parOb != null) & (objects != null))
                 {
                     if (parOb.NameObject() == "Gold")
-                    {
+                    {                      
                         if ((objects[MAN_POS].X == parOb.X) & (objects[MAN_POS].Y == parOb.Y))
                         {
-                            //int index = objects.IndexOf(objects.Where(n => n.NameObject() == "Gold").FirstOrDefault());
-                            objects[649] = null;
-                            break;
+                            var index = objects.IndexOf(parOb);
+                            objects[index] = null;
                         }
                     }
                 }
