@@ -108,6 +108,7 @@ namespace Model.Game
                     }
                 }
             }
+            CollectLodes();
         }
 
         /// <summary>
@@ -128,6 +129,7 @@ namespace Model.Game
                     }
                 }
             }
+            CollectLodes();
         }
 
         /// <summary>
@@ -148,10 +150,10 @@ namespace Model.Game
                     }
                 }
             }
-            if (Gravitation() == false)
-            {
-                Landing();
-            }
+            //if (Gravitation() == false)
+            //{
+             //   Landing();
+            //}
         }
 
         /// <summary>
@@ -172,10 +174,10 @@ namespace Model.Game
                     }
                 }               
             }
-            if (Gravitation() == false)
-            {
-                Landing();
-            }
+            //if (Gravitation() == false)
+            //{
+              //  Landing();
+            //}
         }
 
         /// <summary>
@@ -311,7 +313,22 @@ namespace Model.Game
         /// </summary>
         public void CollectLodes()
         {
-
+            
+            foreach (Model.Game.Objects.GameObject parOb in objects)
+            {
+                if ((parOb != null) & (objects != null))
+                {
+                    if (parOb.NameObject() == "Gold")
+                    {
+                        if ((objects[MAN_POS].X == parOb.X) & (objects[MAN_POS].Y == parOb.Y))
+                        {
+                            //int index = objects.IndexOf(objects.Where(n => n.NameObject() == "Gold").FirstOrDefault());
+                            objects[649] = null;
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 }
