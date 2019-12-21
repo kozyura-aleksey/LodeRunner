@@ -74,6 +74,52 @@ namespace Model.Game.Objects
             return object1;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parType"></param>
+        /// <param name="parX"></param>
+        /// <param name="parY"></param>
+        /// <returns></returns>
+        public static String CreateConsoleObjects(String parType) 
+        {
+            String object1 = null;
+            switch (parType)
+            {
+                case "0":
+                    object1 = " ";
+                    break;
+
+                case "1":
+                    object1 = "#";
+                    break;
+
+                case "2":
+                    object1 = "@";
+                    break;
+
+                case "3":
+                    object1 = "|-|";
+                    break;
+
+                case "4":
+                    object1 = "-";
+                    break;
+
+                case "5":
+                    object1 = "8";
+                    break;
+
+                case "6":
+                    object1 = "$";
+                    break;
+
+                case "7":
+                    object1 = "!";
+                    break;
+            }
+            return object1;
+        }
 
 
         /// <summary>

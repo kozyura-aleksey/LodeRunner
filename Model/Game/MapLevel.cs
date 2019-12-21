@@ -34,14 +34,14 @@ namespace Model.Game
         /// <summary>
         /// Лист объектов соответственно массиву локаторов для консоли
         /// </summary>
-        private static Model.Game.Objects.GameObject[,] consoleObjects;
+        public static String[,] consoleObjects;
 
         /// <summary>
         /// Создать поле игры
         /// </summary>
         public MapLevel()
         {
-            lines = File.ReadAllLines(@"C:\LodeRunner\levels\level4.txt");
+            lines = File.ReadAllLines(@"C:\LodeRunner\levels\level1.txt");
             num = new String[lines.Length, lines[0].Split(' ').Length];
             for (int i = 0; i < lines.Length; i++)
             {
@@ -52,6 +52,7 @@ namespace Model.Game
                 }
             }
 
+
             objects = new List<Model.Game.Objects.GameObject>();
 
             for (int i = 0; i < num.GetLength(0); i++)
@@ -61,6 +62,17 @@ namespace Model.Game
                     objects.Add(GameObject.CreateObject(num[i, j], 16 * i, 16 * j));
                 }
             }
+
+            consoleObjects = new String[num.GetLength(0),num.GetLength(1)];
+
+            for (int i = 0; i < num.GetLength(0); i++)
+            {
+                for (int j = 0; j < num.GetLength(1); j++)
+                {
+                    consoleObjects[i, j] = GameObject.CreateConsoleObjects(num[i, j]);
+                }
+            }
+
         }
         
         /// <summary>
