@@ -101,7 +101,7 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        if ((objects[MAN_POS].X < ((num.GetLength(0) * STEP) - STEP)) & CheckSutuationRightLeft())
+                        if ((objects[MAN_POS].X < ((num.GetLength(0) * STEP) - STEP) & CheckSutuationRightLeft()))
                         {
                             objects[MAN_POS].X += STEP;
                         }
@@ -109,6 +109,7 @@ namespace Model.Game
                 }
             }
             CollectLodes();
+            //Gravitation();
         }
 
         /// <summary>
@@ -130,6 +131,7 @@ namespace Model.Game
                 }
             }
             CollectLodes();
+            //Gravitation();
         }
 
         /// <summary>
@@ -150,10 +152,8 @@ namespace Model.Game
                     }
                 }
             }
-            //if (Gravitation() == false)
-            //{
-            //   Landing();
-            //}
+            CollectLodes();
+            //Gravitation();
         }
 
         /// <summary>
@@ -174,10 +174,8 @@ namespace Model.Game
                     }
                 }
             }
-            //if (Gravitation() == false)
-            //{
-            //  Landing();
-            //}
+            CollectLodes();
+            //Gravitation();
         }
 
         /// <summary>
@@ -269,7 +267,7 @@ namespace Model.Game
         /// Гравитация
         /// </summary>
         /// <returns></returns>
-        public bool Gravitation()
+        public void Gravitation()
         {
             bool loc = true;
             foreach (Model.Game.Objects.GameObject parOb in objects)
@@ -278,19 +276,20 @@ namespace Model.Game
                 {
                     if ((parOb.NameObject() == "Brick") || (parOb.NameObject() == "Concrete"))
                     {
-                        if ((objects[MAN_POS].Y == (parOb.Y - STEP)) & (objects[MAN_POS].X == parOb.X))
+                        if (((objects[MAN_POS].Y + STEP) == parOb.Y) & (objects[MAN_POS].X == parOb.X))
                         {
                             loc = true;
                         }
-                        else
+                        else 
                         {
                             loc = false;
-                            break;
+                            //Landing();
+                            objects[MAN_POS].Y -= STEP;
                         }
                     }
                 }
             }
-            return loc;
+            //return loc;
         }
 
         /// <summary>
@@ -298,12 +297,18 @@ namespace Model.Game
         /// </summary>
         public void Landing()
         {
-            int p = num.GetLength(1) * STEP - STEP;
-
-            for (int i = STEP; i < p; i++)
+            foreach (Model.Game.Objects.GameObject parOb in objects)
             {
-                //i = STEP;
-                objects[MAN_POS].Y -= STEP;
+                if (parOb != null)
+                {
+                        int p = num.GetLength(1) * STEP - STEP;
+
+                        //for (int i = 1; i < p; i++)
+                        {
+                            //i *=STEP;
+                            objects[MAN_POS].Y -= STEP;
+                        }
+                }
             }
         }
 
