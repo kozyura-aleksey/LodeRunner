@@ -72,8 +72,8 @@ namespace Controller.Game
         /// </summary>
         public override void Init()
         {
-            FormMain.KeyDown += KeyDown;
-            _viewGame.DrawGame();
+            Console. += KeyDown;
+            _viewGame.DrawConsole();
             _gameModel.Start();
         }
 

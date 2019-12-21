@@ -52,7 +52,6 @@ namespace View
                 }
                 Console.WriteLine();
             }*/
-            MapLevel.DrawConsole();
             Console.ReadKey();
         }
 

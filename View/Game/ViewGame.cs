@@ -24,7 +24,12 @@ namespace View.Game
         /// </summary>
         public MapLevel _mapLevel;
 
-       
+        /// <summary>
+        /// Таймер для перерисовки
+        /// </summary>
+        public Timer timer = new Timer() { Enabled = true, Interval = 50 };
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -32,10 +37,10 @@ namespace View.Game
         public ViewGame(Model.ModelGame parModelGame)
         {
             _modelGame = parModelGame;
-            //_modelGame.Draw += DrawGame;
             _modelGame.CreateMapLevel += CreateMap;
-            _modelGame.Move += ReDrawGame;         
-            _mapLevel = new MapLevel();
+            _modelGame.Draw += DrawConsole;
+            timer.Start();
+            timer.Tick += ReDrawGame;            
         }
 
         /// <summary>
@@ -47,61 +52,94 @@ namespace View.Game
         }
 
         /// <summary>
-        /// Прорисовка уровня
+        /// Отрисовка в консоли
         /// </summary>
-        /// <param name="parObjects"></param>
-        public void DrawGame()
+        public void DrawConsole()
         {
-            _mapLevel.Draw(View.ViewForm);
-        }
-
-        /// <summary>
-        /// Перерисовка уровня
-        /// </summary>
-        /// <param name="parObjects"></param>
-        public void ReDrawGame()
-        {
-            if (_mapLevel != null)
+            int x = 0;
+            int y = 0;
+            Console.BufferHeight = 410;
+            Console.BufferWidth = 540;
+            Console.SetWindowSize(70, 30);
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.objects)
             {
-                _modelGame._mapLevel.Draw(View.ViewForm);
+                if (obj != null)
+                {
+                    if (obj.NameObject() == "Brick")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("#");
+                    }
+
+                    if (obj.NameObject() == "Concrete")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("#");
+                    }
+
+                    if (obj.NameObject() == "Enemy")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("O");
+                    }
+
+                    if (obj.NameObject() == "Gold")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("$");
+                    }
+
+                    if (obj.NameObject() == "Man")
+                    {
+                        x = obj.X;
+                        y = obj.Y;
+                        System.Console.SetCursorPosition(x, y);
+                        Console.WriteLine("K");
+                    }
+
+                    if (obj.NameObject() == "Rope")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("-");
+                    }
+
+                    if (obj.NameObject() == "Stairs")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("||");
+                    }
+                }
+                else
+                {
+                    System.Console.SetCursorPosition(0, 0);
+                    Console.Write(" ");
+                }
             }
+            System.Console.SetCursorPosition(x, y);
+
+
+            while (true)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+
+                if (key.Key == ConsoleKey.RightArrow)
+                {
+                    
+                    break;
+                }
+            }
+
         }
 
         /// <summary>
-        /// Передвижение вправо
+        /// Переририсовка игры
         /// </summary>
-        public void MoveRightRunner()
+        public void ReDrawGame(object sender, EventArgs e)
         {
-            //_modelGame._mapLevel.MoveRightRunner();
-            ReDrawGame();
-        }
-
-        /// <summary>
-        /// Передвижение влево
-        /// </summary>
-        public void MoveLeftRunner()
-        {
-            _modelGame._mapLevel.MoveLeftRunner();
-            ReDrawGame();
-        }
-
-        /// <summary>
-        /// Передвижение вверх
-        /// </summary>
-        public void MoveUpRunner()
-        {
-            _modelGame._mapLevel.MoveUpRunner();
-            ReDrawGame();
-        }
-
-        /// <summary>
-        /// Передвижение вниз
-        /// </summary>
-        public void MoveDownRunner()
-        {
-            _modelGame._mapLevel.MoveDownRunner();
-            ReDrawGame();
-        }
-       
+            if (_modelGame._mapLevel != null)
+            {
+                DrawConsole();
+            }
+        }        
     }
 }

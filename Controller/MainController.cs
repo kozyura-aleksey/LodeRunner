@@ -40,12 +40,11 @@ namespace Controller
         /// </summary>
         public MainController()
         {
-            Controller.CreateForm();
-            View.View.SetFormParameters(Controller.FormMain);
+            //Controller.CreateForm();
+            //View.View.SetFormParameters(Controller.FormMain);
 
-            Controller.FormMain.Shown += StartApplication;
-
-
+            //Controller.FormMain.Shown += StartApplication;
+            StartApplication();
 
         }
 
@@ -77,7 +76,7 @@ namespace Controller
         /// <summary>
         /// Открыть меню игры
         /// </summary>            
-        private void StartApplication(object sender, System.EventArgs e)
+        private void StartApplication()
         {
             //_menu.Init();     
             _game.Init();
