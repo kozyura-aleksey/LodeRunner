@@ -59,7 +59,7 @@ namespace Model.Game
             {
                 for (int j = 0; j < num.GetLength(1); j++)
                 {
-                    objects.Add(GameObject.CreateObject(num[i, j], 16 * i, 16 * j));
+                    objects.Add(GameObject.CreateObject(num[i, j], 2*i, 2*j));
                 }
             }
 
@@ -91,18 +91,80 @@ namespace Model.Game
         /// <summary>
         /// Отрисовка в консоли
         /// </summary>
-        public void DrawConsole()
+        public static void DrawConsole()
         {
-
-            for (int i = 0; i < num.GetLength(0); i++)
+            int x = 0;
+            int y = 0;
+            Console.BufferHeight = 410;
+            Console.BufferWidth = 540;
+            Console.SetWindowSize(70, 30);
+            foreach (Model.Game.Objects.GameObject obj in objects)
             {
-                for (int j = 0; j < num.GetLength(1); j++)
+                if (obj != null)
                 {
-                    //consoleObjects.[i, j] = GameObject.CreateObject();
+                    if (obj.NameObject() == "Brick")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("#");
+                    }
+
+                    if (obj.NameObject() == "Concrete")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("#");
+                    }
+
+                    if (obj.NameObject() == "Enemy")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("O");
+                    }
+
+                    if (obj.NameObject() == "Gold")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("$");
+                    }
+
+                    if (obj.NameObject() == "Man")
+                    {
+                        x = obj.X;
+                        y = obj.Y;
+                        System.Console.SetCursorPosition(x, y);
+                        Console.WriteLine("K");
+                    }
+
+                    if (obj.NameObject() == "Rope")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("-");
+                    }
+
+                    if (obj.NameObject() == "Stairs")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("||");
+                    }
+                }
+                else
+                {
+                    System.Console.SetCursorPosition(0, 0);
+                    Console.Write(" ");
                 }
             }
-        }
+            System.Console.SetCursorPosition(x, y);
+            while (true)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
 
+                if (key.Key == ConsoleKey.RightArrow)
+                {
+                    MoveRightRunner();
+                    break;
+                }
+            }
+
+        }
 
         /// <summary>
         /// Отрисовка уровня
@@ -176,7 +238,7 @@ namespace Model.Game
         /// <summary>
         /// Движение персонажа вправо
         /// </summary>
-        public void MoveRightRunner()
+        public static void MoveRightRunner()
         {
             foreach (Model.Game.Objects.GameObject aaa in objects)
             {
@@ -185,7 +247,7 @@ namespace Model.Game
                     if (aaa.NameObject() == "Man")
                     {
                         //aaa.X += aaa.moveRightObject();
-                        objects[20].X -= aaa.moveRightObject();
+                        objects[20].X -= 2;
                     }
                 }
             }

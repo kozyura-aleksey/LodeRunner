@@ -72,7 +72,7 @@ namespace View.Game
         /// </summary>
         public void MoveRightRunner()
         {
-            _modelGame._mapLevel.MoveRightRunner();
+            //_modelGame._mapLevel.MoveRightRunner();
             ReDrawGame();
         }
 

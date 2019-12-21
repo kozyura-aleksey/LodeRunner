@@ -20,7 +20,7 @@ namespace View
         /// Форма для отображения элементов
         /// </summary>
         public static Form ViewForm { get; set; }
-       
+
         /// <summary>
         /// Инициализация формы
         /// </summary>
@@ -33,8 +33,8 @@ namespace View
         /// Инициализация консоли
         /// </summary>
         public static void InitConsole()
-        {           
-            for (int i = 0; i < MapLevel.num.GetLength(1); i++)
+        {
+            /*for (int i = 0; i < MapLevel.num.GetLength(1); i++)
             {
                 for (int j = 0; j < MapLevel.num.GetLength(0); j++)
                 {
@@ -51,9 +51,9 @@ namespace View
                     Console.Write(MapLevel.consoleObjects[j, i]);
                 }
                 Console.WriteLine();
-            }
+            }*/
+            MapLevel.DrawConsole();
             Console.ReadKey();
-
         }
 
        
