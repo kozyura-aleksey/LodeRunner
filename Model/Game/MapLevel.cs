@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,7 +17,6 @@ namespace Model.Game
     /// </summary>
     public class MapLevel
     {
-
         /// <summary>
         /// Экземпляр уровня
         /// </summary>
@@ -33,14 +33,15 @@ namespace Model.Game
         private static int STEP = 16;
 
         /// <summary>
+        /// Массив локаторов
+        /// </summary>
+        public static String[,] num;
+
+        /// <summary>
         /// Массив линий
         /// </summary>
         public static string[] lines;
 
-        /// <summary>
-        /// Массив локаторов
-        /// </summary>
-        public static String[,] num;
 
         /// <summary>
         /// Лист объектов соответственно массиву локаторов
@@ -52,8 +53,8 @@ namespace Model.Game
         /// </summary>
         public MapLevel()
         {
-            //String file = Properties.Resources.level1;
-            lines = File.ReadAllLines(@"C:\LodeRunner\levels\level1.txt");
+            string path = @"C:\LodeRunner\levels\level1.txt";
+            lines = File.ReadAllLines(path);     
             num = new String[lines.Length, lines[0].Split(' ').Length];
             for (int i = 0; i < lines.Length; i++)
             {
@@ -153,7 +154,7 @@ namespace Model.Game
                 }
             }
             CollectLodes();
-            //Gravitation();
+            Gravitation();
         }
 
         /// <summary>
@@ -175,7 +176,7 @@ namespace Model.Game
                 }
             }
             CollectLodes();
-            //Gravitation();
+            Gravitation();
         }
 
         /// <summary>
@@ -292,7 +293,6 @@ namespace Model.Game
                     }
                 }
             }
-            //return loc;
         }        
 
         /// <summary>
@@ -349,8 +349,5 @@ namespace Model.Game
                 }
             }
         }
-
-
-
     }
 }

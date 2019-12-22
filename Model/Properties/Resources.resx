@@ -172,6 +172,40 @@
   <data name="enemy_stairs2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemy-stairs2.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="file" xml:space="preserve">
+    <value>0 0 2 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 7 1 
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 
+0 0 2 0 0 0 0 0 0 0 3 3 3 3 1 0 0 0 0 0 0 1 
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 
+0 0 2 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 3 3 3 1 
+0 0 1 0 0 0 0 0 0 0 1 0 0 8 1 0 0 0 1 0 0 1 
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 1 0 0 1 
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 6 1 0 6 1 
+0 0 2 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 1 0 0 1 
+0 0 3 3 3 3 3 3 3 3 1 0 0 0 1 0 0 8 1 0 0 1 
+0 0 1 4 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 1 
+0 0 1 4 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 1 
+0 0 1 4 0 0 0 0 0 0 0 0 0 6 3 3 3 3 1 0 0 1 
+0 0 1 4 0 0 0 0 0 0 0 0 0 0 1 0 0 4 1 0 0 1 
+0 0 1 4 1 1 1 1 1 1 1 0 0 0 1 0 0 4 0 0 0 1 
+0 0 1 4 1 1 1 1 1 1 1 0 0 0 1 0 0 4 0 0 0 1 
+0 0 3 3 3 3 3 3 3 3 1 0 0 0 1 0 0 4 0 0 0 1 
+0 0 0 4 0 0 0 0 0 0 1 0 0 0 1 0 0 4 0 0 0 1 
+0 0 0 4 0 0 0 0 0 0 1 0 0 0 1 0 0 4 0 0 0 1 
+0 0 0 4 0 0 0 0 0 0 1 0 0 0 1 0 0 4 0 0 0 1 
+0 0 0 4 0 0 1 0 0 0 1 0 0 0 1 0 0 4 0 0 0 1 
+0 0 0 0 0 0 1 0 0 0 1 0 0 0 1 0 0 4 0 0 0 1 
+0 0 0 0 0 0 1 0 0 0 3 3 3 3 3 3 3 3 1 0 0 1 
+0 0 0 0 0 8 1 0 0 0 1 0 0 0 0 0 0 0 1 0 0 1 
+0 0 0 0 0 0 1 0 0 8 1 0 0 0 0 0 0 8 1 0 0 1 
+0 0 0 0 0 0 3 3 3 3 1 0 0 0 0 0 0 0 1 0 0 1 
+0 0 0 0 0 6 1 0 0 0 1 0 0 0 0 0 0 0 1 0 0 1 
+0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 1 0 0 1 
+0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 1 0 0 1 
+0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 3 3 3 1</value>
+  </data>
   <data name="hole0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hole0.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -252,6 +286,9 @@
   </data>
   <data name="stairs2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stairs2.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value> </value>
   </data>
   <data name="_null" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\null.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
