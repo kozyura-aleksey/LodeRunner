@@ -109,7 +109,7 @@ namespace Model.Game
                 }
             }
             CollectLodes();
-            //Gravitation();
+            Gravitation();
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Model.Game
                 }
             }
             CollectLodes();
-            //Gravitation();
+            Gravitation();
         }
 
         /// <summary>
@@ -269,47 +269,31 @@ namespace Model.Game
         /// <returns></returns>
         public void Gravitation()
         {
-            bool loc = true;
+            bool loc;
             foreach (Model.Game.Objects.GameObject parOb in objects)
             {
                 if (parOb != null)
                 {
-                    if ((parOb.NameObject() == "Brick") || (parOb.NameObject() == "Concrete"))
+                    if ((parOb.NameObject() == "Brick") || (parOb.NameObject() == "Stairs"))
                     {
                         if (((objects[MAN_POS].Y + STEP) == parOb.Y) & (objects[MAN_POS].X == parOb.X))
                         {
                             loc = true;
+                            break;
                         }
                         else 
                         {
-                            loc = false;
-                            Landing();
+                            while ((objects[MAN_POS].Y < (parOb.Y)) & (objects[MAN_POS].X == parOb.X))
+                            {
+                                objects[MAN_POS].Y = (parOb.Y - STEP);
+                                break;
+                            }                           
                         }
                     }
                 }
             }
             //return loc;
-        }
-
-        /// <summary>
-        /// Приземление
-        /// </summary>
-        public void Landing()
-        {
-            foreach (Model.Game.Objects.GameObject parOb in objects)
-            {
-                if (parOb != null)
-                {
-                        int p = num.GetLength(1) * STEP - STEP;
-
-                        for (int i = 1; i < p; i++)
-                        {
-                            i *=STEP;
-                            objects[MAN_POS].Y -= STEP;
-                        }
-                }
-            }
-        }
+        }        
 
         /// <summary>
         /// Подсчет сундуков
@@ -329,32 +313,44 @@ namespace Model.Game
             }
             return count;
         }
+        /// <summary>
+        /// Количество сундуков
+        /// </summary>
+        int count = 0;
 
         /// <summary>
         /// Собирание сундуков
         /// </summary>
         public void CollectLodes()
-        {
-            int i = 0;
+        {         
             foreach (Model.Game.Objects.GameObject parOb in objects.ToArray())
             {
                 if ((parOb != null) & (objects != null))
                 {
                     if (parOb.NameObject() == "Gold")
-                    {
+                    {                                              
                         if ((objects[MAN_POS].X == parOb.X) & (objects[MAN_POS].Y == parOb.Y))
                         {
+                            count += 1;
                             var index = objects.IndexOf(parOb);
                             objects[index] = null;
-                            i += 1;
-                            if (i == 4)
+                            if (count == CountLodes())
                             {
+                                objects[573] = new Stairs(368, 80);
+                                objects[574] = new Stairs(368, 64);
+                                objects[575] = new Stairs(368, 48);
+                                objects[576] = new Stairs(368, 32);
+                                objects[577] = new Stairs(368, 16);
+                                objects[578] = new Stairs(368, 0);
                                 break;
                             }
-                        }                  
+                        }                       
                     }               
                 }
             }
         }
+
+
+
     }
 }
