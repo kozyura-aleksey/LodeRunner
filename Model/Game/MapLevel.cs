@@ -70,7 +70,7 @@ namespace Model.Game
             {
                 for (int j = 0; j < num.GetLength(1); j++)
                 {
-                    objects.Add(GameObject.CreateObject(num[i, j], 16 * i, 16 * j));
+                    objects.Add(GameObject.CreateObject(num[i, j], STEP * i, STEP * j));
                 }
             }
         }
@@ -248,7 +248,7 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Brick")
                     {
-                        if (objects[MAN_POS].X < parOb.X)
+                        if (objects[MAN_POS].X <= parOb.X)
                         {
                             loc = true;
                             break;
@@ -283,8 +283,7 @@ namespace Model.Game
                         else 
                         {
                             loc = false;
-                            //Landing();
-                            objects[MAN_POS].Y -= STEP;
+                            Landing();
                         }
                     }
                 }
@@ -303,33 +302,57 @@ namespace Model.Game
                 {
                         int p = num.GetLength(1) * STEP - STEP;
 
-                        //for (int i = 1; i < p; i++)
+                        for (int i = 1; i < p; i++)
                         {
-                            //i *=STEP;
+                            i *=STEP;
                             objects[MAN_POS].Y -= STEP;
                         }
                 }
             }
         }
 
+        /// <summary>
+        /// Подсчет сундуков
+        /// </summary>
+        public int CountLodes()
+        {
+            int count = 0;
+            for (int i = 0; i < num.GetLength(0); i++)
+            {
+                for (int j = 0; j < num.GetLength(1); j++)
+                { 
+                    if (num[i,j] == "6")
+                    {
+                        count += 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>
         /// Собирание сундуков
         /// </summary>
         public void CollectLodes()
         {
+            int i = 0;
             foreach (Model.Game.Objects.GameObject parOb in objects.ToArray())
             {
                 if ((parOb != null) & (objects != null))
                 {
                     if (parOb.NameObject() == "Gold")
-                    {                      
+                    {
                         if ((objects[MAN_POS].X == parOb.X) & (objects[MAN_POS].Y == parOb.Y))
                         {
                             var index = objects.IndexOf(parOb);
                             objects[index] = null;
-                        }
-                    }
+                            i += 1;
+                            if (i == 4)
+                            {
+                                break;
+                            }
+                        }                  
+                    }               
                 }
             }
         }
