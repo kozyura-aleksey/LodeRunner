@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game\ViewGame.cs" />
+    <Compile Include="Game\ViewGameConsole.cs" />
     <Compile Include="Menu\ViewMenu.cs" />
     <Compile Include="Game\View.cs" />
     <Compile Include="Menu\ViewRecords.cs" />

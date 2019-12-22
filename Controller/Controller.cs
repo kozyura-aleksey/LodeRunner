@@ -12,23 +12,7 @@ namespace Controller
     /// </summary>
     public abstract class Controller
     {
-        /// <summary>
-        /// Форма приложения
-        /// </summary>
-        public static Form FormMain { get; private set; }
-
-        /// <summary>
-        /// Создать форму для приложения
-        /// </summary>
-        public static void CreateForm()
-        {
-            if (FormMain == null)
-            {
-                FormMain = new Form();
-            }
-            //FormMain.KeyPreview = true;
-        }
-
+       
         /// <summary>
         /// Инициализировать контроллер
         /// </summary>

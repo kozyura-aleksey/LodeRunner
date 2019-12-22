@@ -12,7 +12,7 @@ namespace View.Game
     /// <summary>
     /// Класс - отображение игры
     /// </summary>
-    public class ViewGame : View
+    public class ViewGameConsole : View
     {
         /// <summary>
         /// Модель игры
@@ -29,16 +29,16 @@ namespace View.Game
         /// </summary>
         public Timer timer = new Timer() { Enabled = true, Interval = 50 };
 
-
         /// <summary>
         /// 
         /// </summary>
         /// <param name="parModelGame"></param>
-        public ViewGame(Model.ModelGame parModelGame)
+        public ViewGameConsole(Model.ModelGame parModelGame)
         {
             _modelGame = parModelGame;
             _modelGame.CreateMapLevel += CreateMap;
             _modelGame.Draw += DrawConsole;
+            _modelGame.Move += ReDrawGame2;
             timer.Start();
             timer.Tick += ReDrawGame;            
         }
@@ -116,19 +116,6 @@ namespace View.Game
                 }
             }
             System.Console.SetCursorPosition(x, y);
-
-
-            while (true)
-            {
-                ConsoleKeyInfo key = Console.ReadKey(true);
-
-                if (key.Key == ConsoleKey.RightArrow)
-                {
-                    
-                    break;
-                }
-            }
-
         }
 
         /// <summary>
@@ -140,6 +127,18 @@ namespace View.Game
             {
                 DrawConsole();
             }
-        }        
+        }
+
+
+        /// <summary>
+        /// Переририсовка игры
+        /// </summary>
+        public void ReDrawGame2()
+        {
+            if (_modelGame._mapLevel != null)
+            {
+                DrawConsole();
+            }
+        }
     }
 }

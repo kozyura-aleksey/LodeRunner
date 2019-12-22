@@ -21,27 +21,27 @@ namespace Model
         /// <summary>
         /// Делегат на создание уровня
         /// </summary>
-        public delegate void createMap();
+        public delegate void dCreateMap();
 
         /// <summary>
         /// Делагат на движение
         /// </summary>
-        public delegate void moveObjects();
+        public delegate void dMoveObjects();
 
         /// <summary>
         /// Событие на движение
         /// </summary>
-        public event moveObjects Move;
+        public event dMoveObjects Move;
 
         /// <summary>
         /// Событие на движение
         /// </summary>
-        public event moveObjects Draw;
+        public event dMoveObjects Draw;
 
         /// <summary>
         /// Событие на создание уровня
         /// </summary>
-        public event createMap CreateMapLevel;
+        public event dCreateMap CreateMapLevel;
 
         /// <summary>
         /// Поток игры
@@ -74,8 +74,9 @@ namespace Model
             if (_mapLevel != null)
             {
                 OnCreateMapLevel();
+                OnDraw();
                 OnMove();
-            }        
+            }
         }
 
         /// <summary>
@@ -89,7 +90,7 @@ namespace Model
             }
         }
         /// <summary>
-        /// Запуск собьытия на движение
+        /// Запуск события на движение
         /// </summary>
         public void OnMove()
         {
@@ -97,8 +98,8 @@ namespace Model
             {
                 Move.Invoke();
             }
-        }   
-        
+        }
+
         /// <summary>
         /// Запуск события на создание уровня
         /// </summary>

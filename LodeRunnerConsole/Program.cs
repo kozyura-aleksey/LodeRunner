@@ -12,6 +12,7 @@ namespace LodeRunnerConsole
         {
             MainController game = new MainController();
             game.InitConsole();
+            Console.ReadKey();
         }
     }
 }

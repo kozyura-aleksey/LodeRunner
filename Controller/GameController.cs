@@ -22,28 +22,19 @@ namespace Controller.Game
         /// <summary>
         /// Представление игры 
         /// </summary>
-        public View.Game.ViewGame _viewGame;
+        public View.Game.ViewGameConsole _viewGame;
 
         /// <summary>
         /// 
         /// </summary>
         public Model.Game.MapLevel _mapLevel;
 
-        /// <summary>
-        /// Обработчик нажатия на кнопку
-        /// </summary>
-        private delegate void dKeyHandler();
-
-        /// <summary>
-        /// Словарь действий при нажатии кнопки
-        /// </summary>
-        private Dictionary<Keys, dKeyHandler> _keysDict;
-
+       
         public GameController()
         {
             _gameModel = new Model.ModelGame();
-            _viewGame = new View.Game.ViewGame(_gameModel);
-            _gameModel.Move += DefineInteraction;
+            _viewGame = new View.Game.ViewGameConsole(_gameModel);
+            
 
         }
 
@@ -52,11 +43,7 @@ namespace Controller.Game
         /// </summary>
         public void DefineInteraction()
         {
-            _keysDict = new Dictionary<Keys, dKeyHandler>();
-            //_keysDict.Add(Keys.Right, _gameModel._mapLevel.MoveRightRunner);
-            _keysDict.Add(Keys.Up, _gameModel._mapLevel.MoveUpRunner);
-            _keysDict.Add(Keys.Down, _gameModel._mapLevel.MoveDownRunner);
-            _keysDict.Add(Keys.Left, _gameModel._mapLevel.MoveLeftRunner);
+            
         }
 
         /// <summary> 
@@ -64,7 +51,7 @@ namespace Controller.Game
         /// </summary>
         public override void DeInit()
         {
-            FormMain.KeyDown -= KeyDown;
+            
         }
 
         /// <summary>
@@ -72,23 +59,8 @@ namespace Controller.Game
         /// </summary>
         public override void Init()
         {
-            Console. += KeyDown;
             _viewGame.DrawConsole();
             _gameModel.Start();
-        }
-
-        /// <summary>
-        /// Обработка события нажатия кнопки
-        /// </summary>       
-        public void KeyDown(object sender, KeyEventArgs e)
-        {
-            if (_keysDict != null)
-            {
-                if (_keysDict.ContainsKey(e.KeyData))
-                {
-                    _keysDict[e.KeyData]();
-                }
-            }
         }
     }
 }

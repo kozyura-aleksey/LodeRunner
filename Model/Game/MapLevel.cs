@@ -33,6 +33,16 @@ namespace Model.Game
         public static String[,] num;
 
         /// <summary>
+        /// Шаг игры
+        /// </summary>
+        public static int STEP = 1;
+
+        /// <summary>
+        /// Позиция игрока на карте
+        /// </summary>
+        public static int MAN_POS = 20;
+
+        /// <summary>
         /// Лист объектов соответственно массиву локаторов
         /// </summary>
         public static List<Model.Game.Objects.GameObject> objects;
@@ -54,14 +64,13 @@ namespace Model.Game
                 }
             }
 
-
             objects = new List<Model.Game.Objects.GameObject>();
 
             for (int i = 0; i < num.GetLength(0); i++)
             {
                 for (int j = 0; j < num.GetLength(1); j++)
                 {
-                    objects.Add(GameObject.CreateObject(num[i, j], 2*i, 2*j));
+                    objects.Add(GameObject.CreateObject(num[i, j],  i, j));
                 }
             }          
         }
@@ -79,23 +88,26 @@ namespace Model.Game
             return mapLevel;
         }
 
-        
         /// <summary>
         /// Движение персонажа вправо
         /// </summary>
-        public static void MoveRightRunner()
+        public void MoveRightRunner()
         {
-            foreach (Model.Game.Objects.GameObject aaa in objects)
+            foreach (Model.Game.Objects.GameObject parOb in objects)
             {
-                if (aaa != null)
+                if (parOb != null)
                 {
-                    if (aaa.NameObject() == "Man")
+                    if (parOb.NameObject() == "Man")
                     {
-                        //aaa.X += aaa.moveRightObject();
-                        objects[20].X -= 2;
+                        if ((objects[MAN_POS].X < ((num.GetLength(0) * STEP) - STEP) & CheckSutuationRightLeft()))
+                        {
+                            objects[MAN_POS].X += STEP;
+                        }
                     }
                 }
             }
+            CollectLodes();
+            Gravitation();
         }
 
         /// <summary>
@@ -103,17 +115,21 @@ namespace Model.Game
         /// </summary>
         public void MoveLeftRunner()
         {
-            foreach (Model.Game.Objects.GameObject aaa in objects)
+            foreach (Model.Game.Objects.GameObject parOb in objects)
             {
-                if (aaa != null)
+                if (parOb != null)
                 {
-                    if (aaa.NameObject() == "Man")
+                    if (parOb.NameObject() == "Man")
                     {
-                        //aaa.X -= aaa.moveLeftObject();
-                        objects[20].X += aaa.moveLeftObject();
+                        if ((objects[MAN_POS].X > 0) & CheckSutuationRightLeft())
+                        {
+                            objects[MAN_POS].X -= STEP;
+                        }
                     }
                 }
             }
+            CollectLodes();
+            Gravitation();
         }
 
         /// <summary>
@@ -121,17 +137,21 @@ namespace Model.Game
         /// </summary>
         public void MoveUpRunner()
         {
-            foreach (Model.Game.Objects.GameObject aaa in objects)
+            foreach (Model.Game.Objects.GameObject parOb in objects)
             {
-                if (aaa != null)
+                if (parOb != null)
                 {
-                    if (aaa.NameObject() == "Man")
+                    if (parOb.NameObject() == "Man")
                     {
-                        //aaa.Y -= aaa.moveUpObject();
-                        objects[20].X -= aaa.moveUpObject();
+                        if ((objects[MAN_POS].Y > 0) & (CheckSutuationUp()))
+                        {
+                            objects[MAN_POS].Y -= STEP;
+                        }
                     }
                 }
             }
+            CollectLodes();
+            Gravitation();
         }
 
         /// <summary>
@@ -139,17 +159,194 @@ namespace Model.Game
         /// </summary>
         public void MoveDownRunner()
         {
-            foreach (Model.Game.Objects.GameObject aaa in objects)
+            foreach (Model.Game.Objects.GameObject parOb in objects)
             {
-                if (aaa != null)
+                if (parOb != null)
                 {
-                    if (aaa.NameObject() == "Man")
+                    if (parOb.NameObject() == "Man")
                     {
-                        //aaa.Y -= aaa.moveDownObject();
-                        objects[20].X -= aaa.moveDownObject();
+                        if ((objects[MAN_POS].Y <= ((num.GetLength(1) * STEP) - STEP)) & (CheckSutuationDown()))
+                        {
+                            objects[MAN_POS].Y += STEP;
+                        }
                     }
-                }               
+                }
+            }
+            CollectLodes();
+            Gravitation();
+        }
+
+        /// <summary>
+        /// Проверка ситуации вверх
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckSutuationUp()
+        {
+            bool loc = true;
+            foreach (Model.Game.Objects.GameObject parOb in objects)
+            {
+                if (parOb != null)
+                {
+                    if (parOb.NameObject() == "Stairs")
+                    {
+                        if ((objects[MAN_POS].Y == parOb.Y) & (objects[MAN_POS].X == parOb.X))
+                        {
+                            loc = true;
+                            break;
+                        }
+                        else
+                        {
+                            loc = false;
+                        }
+                    }
+                }
+            }
+            return loc;
+        }
+
+        /// <summary>
+        /// Проверка ситуации вниз
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckSutuationDown()
+        {
+            bool loc = true;
+            foreach (Model.Game.Objects.GameObject parOb in objects)
+            {
+                if (parOb != null)
+                {
+                    if (parOb.NameObject() == "Stairs")
+                    {
+                        if (((objects[MAN_POS].Y == parOb.Y) || (objects[MAN_POS].Y == (parOb.Y - STEP))) & (objects[MAN_POS].X == parOb.X))
+                        {
+                            loc = true;
+                            break;
+                        }
+                        else
+                        {
+                            loc = false;
+                        }
+                    }
+                }
+            }
+            return loc;
+        }
+
+
+        /// <summary>
+        /// Проверка ситуации вправо-влево
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckSutuationRightLeft()
+        {
+            bool loc = true;
+            foreach (Model.Game.Objects.GameObject parOb in objects)
+            {
+                if (parOb != null)
+                {
+                    if (parOb.NameObject() == "Brick")
+                    {
+                        if (objects[MAN_POS].X <= parOb.X)
+                        {
+                            loc = true;
+                            break;
+                        }
+                        else
+                        {
+                            loc = false;
+                        }
+                    }
+                }
+            }
+            return loc;
+        }
+
+        /// <summary>
+        /// Гравитация
+        /// </summary>
+        /// <returns></returns>
+        public void Gravitation()
+        {
+            bool loc;
+            foreach (Model.Game.Objects.GameObject parOb in objects)
+            {
+                if (parOb != null)
+                {
+                    if ((parOb.NameObject() == "Brick") || (parOb.NameObject() == "Stairs"))
+                    {
+                        if (((objects[MAN_POS].Y + STEP) == parOb.Y) & (objects[MAN_POS].X == parOb.X))
+                        {
+                            loc = true;
+                            break;
+                        }
+                        else
+                        {
+                            while ((objects[MAN_POS].Y < (parOb.Y)) & (objects[MAN_POS].X == parOb.X))
+                            {
+                                objects[MAN_POS].Y = (parOb.Y - STEP);
+                                break;
+                            }
+                        }
+                    }
+                }
             }
         }
+
+        /// <summary>
+        /// Подсчет сундуков
+        /// </summary>
+        public int CountLodes()
+        {
+            int count = 0;
+            for (int i = 0; i < num.GetLength(0); i++)
+            {
+                for (int j = 0; j < num.GetLength(1); j++)
+                {
+                    if (num[i, j] == "6")
+                    {
+                        count += 1;
+                    }
+                }
+            }
+            return count;
+        }
+        /// <summary>
+        /// Количество сундуков
+        /// </summary>
+        int count = 0;
+
+        /// <summary>
+        /// Собирание сундуков
+        /// </summary>
+        public void CollectLodes()
+        {
+            foreach (Model.Game.Objects.GameObject parOb in objects.ToArray())
+            {
+                if ((parOb != null) & (objects != null))
+                {
+                    if (parOb.NameObject() == "Gold")
+                    {
+                        if ((objects[MAN_POS].X == parOb.X) & (objects[MAN_POS].Y == parOb.Y))
+                        {
+                            count += 1;
+                            var index = objects.IndexOf(parOb);
+                            objects[index] = null;
+                            if (count == CountLodes())
+                            {
+                                objects[573] = new Stairs(368, 80);
+                                objects[574] = new Stairs(368, 64);
+                                objects[575] = new Stairs(368, 48);
+                                objects[576] = new Stairs(368, 32);
+                                objects[577] = new Stairs(368, 16);
+                                objects[578] = new Stairs(368, 0);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
     }
 }

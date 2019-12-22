@@ -1,5 +1,6 @@
 ﻿using Controller.Game;
 using Controller.Menu;
+using Model;
 using Model.Game;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,11 @@ namespace Controller
         /// Контроллер рекордов
         /// </summary>
         private RecordController _recordName;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ModelGame modelGame = new ModelGame();
 
         /// <summary>
         /// Контроллер меню
@@ -39,13 +45,9 @@ namespace Controller
         /// Создать главный контроллер
         /// </summary>
         public MainController()
-        {
-            //Controller.CreateForm();
-            //View.View.SetFormParameters(Controller.FormMain);
-
-            //Controller.FormMain.Shown += StartApplication;
+        {     
             StartApplication();
-
+            
         }
 
         /// <summary>
@@ -58,19 +60,32 @@ namespace Controller
         }
 
         /// <summary>
-        /// Инициализация контроллера
-        /// </summary>
-        public void Init()
-        {
-            View.View.Init();
-        }
-
-        /// <summary>
         /// Инициализация консольного варианта
         /// </summary>
         public void InitConsole()
         {
-            View.View.InitConsole();
+            {
+                ConsoleKeyInfo keyInfo = Console.ReadKey();
+                switch (keyInfo.Key)
+                {
+                    case ConsoleKey.RightArrow:
+                        _game._gameModel._mapLevel.MoveRightRunner();
+                        Console.ReadKey();
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        modelGame._mapLevel.MoveLeftRunner();
+                        Console.ReadKey();
+                        break;
+                    case ConsoleKey.DownArrow:
+                        modelGame._mapLevel.MoveDownRunner();
+                        Console.ReadKey();
+                        break;
+                    case ConsoleKey.UpArrow:
+                        modelGame._mapLevel.MoveUpRunner();
+                        Console.ReadKey();
+                        break;
+                }
+            }
         }
 
         /// <summary>
