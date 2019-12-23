@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using View.Game;
 using GameObject = Model.Game.Objects.GameObject;
 
 namespace View
@@ -20,6 +21,7 @@ namespace View
         /// Форма для отображения элементов
         /// </summary>
         public static Form ViewForm { get; set; }
+        
 
         /// <summary>
         /// Инициализация формы
@@ -41,12 +43,8 @@ namespace View
         /// Контекст буферизации
         /// </summary>
         private static BufferedGraphicsContext _context;
-
-        /// <summary>
-        /// Буфер
-        /// </summary>
-        protected static BufferedGraphics _graphics;
-
+        private static BufferedGraphics _bufer;
+       
         /// <summary>
         /// Настройка параметров формы для работы
         /// </summary>
@@ -67,7 +65,8 @@ namespace View
             ViewForm = parForm;
             FormDecorator();
             _context = BufferedGraphicsManager.Current;
-            _graphics = _context.Allocate(ViewForm.CreateGraphics(), ViewForm.ClientRectangle);
+            _bufer = _context.Allocate(ViewForm.CreateGraphics(), ViewForm.ClientRectangle);         
+
         }
     }
 }

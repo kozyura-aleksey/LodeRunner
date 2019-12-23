@@ -27,8 +27,8 @@ namespace View.Game
         /// <summary>
         /// Таймер для перерисовки
         /// </summary>
-        public Timer timer = new Timer() { Enabled = true, Interval = 50 };
-       
+        public Timer timer = new Timer() { Enabled = true, Interval = 40 };
+
         /// <summary>
         /// 
         /// </summary>
@@ -60,7 +60,7 @@ namespace View.Game
             Form parForm = View.ViewForm;
             Graphics graphics = parForm.CreateGraphics();
             Rectangle clientRectangle = parForm.ClientRectangle;
-            BufferedGraphics bufferedGraphics = BufferedGraphicsManager.Current.Allocate(graphics, clientRectangle);
+            BufferedGraphics bufferedGraphics = BufferedGraphicsManager.Current.Allocate(graphics, clientRectangle);          
             bufferedGraphics.Graphics.Clear(Color.Black);
 
             foreach (Model.Game.Objects.GameObject obj in MapLevel.objects)
@@ -71,7 +71,7 @@ namespace View.Game
                     if (obj.NameObject() == "Brick")
                     {
                         image = Properties.Resources.brick1;
-                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
+                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);                  
                     }
 
                     if (obj.NameObject() == "Concrete")
@@ -90,25 +90,37 @@ namespace View.Game
                     {
                         image = Properties.Resources.lode;
                         bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
-                    }
-
-                    if (obj.NameObject() == "Man")
-                    {
-                        Image imageMan;
-                        imageMan = Properties.Resources.runner0;
-                        bufferedGraphics.Graphics.DrawImage(imageMan, obj.X, obj.Y);
-                    }
+                    }                 
 
                     if (obj.NameObject() == "Rope")
                     {
-                        image = Properties.Resources.rope;                       
+                        image = Properties.Resources.rope;
                         bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
                     }
 
                     if (obj.NameObject() == "Stairs")
                     {
-                        image = Properties.Resources.stair;
+                        image = Properties.Resources.stair;                       
                         bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
+                    }                 
+                }
+                else
+                {
+                    image = Properties.Resources._null;
+                    bufferedGraphics.Graphics.DrawImage(image, 0, 0);                  
+                }
+            }
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.objects)
+            {
+                Image image = null;
+                if (obj != null)
+                {
+                    if (obj.NameObject() == "Man")
+                    {
+                        Bitmap imageMan;
+                        imageMan = Properties.Resources.runner0;
+                        imageMan.MakeTransparent();
+                        bufferedGraphics.Graphics.DrawImage(imageMan, obj.X, obj.Y);
                     }
                 }
                 else

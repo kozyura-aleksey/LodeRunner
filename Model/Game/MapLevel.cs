@@ -247,7 +247,7 @@ namespace Model.Game
             {
                 if (parOb != null)
                 {
-                    if (parOb.NameObject() == "Brick")
+                    if ((parOb.NameObject() == "Brick") & (parOb.NameObject() == "Rope"))
                     {
                         if (objects[MAN_POS].X <= parOb.X)
                         {
@@ -282,13 +282,36 @@ namespace Model.Game
                             loc = true;
                             break;
                         }
-                        else 
+                        else
                         {
                             while ((objects[MAN_POS].Y < (parOb.Y)) & (objects[MAN_POS].X == parOb.X))
                             {
-                                objects[MAN_POS].Y = (parOb.Y - STEP);
+                                var index = objects.IndexOf(parOb);
+
+                                objects[MAN_POS].Y = objects[index].Y - STEP;//(parOb.Y - STEP);
+
                                 break;
-                            }                           
+                            }
+                        }
+                    }
+
+                    if (parOb.NameObject() == "Rope")
+                    {
+                        if (((objects[MAN_POS].Y) == parOb.Y) & (objects[MAN_POS].X == parOb.X))
+                        {
+                            loc = true;
+                            break;
+                        }
+                        else
+                        {
+                            while ((objects[MAN_POS].Y < (parOb.Y)) & (objects[MAN_POS].X == parOb.X))
+                            {
+                                var index = objects.IndexOf(parOb);
+
+                                objects[MAN_POS].Y = objects[index].Y - STEP;//(parOb.Y - STEP);
+
+                                break;
+                            }
                         }
                     }
                 }
