@@ -54,11 +54,8 @@ namespace Model.Game
         public MapLevel()
         {
             string str = Properties.Resources.file;
-
             lines = str.Split(new Char[] { '\n' });
 
-            //string path = @"C:\LodeRunner\levels\level1.txt";
-            //lines = File.ReadAllLines(path);     
             num = new String[lines.Length, lines[0].Split(' ').Length];
             for (int i = 0; i < lines.Length; i++)
             {
@@ -298,7 +295,6 @@ namespace Model.Game
                             }
                         }
                     }
-
                     if (parOb.NameObject() == "Rope")
                     {
                         if (((objects[MAN_POS].Y) == parOb.Y) & (objects[MAN_POS].X == parOb.X))
@@ -374,7 +370,7 @@ namespace Model.Game
                         }                       
                     }               
                 }
-            }
+            }         
         }
     }
 }
