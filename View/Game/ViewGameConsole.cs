@@ -27,7 +27,7 @@ namespace View.Game
         /// <summary>
         /// Таймер для перерисовки
         /// </summary>
-        public Timer timer = new Timer() { Enabled = true, Interval = 50 };
+        public Timer timer = new Timer() { Enabled = true, Interval = 40 };
 
         /// <summary>
         /// 
@@ -38,7 +38,7 @@ namespace View.Game
             _modelGame = parModelGame;
             _modelGame.CreateMapLevel += CreateMap;
             _modelGame.Draw += DrawConsole;
-            _modelGame.Move += ReDrawGame2;
+            //_modelGame.Move += ReDrawGame2;
             timer.Start();
             timer.Tick += ReDrawGame;            
         }

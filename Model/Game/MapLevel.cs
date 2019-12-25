@@ -102,10 +102,12 @@ namespace Model.Game
                         if ((objects[MAN_POS].X < ((num.GetLength(0) * STEP) - STEP) & CheckSutuationRightLeft()))
                         {
                             objects[MAN_POS].X += STEP;
+                            System.Console.SetCursorPosition(parOb.X, parOb.Y);
                         }
                     }
                 }
             }
+            
             CollectLodes();
             Gravitation();
         }
@@ -124,6 +126,7 @@ namespace Model.Game
                         if ((objects[MAN_POS].X > 0) & CheckSutuationRightLeft())
                         {
                             objects[MAN_POS].X -= STEP;
+                            System.Console.SetCursorPosition(parOb.X, parOb.Y);
                         }
                     }
                 }
