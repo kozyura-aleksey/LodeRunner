@@ -7,7 +7,8 @@ using Microsoft.Win32.SafeHandles;
 namespace LodeRunnerConsole
 {
     class Program
-    {
+    {    
+        [STAThread]
         static void Main(string[] args)
         {
             MainController game = new MainController();
