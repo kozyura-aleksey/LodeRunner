@@ -251,6 +251,25 @@ namespace Model.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на 0 0 2 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 7 1 \n
+        ///0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 \n
+        ///0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 \n
+        ///0 0 2 0 0 0 0 0 0 0 3 3 3 3 1 0 0 0 0 0 0 1 \n
+        ///0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 \n
+        ///0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 \n
+        ///0 0 2 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 3 3 3 1 \n
+        ///0 0 1 0 0 0 0 0 0 0 1 0 0 8 1 0 0 0 1 0 0 1 \n
+        ///0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 1 0 0 1 \n
+        ///0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 6 1 0 6 1 \n
+        ///0 0 2 0 0 0 0 0 0 0 1 0 0 0 1 0  [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string file {
+            get {
+                return ResourceManager.GetString("file", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap hole0 {

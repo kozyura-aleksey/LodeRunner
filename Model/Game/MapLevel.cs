@@ -53,6 +53,9 @@ namespace Model.Game
         /// </summary>
         public MapLevel()
         {
+
+            string str = Properties.Resources.file;
+            lines = str.Split(new Char[] { '\n' });
             lines = File.ReadAllLines(@"C:\LodeRunner\levels\level1.txt");
             num = new String[lines.Length, lines[0].Split(' ').Length];
             for (int i = 0; i < lines.Length; i++)
