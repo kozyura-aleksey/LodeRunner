@@ -27,7 +27,7 @@ namespace View.Game
         /// <summary>
         /// Таймер для перерисовки
         /// </summary>
-        public Timer timer = new Timer() { Enabled = true, Interval = 40 };
+        public Timer timer = new Timer() { Enabled = true, Interval = 40 };       
 
         /// <summary>
         /// 

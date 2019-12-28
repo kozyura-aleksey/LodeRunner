@@ -25,12 +25,12 @@ namespace Model.Game
         /// <summary>
         /// Позиция персонажа в карте
         /// </summary>
-        private static int MAN_POS = 20;
+        private const int MAN_POS = 20;
 
         /// <summary>
         /// Шаг игры
         /// </summary>
-        private static int STEP = 16;
+        private const int STEP = 16;
 
         /// <summary>
         /// Массив локаторов
