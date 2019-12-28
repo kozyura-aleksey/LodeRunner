@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace View.Game
 {
@@ -27,7 +26,7 @@ namespace View.Game
         /// <summary>
         /// Таймер для перерисовки
         /// </summary>
-        public Timer timer = new Timer() { Enabled = true, Interval = 40 };
+        public System.Timers.Timer timer = new System.Timers.Timer(1000);
 
         /// <summary>
         /// 
@@ -38,9 +37,8 @@ namespace View.Game
             _modelGame = parModelGame;
             _modelGame.CreateMapLevel += CreateMap;
             _modelGame.Draw += DrawConsole;
-            //_modelGame.Move += ReDrawGame2;
             timer.Start();
-            timer.Tick += ReDrawGame;            
+            timer.Elapsed += ReDrawGame;            
         }
 
         /// <summary>
@@ -135,18 +133,7 @@ namespace View.Game
         /// </summary>
         public void ReDrawGame(object sender, EventArgs e)
         {
-            System.Console.Clear();
-            if (_modelGame._mapLevel != null)
-            {
-                DrawConsole();
-            }
-        }
-
-        /// <summary>
-        /// Переририсовка игры
-        /// </summary>
-        public void ReDrawGame2()
-        {
+            //System.Console.Clear();
             if (_modelGame._mapLevel != null)
             {
                 DrawConsole();
