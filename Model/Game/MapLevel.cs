@@ -103,7 +103,7 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        if ((objects[MAN_POS].X < ((num.GetLength(0) * STEP) - STEP) & CheckSutuationRightLeft()))
+                        if ((objects[MAN_POS].X < ((num.GetLength(0) * STEP) - STEP) && CheckSutuationRightLeft()))
                         {
                             objects[MAN_POS].X += STEP;
                         }
@@ -125,7 +125,7 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        if ((objects[MAN_POS].X > 0) & CheckSutuationRightLeft())
+                        if ((objects[MAN_POS].X > 0) && CheckSutuationRightLeft())
                         {
                             objects[MAN_POS].X -= STEP;
                         }
@@ -147,7 +147,7 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        if ((objects[MAN_POS].Y > 0) & (CheckSutuationUp()))
+                        if ((objects[MAN_POS].Y > 0) && (CheckSutuationUp()))
                         {
                             objects[MAN_POS].Y -= STEP;
                         }
@@ -169,7 +169,7 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        if ((objects[MAN_POS].Y <= ((num.GetLength(1) * STEP) - STEP)) & (CheckSutuationDown()))
+                        if ((objects[MAN_POS].Y <= ((num.GetLength(1) * STEP) - STEP)) && (CheckSutuationDown()))
                         {
                             objects[MAN_POS].Y += STEP;
                         }
@@ -193,7 +193,7 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Stairs")
                     {
-                        if ((objects[MAN_POS].Y == parOb.Y) & (objects[MAN_POS].X == parOb.X))
+                        if ((objects[MAN_POS].Y == parOb.Y) && (objects[MAN_POS].X == parOb.X))
                         {
                             loc = true;
                             break;
@@ -221,7 +221,7 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Stairs")
                     {
-                        if (((objects[MAN_POS].Y == parOb.Y) || (objects[MAN_POS].Y == (parOb.Y - STEP))) & (objects[MAN_POS].X == parOb.X))
+                        if (((objects[MAN_POS].Y == parOb.Y) || (objects[MAN_POS].Y == (parOb.Y - STEP))) && (objects[MAN_POS].X == parOb.X))
                         {
                             loc = true;
                             break;
@@ -248,7 +248,7 @@ namespace Model.Game
             {
                 if (parOb != null)
                 {
-                    if ((parOb.NameObject() == "Brick") & (parOb.NameObject() == "Rope"))
+                    if ((parOb.NameObject() == "Brick") && (parOb.NameObject() == "Rope"))
                     {
                         if (objects[MAN_POS].X <= parOb.X)
                         {
@@ -278,14 +278,14 @@ namespace Model.Game
                 {
                     if ((parOb.NameObject() == "Brick") || (parOb.NameObject() == "Stairs"))
                     {
-                        if (((objects[MAN_POS].Y + STEP) == parOb.Y) & (objects[MAN_POS].X == parOb.X))
+                        if (((objects[MAN_POS].Y + STEP) == parOb.Y) && (objects[MAN_POS].X == parOb.X))
                         {
                             loc = true;
                             break;
                         }
                         else
                         {
-                            while ((objects[MAN_POS].Y < (parOb.Y)) & (objects[MAN_POS].X == parOb.X))
+                            while ((objects[MAN_POS].Y < (parOb.Y)) && (objects[MAN_POS].X == parOb.X))
                             {
                                 var index = objects.IndexOf(parOb);
 
@@ -297,14 +297,14 @@ namespace Model.Game
                     }
                     if (parOb.NameObject() == "Rope")
                     {
-                        if (((objects[MAN_POS].Y) == parOb.Y) & (objects[MAN_POS].X == parOb.X))
+                        if (((objects[MAN_POS].Y) == parOb.Y) && (objects[MAN_POS].X == parOb.X))
                         {
                             loc = true;
                             break;
                         }
                         else
                         {
-                            while ((objects[MAN_POS].Y < (parOb.Y)) & (objects[MAN_POS].X == parOb.X))
+                            while ((objects[MAN_POS].Y < (parOb.Y)) && (objects[MAN_POS].X == parOb.X))
                             {
                                 var index = objects.IndexOf(parOb);
 
@@ -348,11 +348,11 @@ namespace Model.Game
         {         
             foreach (Model.Game.Objects.GameObject parOb in objects.ToArray())
             {
-                if ((parOb != null) & (objects != null))
+                if ((parOb != null) && (objects != null))
                 {
                     if (parOb.NameObject() == "Gold")
                     {                                              
-                        if ((objects[MAN_POS].X == parOb.X) & (objects[MAN_POS].Y == parOb.Y))
+                        if ((objects[MAN_POS].X == parOb.X) && (objects[MAN_POS].Y == parOb.Y))
                         {
                             count += 1;
                             var index = objects.IndexOf(parOb);
