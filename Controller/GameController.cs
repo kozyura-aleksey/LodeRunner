@@ -34,7 +34,7 @@ namespace Controller.Game
         {
             _gameModel = new Model.ModelGame();
             _viewGame = new View.Game.ViewGameConsole(_gameModel);
-            
+            _gameModel.Move += 
 
         }
 

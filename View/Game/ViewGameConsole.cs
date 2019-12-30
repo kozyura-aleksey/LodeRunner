@@ -26,7 +26,7 @@ namespace View.Game
         /// <summary>
         /// Таймер для перерисовки
         /// </summary>
-        public System.Timers.Timer timer = new System.Timers.Timer(1000);
+        public System.Timers.Timer timer = new System.Timers.Timer(500);
 
         /// <summary>
         /// 
@@ -37,8 +37,10 @@ namespace View.Game
             _modelGame = parModelGame;
             _modelGame.CreateMapLevel += CreateMap;
             _modelGame.Draw += DrawConsole;
-            timer.Start();
-            timer.Elapsed += ReDrawGame;            
+            _modelGame.Move += ReDrawGame;
+            _mapLevel = new MapLevel();
+            //timer.Start();
+            //timer.Elapsed += ReDrawGame;            
         }
 
         /// <summary>
@@ -131,7 +133,7 @@ namespace View.Game
         /// <summary>
         /// Переририсовка игры
         /// </summary>
-        public void ReDrawGame(object sender, EventArgs e)
+        public void ReDrawGame()
         {
             //System.Console.Clear();
             if (_modelGame._mapLevel != null)

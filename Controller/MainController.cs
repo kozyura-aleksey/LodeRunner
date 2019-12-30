@@ -46,8 +46,7 @@ namespace Controller
         /// </summary>
         public MainController()
         {     
-            StartApplication();
-            
+            StartApplication();           
         }
 
         /// <summary>
@@ -64,25 +63,22 @@ namespace Controller
         /// </summary>
         public void InitConsole()
         {
+            while (!Console.KeyAvailable)
             {
                 ConsoleKeyInfo keyInfo = Console.ReadKey();
                 switch (keyInfo.Key)
                 {
                     case ConsoleKey.RightArrow:
                         _game._gameModel._mapLevel.MoveRightRunner();
-                        Console.ReadKey();
                         break;
                     case ConsoleKey.LeftArrow:
-                        modelGame._mapLevel.MoveLeftRunner();
-                        Console.ReadKey();
+                        _game._gameModel._mapLevel.MoveLeftRunner();
                         break;
                     case ConsoleKey.DownArrow:
-                        modelGame._mapLevel.MoveDownRunner();
-                        Console.ReadKey();
+                        _game._gameModel._mapLevel.MoveDownRunner();
                         break;
                     case ConsoleKey.UpArrow:
-                        modelGame._mapLevel.MoveUpRunner();
-                        Console.ReadKey();
+                        _game._gameModel._mapLevel.MoveUpRunner();
                         break;
                 }
             }
