@@ -173,26 +173,8 @@ namespace Model.Game
                         }                      
                     }
                 }
-            }
+            }           
 
-            //foreach (Model.Game.Objects.GameObject parOb in objects)
-            //{
-                //if (parOb != null)
-                //{
-                    //if (parOb.NameObject() == "Stairs")
-                    //{
-                        if (((objects[SearchNumberOfMan()].Y == objects[534].Y) && (objects[SearchNumberOfMan()].X == objects[534].Y)))
-                        {
-                            if (moveToFinalStairs)
-                            {
-                                objects[SearchNumberOfMan()].Y -= STEP;
-                                //loc = true;
-                                //break;
-                            }
-                        }
-                    //}
-                //}
-            //}
             CollectLodes();
             Gravitation();
         }
