@@ -24,6 +24,14 @@ namespace View.Game
         /// </summary>
         public MapLevel _mapLevel;
 
+        public Form parForm;
+
+        public Graphics graphics;
+
+        public Rectangle clientRectangle;
+
+        public BufferedGraphics bufferedGraphics;
+
         /// <summary>
         /// Таймер для перерисовки
         /// </summary>
@@ -57,12 +65,11 @@ namespace View.Game
         /// <param name="parForm"></param>
         public void DrawGame()
         {
-            Form parForm = View.ViewForm;
+            parForm = View.ViewForm;
             Graphics graphics = parForm.CreateGraphics();
             Rectangle clientRectangle = parForm.ClientRectangle;
-            BufferedGraphics bufferedGraphics = BufferedGraphicsManager.Current.Allocate(graphics, clientRectangle);          
+            BufferedGraphics bufferedGraphics = BufferedGraphicsManager.Current.Allocate(graphics, clientRectangle);
             bufferedGraphics.Graphics.Clear(Color.Black);
-
             foreach (Model.Game.Objects.GameObject obj in MapLevel.objects)
             {
                 Image image = null;
@@ -102,7 +109,13 @@ namespace View.Game
                     {
                         image = Properties.Resources.stair;                       
                         bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
-                    }                 
+                    }
+
+                    if (obj.NameObject() == "SubStairs")
+                    {
+                        image = Properties.Resources.stair;
+                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
+                    }
                 }
                 else
                 {
@@ -144,18 +157,6 @@ namespace View.Game
             {
                 DrawGame();
             }
-        }
-
-        /// <summary>
-        /// Перерисовка
-        /// </summary>
-        public void DrawWithReDraw()
-        {
-            Timer timer = new Timer();
-            timer.Enabled = true;
-            timer.Interval = 200;
-            timer.Start();
-            timer.Tick += new EventHandler(ReDrawGame);          
-        }      
+        }     
     }
 }

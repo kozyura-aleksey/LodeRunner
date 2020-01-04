@@ -70,6 +70,10 @@ namespace Model.Game.Objects
                 case "7":
                     object1 = new Man(parX, parY);
                     break;
+
+                case "9":
+                    object1 = new SubStairs(parX, parY);
+                    break;
             }
             return object1;
         }

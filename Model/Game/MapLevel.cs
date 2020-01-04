@@ -23,11 +23,6 @@ namespace Model.Game
         private static MapLevel mapLevel = null;
 
         /// <summary>
-        /// Позиция персонажа в карте
-        /// </summary>
-        private const int MAN_POS = 20;
-
-        /// <summary>
         /// Шаг игры
         /// </summary>
         private const int STEP = 16;
@@ -42,6 +37,10 @@ namespace Model.Game
         /// </summary>
         public static string[] lines;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool moveToFinalStairs = false;
 
         /// <summary>
         /// Лист объектов соответственно массиву локаторов
@@ -78,6 +77,27 @@ namespace Model.Game
         }
 
         /// <summary>
+        /// Поиск номера персонажа
+        /// </summary>
+        /// <returns></returns>
+        public int SearchNumberOfMan()
+        {
+            int number = 0;
+            foreach (Model.Game.Objects.GameObject parOb in objects)
+            {
+                if (parOb != null)
+                {
+                    if (parOb.NameObject() == "Man")
+                    {
+                        number = objects.IndexOf(parOb);                      
+                    }
+                }
+            }
+            return number;
+        }
+
+
+        /// <summary>
         /// Получить экземпляр уровня
         /// </summary>
         /// <returns></returns>
@@ -103,12 +123,12 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        if ((objects[MAN_POS].X < ((num.GetLength(0) * STEP) - STEP) && CheckSutuationRightLeft()))
+                        if ((objects[SearchNumberOfMan()].X < ((num.GetLength(0) * STEP) - STEP) && CheckSutuationRightLeft()))
                         {
-                            objects[MAN_POS].X += STEP;
+                            objects[SearchNumberOfMan()].X += STEP;
                         }
                     }
-                }
+                }            
             }
             CollectLodes();
             Gravitation();
@@ -125,9 +145,9 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        if ((objects[MAN_POS].X > 0) && CheckSutuationRightLeft())
+                        if ((objects[SearchNumberOfMan()].X > 0) && CheckSutuationRightLeft())
                         {
-                            objects[MAN_POS].X -= STEP;
+                            objects[SearchNumberOfMan()].X -= STEP;
                         }
                     }
                 }
@@ -147,13 +167,32 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        if ((objects[MAN_POS].Y > 0) && (CheckSutuationUp()))
+                        if ((objects[SearchNumberOfMan()].Y > 0) && (CheckSutuationUp()))
                         {
-                            objects[MAN_POS].Y -= STEP;
-                        }
+                            objects[SearchNumberOfMan()].Y -= STEP;
+                        }                      
                     }
                 }
             }
+
+            //foreach (Model.Game.Objects.GameObject parOb in objects)
+            //{
+                //if (parOb != null)
+                //{
+                    //if (parOb.NameObject() == "Stairs")
+                    //{
+                        if (((objects[SearchNumberOfMan()].Y == objects[534].Y) && (objects[SearchNumberOfMan()].X == objects[534].Y)))
+                        {
+                            if (moveToFinalStairs)
+                            {
+                                objects[SearchNumberOfMan()].Y -= STEP;
+                                //loc = true;
+                                //break;
+                            }
+                        }
+                    //}
+                //}
+            //}
             CollectLodes();
             Gravitation();
         }
@@ -169,9 +208,9 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Man")
                     {
-                        if ((objects[MAN_POS].Y <= ((num.GetLength(1) * STEP) - STEP)) && (CheckSutuationDown()))
+                        if ((objects[SearchNumberOfMan()].Y <= ((num.GetLength(1) * STEP) - STEP)) && (CheckSutuationDown()))
                         {
-                            objects[MAN_POS].Y += STEP;
+                            objects[SearchNumberOfMan()].Y += STEP;
                         }
                     }
                 }
@@ -193,7 +232,7 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Stairs")
                     {
-                        if ((objects[MAN_POS].Y == parOb.Y) && (objects[MAN_POS].X == parOb.X))
+                        if ((objects[SearchNumberOfMan()].Y == parOb.Y) && (objects[SearchNumberOfMan()].X == parOb.X))
                         {
                             loc = true;
                             break;
@@ -201,9 +240,9 @@ namespace Model.Game
                         else
                         {
                             loc = false;
-                        }
+                        }                                               
                     }
-                }
+                }            
             }
             return loc;
         }
@@ -221,7 +260,7 @@ namespace Model.Game
                 {
                     if (parOb.NameObject() == "Stairs")
                     {
-                        if (((objects[MAN_POS].Y == parOb.Y) || (objects[MAN_POS].Y == (parOb.Y - STEP))) && (objects[MAN_POS].X == parOb.X))
+                        if (((objects[SearchNumberOfMan()].Y == parOb.Y) || (objects[SearchNumberOfMan()].Y == (parOb.Y - STEP))) && (objects[SearchNumberOfMan()].X == parOb.X))
                         {
                             loc = true;
                             break;
@@ -250,7 +289,7 @@ namespace Model.Game
                 {
                     if ((parOb.NameObject() == "Brick") && (parOb.NameObject() == "Rope"))
                     {
-                        if (objects[MAN_POS].X <= parOb.X)
+                        if (objects[SearchNumberOfMan()].X <= parOb.X)
                         {
                             loc = true;
                             break;
@@ -266,57 +305,102 @@ namespace Model.Game
         }
 
         /// <summary>
+        /// Подсчет мин расстояния между строками
+        /// </summary>
+        public int CountMaxLodes()
+        {
+            int countLebgth = 0;
+            List<int> spisok = new List<int>();
+            foreach (Model.Game.Objects.GameObject parOb in objects)
+            {
+                if (parOb != null)
+                {
+                    if (parOb.NameObject() == "Brick")
+                    {
+                        if (objects[SearchNumberOfMan()].X == parOb.X)
+                        {                        
+                            spisok.Add((objects[SearchNumberOfMan()].Y) - parOb.Y);
+                            spisok.Sort();
+                            countLebgth = spisok.Min();
+                        }
+                    }
+                }
+            }
+            return countLebgth;
+        }
+
+        /// <summary>
+        /// Y минимальной строки
+        /// </summary>
+        int YY = 0;
+
+        /// <summary>
         /// Гравитация
         /// </summary>
         /// <returns></returns>
         public void Gravitation()
         {
             bool loc;
+            int max = 0;
             foreach (Model.Game.Objects.GameObject parOb in objects)
             {
                 if (parOb != null)
                 {
                     if ((parOb.NameObject() == "Brick") || (parOb.NameObject() == "Stairs"))
                     {
-                        if (((objects[MAN_POS].Y + STEP) == parOb.Y) && (objects[MAN_POS].X == parOb.X))
+                        if (objects[SearchNumberOfMan()].X == parOb.X)
+                        {
+                            if (max > ((objects[SearchNumberOfMan()].Y) - parOb.Y))
+                            {
+                                max = ((objects[SearchNumberOfMan()].Y) - parOb.Y);
+                                YY = parOb.Y;
+                                break;
+                            }
+                        }
+
+                        if (((objects[SearchNumberOfMan()].Y + STEP) == parOb.Y) && (objects[SearchNumberOfMan()].X == parOb.X))
                         {
                             loc = true;
                             break;
                         }
-                        else
-                        {
-                            while ((objects[MAN_POS].Y < (parOb.Y)) && (objects[MAN_POS].X == parOb.X))
-                            {
-                                var index = objects.IndexOf(parOb);
-
-                                objects[MAN_POS].Y = objects[index].Y - STEP;//(parOb.Y - STEP);
-
-                                break;
-                            }
-                        }
+                        //while ((objects[SearchNumberOfMan()].Y < YY) && (objects[SearchNumberOfMan()].X == parOb.X))
+                        //{
+                        //var index = objects.IndexOf(parOb);
+                        //objects[SearchNumberOfMan()].Y = YY - STEP;   //objects[index].Y - STEP;//(parOb.Y - STEP);
+                        //break; // тут надо сразу брейкнутся, а он вылетает на следующий YY!!!!!!!!!!!!!!, считает вроде правильно
+                        //}
                     }
+
                     if (parOb.NameObject() == "Rope")
                     {
-                        if (((objects[MAN_POS].Y) == parOb.Y) && (objects[MAN_POS].X == parOb.X))
+                        if (((objects[SearchNumberOfMan()].Y) == parOb.Y) && (objects[SearchNumberOfMan()].X == parOb.X))
                         {
                             loc = true;
                             break;
                         }
                         else
                         {
-                            while ((objects[MAN_POS].Y < (parOb.Y)) && (objects[MAN_POS].X == parOb.X))
+                            if ((objects[SearchNumberOfMan()].Y == parOb.Y) && (objects[SearchNumberOfMan()].X == parOb.X))
                             {
-                                var index = objects.IndexOf(parOb);
-
-                                objects[MAN_POS].Y = objects[index].Y - STEP;//(parOb.Y - STEP);
-
-                                break;
+                                if (max > ((objects[SearchNumberOfMan()].Y) - parOb.Y))
+                                {
+                                    max = ((objects[SearchNumberOfMan()].Y) - parOb.Y);
+                                    YY = parOb.Y;
+                                }
                             }
                         }
+                        //while ((objects[SearchNumberOfMan()].Y < (parOb.Y)) && (objects[SearchNumberOfMan()].X == parOb.X))
+                        //{
+                        //var index = objects.IndexOf(parOb);
+                        //objects[SearchNumberOfMan()].Y = objects[index].Y - STEP;//(parOb.Y - STEP);
+                        //break;
+                        //}
                     }
                 }
             }
-        }        
+            objects[SearchNumberOfMan()].Y = YY - STEP;
+        }
+             
 
         /// <summary>
         /// Подсчет сундуков
@@ -335,42 +419,42 @@ namespace Model.Game
                 }
             }
             return count;
-        }
+        }      
+
         /// <summary>
         /// Количество сундуков
         /// </summary>
         int count = 0;
 
         /// <summary>
+        /// 
+        /// </summary>
+        int index = 0;
+
+        /// <summary>
         /// Собирание сундуков
         /// </summary>
         public void CollectLodes()
-        {         
-            foreach (Model.Game.Objects.GameObject parOb in objects.ToArray())
+        {
+            foreach (Model.Game.Objects.GameObject parOb in objects)
             {
                 if ((parOb != null) && (objects != null))
                 {
                     if (parOb.NameObject() == "Gold")
                     {                                              
-                        if ((objects[MAN_POS].X == parOb.X) && (objects[MAN_POS].Y == parOb.Y))
+                        if ((objects[SearchNumberOfMan()].X == parOb.X) && (objects[SearchNumberOfMan()].Y == parOb.Y))
                         {
                             count += 1;
-                            var index = objects.IndexOf(parOb);
-                            objects[index] = null;
-                            if (count == CountLodes())
-                            {
-                                objects[573] = new Stairs(368, 80);
-                                objects[574] = new Stairs(368, 64);
-                                objects[575] = new Stairs(368, 48);
-                                objects[576] = new Stairs(368, 32);
-                                objects[577] = new Stairs(368, 16);
-                                objects[578] = new Stairs(368, 0);
-                                break;
-                            }
+                            index = objects.IndexOf(parOb);                         
                         }                       
                     }               
                 }
-            }         
+            }
+            objects[index] = null;
+            if (count == CountLodes()) 
+            {
+                moveToFinalStairs = true;
+            }
         }
     }
 }

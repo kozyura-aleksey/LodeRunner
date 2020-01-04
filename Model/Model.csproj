@@ -53,6 +53,7 @@
     <Compile Include="Game\Objects\Man.cs" />
     <Compile Include="Game\Objects\Rope.cs" />
     <Compile Include="Game\Objects\Stairs.cs" />
+    <Compile Include="Game\Objects\SubStairs.cs" />
     <Compile Include="Menu\Menu.cs" />
     <Compile Include="Menu\MenuItems.cs" />
     <Compile Include="Menu\ModelRecords.cs" />
