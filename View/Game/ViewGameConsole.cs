@@ -26,7 +26,7 @@ namespace View.Game
         /// <summary>
         /// Таймер для перерисовки
         /// </summary>
-        public System.Timers.Timer timer = new System.Timers.Timer(500);
+        public System.Timers.Timer timer = new System.Timers.Timer(600);
 
         /// <summary>
         /// 
@@ -37,10 +37,9 @@ namespace View.Game
             _modelGame = parModelGame;
             _modelGame.CreateMapLevel += CreateMap;
             _modelGame.Draw += DrawConsole;
-            _modelGame.Move += ReDrawGame;
             _mapLevel = new MapLevel();
-            //timer.Start();
-            //timer.Elapsed += ReDrawGame;            
+            timer.Start();
+            timer.Elapsed += ReDrawGame;            
         }
 
         /// <summary>
@@ -64,7 +63,7 @@ namespace View.Game
 
             //StringBuilder a = new StringBuilder(32);
 
-            foreach (Model.Game.Objects.GameObject obj in MapLevel.objects)
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.objects.ToArray())
             {
                 if (obj != null)
                 {                  
@@ -96,15 +95,6 @@ namespace View.Game
                         //a.Append("$");
                     }
 
-                    if (obj.NameObject() == "Man")
-                    {
-                        x = obj.X;
-                        y = obj.Y;
-                        System.Console.SetCursorPosition(x, y);
-                        Console.WriteLine("K");
-                        //a.Append("K");
-                    }
-
                     if (obj.NameObject() == "Rope")
                     {
                         System.Console.SetCursorPosition(obj.X, obj.Y);
@@ -115,7 +105,7 @@ namespace View.Game
                     if (obj.NameObject() == "Stairs")
                     {
                         System.Console.SetCursorPosition(obj.X, obj.Y);
-                        Console.WriteLine("||");
+                        Console.WriteLine("|");
                         //a.Append("||");
                     }
                 }
@@ -125,17 +115,33 @@ namespace View.Game
                     Console.Write(" ");
                     //a.Append("");
                 }               
-            }           
+            }
+
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.objects)
+            {
+                if (obj != null)
+                {
+                    if (obj.NameObject() == "Man")
+                    {
+                        x = obj.X;
+                        y = obj.Y;
+                        System.Console.SetCursorPosition(x, y);
+                        Console.WriteLine("K");
+                        //a.Append("K");
+                    }
+                }
+            }
             System.Console.SetCursorPosition(x, y);
+            Console.CursorVisible = false;
             //Console.Write(a);
         }
 
         /// <summary>
         /// Переририсовка игры
         /// </summary>
-        public void ReDrawGame()
+        public void ReDrawGame(object sender, EventArgs e)
         {
-            //System.Console.Clear();
+            System.Console.Clear();
             if (_modelGame._mapLevel != null)
             {
                 DrawConsole();
