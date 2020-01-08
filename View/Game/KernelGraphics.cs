@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32.SafeHandles;
+using Model.Game;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -81,8 +82,8 @@ namespace View.Game
         /// </summary>
         public KernelGraphics()
         {
-            _width = 50;
-            _height = 50;
+            _width = 32;
+            _height = 22;
 
             _fileHandle = CreateFile("CONOUT$", 0x40000000, 2, IntPtr.Zero, FileMode.Open, 0, IntPtr.Zero);
 
@@ -91,32 +92,97 @@ namespace View.Game
         }
 
         /// <summary>
-        /// Напечатать объекты через быструю буферизацию
+        /// Напечатать карту через быструю буферизацию
         /// </summary>
         /// <returns></returns>
-        public bool PrintStrings()
+        public bool PrintMap()
         {
+            int x = 0;
+            int y = 0;
+            Console.BufferHeight = 410;
+            Console.BufferWidth = 540;
+            Console.SetWindowSize(70, 30);
+
             Console.CursorVisible = false;
+            
             for (int i = 0; i < _buf.Length; ++i)
             {
                 _buf[i].Attributes = 32;
                 _buf[i].Char.AsciiChar = 22;
             }
-            for (int i = 0; i < Math.Min(parStrings.Length, _height); i++)
+
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.objects)
             {
-                StringBuilder sb = parStrings[i];
-                if (sb == null)
+                if (obj != null)
                 {
-                    break;
-                }
+                    if (obj.NameObject() == "Brick")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("#");
+                        //a.Append("#");
+                    }
 
-                string str = sb.ToString();
-                for (int j = 0; j < Math.Min(str.Length, _width); j++)
+                    if (obj.NameObject() == "Concrete")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("#");
+                        //a.Append("#");
+                    }
+
+                    if (obj.NameObject() == "Enemy")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("O");
+                        //a.Append("O");
+                    }
+
+                    if (obj.NameObject() == "Gold")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("$");
+                        //a.Append("$");
+                    }
+
+                    if (obj.NameObject() == "Rope")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("-");
+                        //a.Append("-");
+                    }
+
+                    if (obj.NameObject() == "Stairs")
+                    {
+                        System.Console.SetCursorPosition(obj.X, obj.Y);
+                        Console.WriteLine("|");
+                        //a.Append("||");
+                    }
+                }
+                else
                 {
-                    _buf[i * _width + j].Char.AsciiChar = (byte)str[j];
+                    System.Console.SetCursorPosition(0, 0);
+                    Console.Write(" ");
+                    //a.Append("");
                 }
-
             }
+
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.objects)
+            {
+                if (obj != null)
+                {
+                    if (obj.NameObject() == "Man")
+                    {
+                        x = obj.X;
+                        y = obj.Y;
+                        System.Console.SetCursorPosition(x, y);
+                        Console.WriteLine("K");
+                        //a.Append("K");
+                    }
+                }
+            }
+
+            System.Console.SetCursorPosition(x, y);
+
+
             return WriteConsoleOutput(_fileHandle, _buf,
                           new Coord() { X = _width, Y = _height },
                           new Coord() { X = 0, Y = 0 },

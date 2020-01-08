@@ -12,10 +12,10 @@ namespace LodeRunnerConsole
         [STAThread]
         static void Main(string[] args)
         {
-            MainController game = new MainController();
-            game.InitConsole();
-            //KernelGraphics kernelGraphics = new KernelGraphics();
-            //kernelGraphics.PrintStrings();
+            //MainController game = new MainController();
+            //game.InitConsole();
+            KernelGraphics kernelGraphics = new KernelGraphics();
+            kernelGraphics.PrintMap();
     }
     }
 }

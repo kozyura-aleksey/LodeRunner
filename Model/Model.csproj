@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game\KernelGraphics.cs" />
     <Compile Include="Game\MapLevel.cs" />
     <Compile Include="Game\ModelGame.cs" />
     <Compile Include="Game\Objects\Brick.cs" />
