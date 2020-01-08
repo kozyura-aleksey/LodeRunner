@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Controller;
 using Microsoft.Win32.SafeHandles;
+using View.Game;
 
 namespace LodeRunnerConsole
 {
@@ -13,6 +14,8 @@ namespace LodeRunnerConsole
         {
             MainController game = new MainController();
             game.InitConsole();
-        }
+            //KernelGraphics kernelGraphics = new KernelGraphics();
+            //kernelGraphics.PrintStrings();
+    }
     }
 }

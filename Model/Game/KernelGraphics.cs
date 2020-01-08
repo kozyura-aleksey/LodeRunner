@@ -12,7 +12,7 @@ namespace View.Game
     /// <summary>
     /// Класс поле быстрой буферизации
     /// </summary>
-    internal class KernelGraphics
+    public class KernelGraphics
     {
         short _width;
         short _height;
@@ -91,17 +91,16 @@ namespace View.Game
         }
 
         /// <summary>
-        /// Напечатать строки через быструю буферизацию
+        /// Напечатать объекты через быструю буферизацию
         /// </summary>
-        /// <param name="parStrings">Подаваемое поле строк</param>
         /// <returns></returns>
-        public bool PrintStrings(StringBuilder[] parStrings)
+        public bool PrintStrings()
         {
             Console.CursorVisible = false;
             for (int i = 0; i < _buf.Length; ++i)
             {
-                _buf[i].Attributes = 15;
-                _buf[i].Char.AsciiChar = 32;
+                _buf[i].Attributes = 32;
+                _buf[i].Char.AsciiChar = 22;
             }
             for (int i = 0; i < Math.Min(parStrings.Length, _height); i++)
             {
