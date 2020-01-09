@@ -1,4 +1,5 @@
 ﻿using Model.Game;
+using Model.Game.Objects;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -67,42 +68,42 @@ namespace View.Game
             {
                 if (obj != null)
                 {                  
-                    if (obj.NameObject() == "Brick")
+                    if (obj.GetType() == typeof(Brick))
                     {
                         System.Console.SetCursorPosition(obj.X, obj.Y);
                         Console.WriteLine("#");
                         //a.Append("#");
                     }
 
-                    if (obj.NameObject() == "Concrete")
+                    if (obj.GetType() == typeof(Concrete))
                     {
                         System.Console.SetCursorPosition(obj.X, obj.Y);
                         Console.WriteLine("#");
                         //a.Append("#");
                     }
 
-                    if (obj.NameObject() == "Enemy")
+                    if (obj.GetType() == typeof(Enemy))
                     {
                         System.Console.SetCursorPosition(obj.X, obj.Y);
                         Console.WriteLine("O");
                         //a.Append("O");
                     }
 
-                    if (obj.NameObject() == "Gold")
+                    if (obj.GetType() == typeof(Gold))
                     {
                         System.Console.SetCursorPosition(obj.X, obj.Y);
                         Console.WriteLine("$");
                         //a.Append("$");
                     }
 
-                    if (obj.NameObject() == "Rope")
+                    if (obj.GetType() == typeof(Rope))
                     {
                         System.Console.SetCursorPosition(obj.X, obj.Y);
                         Console.WriteLine("-");
                         //a.Append("-");
                     }
 
-                    if (obj.NameObject() == "Stairs")
+                    if (obj.GetType() == typeof(Stairs))
                     {
                         System.Console.SetCursorPosition(obj.X, obj.Y);
                         Console.WriteLine("|");
@@ -121,7 +122,7 @@ namespace View.Game
             {
                 if (obj != null)
                 {
-                    if (obj.NameObject() == "Man")
+                    if (obj.GetType() == typeof(Man))
                     {
                         x = obj.X;
                         y = obj.Y;
