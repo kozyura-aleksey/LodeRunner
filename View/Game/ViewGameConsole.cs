@@ -33,7 +33,7 @@ namespace View.Game
         /// <summary>
         /// Таймер для перерисовки
         /// </summary>
-        private System.Timers.Timer timer = new System.Timers.Timer(600);
+        private System.Timers.Timer timer = new System.Timers.Timer(100);
 
         /// <summary>
         /// 
@@ -140,7 +140,7 @@ namespace View.Game
         /// </summary>
         public void ReDrawGame(object sender, EventArgs e)
         {
-            System.Console.Clear();
+            //System.Console.Clear();
             if (_modelGame._mapLevel != null)
             {
                 DrawConsole();
