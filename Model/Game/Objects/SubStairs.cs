@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model.Game.Objects
 {
+    /// <summary>
+    /// Класс - объект лестница
+    /// </summary>
     public class SubStairs : GameObject
     {
         public SubStairs(int parX, int parY) : base(parX, parY)

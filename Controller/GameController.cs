@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using View.Game;
@@ -23,6 +24,12 @@ namespace Controller.Game
         /// Представление игры 
         /// </summary>
         public View.Game.ViewGame _viewGame;
+
+        /// <summary>
+        /// Поток игры
+        /// </summary>
+        public Thread _gameThread;
+
 
         /// <summary>
         /// 
@@ -53,10 +60,10 @@ namespace Controller.Game
         public void DefineInteraction()
         {
             _keysDict = new Dictionary<Keys, dKeyHandler>();
-            _keysDict.Add(Keys.Right, _gameModel._mapLevel.MoveRightRunner);
-            _keysDict.Add(Keys.Up, _gameModel._mapLevel.MoveUpRunner);
-            _keysDict.Add(Keys.Down, _gameModel._mapLevel.MoveDownRunner);
-            _keysDict.Add(Keys.Left, _gameModel._mapLevel.MoveLeftRunner);
+            _keysDict.Add(Keys.Right, _gameModel.MapLevel.MoveRightRunner);
+            _keysDict.Add(Keys.Up, _gameModel.MapLevel.MoveUpRunner);
+            _keysDict.Add(Keys.Down, _gameModel.MapLevel.MoveDownRunner);
+            _keysDict.Add(Keys.Left, _gameModel.MapLevel.MoveLeftRunner);
         }
 
         /// <summary> 
@@ -73,8 +80,19 @@ namespace Controller.Game
         public override void Init()
         {
             FormMain.KeyDown += KeyDown;
+            //Start();
             _viewGame.DrawGame();
             _gameModel.Start();
+        }
+
+        /// <summary>
+        /// Запустить игру в игровом потоке
+        /// </summary>
+        public void Start()
+        {
+            _gameThread = new Thread(_viewGame.DrawGame);
+            _gameThread.Name = "LodeRunner";
+            _gameThread.Start();
         }
 
         /// <summary>

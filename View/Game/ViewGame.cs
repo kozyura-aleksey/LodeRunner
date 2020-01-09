@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
 
 namespace View.Game
 {
@@ -22,20 +24,32 @@ namespace View.Game
         /// <summary>
         /// Представление уровня игры
         /// </summary>
-        public MapLevel _mapLevel;
+        private MapLevel _mapLevel;
 
-        public Form parForm;
+        /// <summary>
+        /// 
+        /// </summary>
+        private Form parForm;
 
-        public Graphics graphics;
+        /// <summary>
+        /// 
+        /// </summary>
+        private Graphics graphics;
 
-        public Rectangle clientRectangle;
+        /// <summary>
+        /// 
+        /// </summary>
+        private Rectangle clientRectangle;
 
-        public BufferedGraphics bufferedGraphics;
+        /// <summary>
+        /// 
+        /// </summary>
+        private BufferedGraphics bufferedGraphics;
 
         /// <summary>
         /// Таймер для перерисовки
         /// </summary>
-        public Timer timer = new Timer() { Enabled = true, Interval = 40 };       
+        private Timer timer = new Timer() { Enabled = true, Interval = 40 };       
 
         /// <summary>
         /// 
@@ -48,7 +62,7 @@ namespace View.Game
             _modelGame.Draw += DrawGame;
             timer.Start();
             timer.Tick += ReDrawGame;
-            //_modelGame.Move += DrawWithReDraw;           
+            //_modelGame.Move += DrawGame;           
         }
 
         /// <summary>
@@ -65,12 +79,12 @@ namespace View.Game
         /// <param name="parForm"></param>
         public void DrawGame()
         {
-            parForm = View.ViewForm;
-            Graphics graphics = parForm.CreateGraphics();
-            Rectangle clientRectangle = parForm.ClientRectangle;
-            BufferedGraphics bufferedGraphics = BufferedGraphicsManager.Current.Allocate(graphics, clientRectangle);
+            parForm = View.viewform;
+            graphics = parForm.CreateGraphics();
+            clientRectangle = parForm.ClientRectangle;
+            bufferedGraphics = BufferedGraphicsManager.Current.Allocate(graphics, clientRectangle);
             bufferedGraphics.Graphics.Clear(Color.Black);
-            foreach (Model.Game.Objects.GameObject obj in MapLevel.objects)
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects)
             {
                 Image image = null;
                 if (obj != null)
@@ -123,7 +137,7 @@ namespace View.Game
                     bufferedGraphics.Graphics.DrawImage(image, 0, 0);                  
                 }
             }
-            foreach (Model.Game.Objects.GameObject obj in MapLevel.objects)
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects)
             {
                 Image image = null;
                 if (obj != null)
@@ -153,10 +167,10 @@ namespace View.Game
         /// <param name="parObjects"></param>
         public void ReDrawGame(object sender, EventArgs e)
         {
-            if (_modelGame._mapLevel != null)
+            if (_modelGame.MapLevel != null)
             {
                 DrawGame();
             }
-        }     
+        }
     }
 }

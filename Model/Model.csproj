@@ -45,12 +45,14 @@
   <ItemGroup>
     <Compile Include="Game\MapLevel.cs" />
     <Compile Include="Game\ModelGame.cs" />
+    <Compile Include="Game\ObjectNumbers.cs" />
     <Compile Include="Game\Objects\Brick.cs" />
     <Compile Include="Game\Objects\Concrete.cs" />
     <Compile Include="Game\Objects\Enemy.cs" />
     <Compile Include="Game\Objects\GameObject.cs" />
     <Compile Include="Game\Objects\Gold.cs" />
     <Compile Include="Game\Objects\Man.cs" />
+    <Compile Include="Game\ObjectTypes.cs" />
     <Compile Include="Game\Objects\Rope.cs" />
     <Compile Include="Game\Objects\Stairs.cs" />
     <Compile Include="Game\Objects\SubStairs.cs" />

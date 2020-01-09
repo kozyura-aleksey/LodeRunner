@@ -16,7 +16,12 @@ namespace Model
         /// <summary>
         /// Уровень игры
         /// </summary>
-        public MapLevel _mapLevel;
+        private MapLevel _mapLevel;
+
+        /// <summary>
+        /// Свойство для уровня игры
+        /// </summary>
+        public MapLevel MapLevel { get => _mapLevel; set => _mapLevel = value; }
 
         /// <summary>
         /// Делегат на создание уровня
@@ -46,7 +51,7 @@ namespace Model
         /// <summary>
         /// Поток игры
         /// </summary>
-        public Thread _gameThread;
+        private Thread _gameThread;
 
         /// <summary>
         /// Создать модель игры
@@ -74,7 +79,7 @@ namespace Model
             if (_mapLevel != null)
             {
                 OnCreateMapLevel();
-                OnDraw();
+                //OnDraw();
                 OnMove();
             }        
         }
@@ -89,6 +94,7 @@ namespace Model
                 Draw.Invoke();
             }
         }
+
         /// <summary>
         /// Запуск события на движение
         /// </summary>

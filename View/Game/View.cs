@@ -20,15 +20,21 @@ namespace View
         /// <summary>
         /// Форма для отображения элементов
         /// </summary>
-        public static Form ViewForm { get; set; }
-        
+        private static Form ViewForm { get; set; }
 
+        /// <summary>
+        /// Свойство для формы игры
+        /// </summary>
+        public static Form viewform { get => ViewForm; set => ViewForm = value; }
+
+       
         /// <summary>
         /// Инициализация формы
         /// </summary>
         public static void Init()
         {
             Application.Run(ViewForm);
+                       
         }
 
         /// <summary>
