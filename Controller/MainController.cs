@@ -21,7 +21,7 @@ namespace Controller
         private RecordController _recordName;
 
         /// <summary>
-        /// 
+        /// Модель игры 
         /// </summary>
         public ModelGame modelGame = new ModelGame();
 
@@ -31,15 +31,9 @@ namespace Controller
         private MenuController _menu;
 
         /// <summary>
-        /// 
+        /// Контроллер игры
         /// </summary>
         private GameController _game = new GameController();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public MapLevel _mapLevel;
-
 
         /// <summary>
         /// Создать главный контроллер
