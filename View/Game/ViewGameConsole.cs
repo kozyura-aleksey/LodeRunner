@@ -68,12 +68,12 @@ namespace View.Game
                 {
                     if (obj.GetType() == typeof(Brick))
                     {
-                        _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "#");
+                        _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "#", ConsoleColor.Red);
                     }
 
                     if (obj.GetType() == typeof(Concrete))
                     {
-                        _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "#");
+                        _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "#", ConsoleColor.Red);
                     }
 
                     if (obj.GetType() == typeof(Enemy))
@@ -83,17 +83,17 @@ namespace View.Game
 
                     if (obj.GetType() == typeof(Gold))
                     {
-                        _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "$");
+                        _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "$", ConsoleColor.DarkYellow);
                     }
 
                     if (obj.GetType() == typeof(Rope))
                     {
-                        _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "-");
+                        _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "-", ConsoleColor.Gray);
                     }
 
                     if (obj.GetType() == typeof(Stairs))
                     {
-                        _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "|");
+                        _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "|", ConsoleColor.Gray);
                     }
                 }
 
