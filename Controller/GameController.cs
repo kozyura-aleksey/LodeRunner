@@ -80,7 +80,6 @@ namespace Controller.Game
         public override void Init()
         {
             FormMain.KeyDown += KeyDown;
-            //Start();
             _viewGame.DrawGame();
             _gameModel.Start();
         }
