@@ -16,14 +16,6 @@ namespace View
     /// </summary>
     public abstract class View
     {
-             
-        /// <summary>
-        /// Инициализация консоли
-        /// </summary>
-        public static void InitConsole()
-        {
-            
-            Console.ReadKey();
-        }                           
+                               
     }
 }
