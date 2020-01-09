@@ -396,7 +396,7 @@ namespace Model.Game
             {
                 if ((parOb != null) && (objects != null))
                 {
-                    if (parOb.NameObject() == "Gold")
+                    if (parOb.GetType() == typeof(Gold))
                     {
                         if ((objects[SearchNumberOfMan()].X == parOb.X) && (objects[SearchNumberOfMan()].Y == parOb.Y))
                         {
@@ -410,6 +410,12 @@ namespace Model.Game
             if (count == CountLodes())
             {
                 moveToFinalStairs = true;
+                objects[573] = new Stairs(368, 80);
+                objects[574] = new Stairs(368, 64);
+                objects[575] = new Stairs(368, 48);
+                objects[576] = new Stairs(368, 32);
+                objects[577] = new Stairs(368, 16);
+                objects[578] = new Stairs(368, 0);
             }
         }
     }
