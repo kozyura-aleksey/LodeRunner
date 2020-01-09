@@ -345,7 +345,7 @@ namespace Model.Game
         /// <summary>
         /// Y минимальной строки
         /// </summary>
-        int YY = 0;
+        private int YY = 0;
 
         /// <summary>
         /// Гравитация
@@ -424,12 +424,12 @@ namespace Model.Game
         /// <summary>
         /// Количество сундуков
         /// </summary>
-        int count = 0;
+        private int count = 0;
 
         /// <summary>
-        /// 
+        /// Номер сундука
         /// </summary>
-        int index = 0;
+        private int index = 0;
 
         /// <summary>
         /// Собирание сундуков
@@ -454,12 +454,12 @@ namespace Model.Game
             if (count == CountLodes()) 
             {
                 moveToFinalStairs = true;
-                //objects[573] = new Stairs(368, 80);
-                //objects[574] = new Stairs(368, 64);
-                //objects[575] = new Stairs(368, 48);
-                //objects[576] = new Stairs(368, 32);
-                //objects[577] = new Stairs(368, 16);
-                //objects[578] = new Stairs(368, 0);
+                objects[573] = new SubStairs(368, 80);
+                objects[574] = new SubStairs(368, 64);
+                objects[575] = new SubStairs(368, 48);
+                objects[576] = new SubStairs(368, 32);
+                objects[577] = new SubStairs(368, 16);
+                objects[578] = new SubStairs(368, 0);
             }
         }
     }

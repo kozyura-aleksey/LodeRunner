@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Game\MapLevel.cs" />
     <Compile Include="Game\ModelGame.cs" />
-    <Compile Include="Game\ObjectNumbers.cs" />
     <Compile Include="Game\Objects\Brick.cs" />
     <Compile Include="Game\Objects\Concrete.cs" />
     <Compile Include="Game\Objects\Enemy.cs" />
