@@ -1,4 +1,5 @@
 ﻿using Model.Game;
+using Model.Game.Objects;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -89,43 +90,43 @@ namespace View.Game
                 Image image = null;
                 if (obj != null)
                 {
-                    if (obj.NameObject() == "Brick")
+                    if (obj.GetType() == typeof(Brick))
                     {
                         image = Properties.Resources.brick1;
                         bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);                  
                     }
 
-                    if (obj.NameObject() == "Concrete")
+                    if (obj.GetType() == typeof(Concrete))
                     {
                         image = Properties.Resources.brick2;
                         bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
                     }
 
-                    if (obj.NameObject() == "Enemy")
+                    if (obj.GetType() == typeof(Enemy))
                     {
                         image = Properties.Resources.enemy0;
                         bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
                     }
 
-                    if (obj.NameObject() == "Gold")
+                    if (obj.GetType() == typeof(Gold))
                     {
                         image = Properties.Resources.lode;
                         bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
                     }                 
 
-                    if (obj.NameObject() == "Rope")
+                    if (obj.GetType() == typeof(Rope))
                     {
                         image = Properties.Resources.rope;
                         bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
                     }
 
-                    if (obj.NameObject() == "Stairs")
+                    if (obj.GetType() == typeof(Stairs))
                     {
                         image = Properties.Resources.stair;                       
                         bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
                     }
 
-                    if (obj.NameObject() == "SubStairs")
+                    if (obj.GetType() == typeof(SubStairs))
                     {
                         image = Properties.Resources.stair;
                         bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
@@ -142,7 +143,7 @@ namespace View.Game
                 Image image = null;
                 if (obj != null)
                 {
-                    if (obj.NameObject() == "Man")
+                    if (obj.GetType() == typeof(Man))
                     {
                         Bitmap imageMan;
                         imageMan = Properties.Resources.runner0;
