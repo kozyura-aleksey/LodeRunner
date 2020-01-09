@@ -26,7 +26,7 @@ namespace View.Game
         /// <summary>
         /// Таймер для перерисовки
         /// </summary>
-        public System.Timers.Timer timer = new System.Timers.Timer(600);
+        public System.Timers.Timer timer = new System.Timers.Timer(700);
 
         /// <summary>
         /// 
@@ -63,7 +63,7 @@ namespace View.Game
 
             //StringBuilder a = new StringBuilder(32);
 
-            foreach (Model.Game.Objects.GameObject obj in MapLevel.objects)
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.objects.ToArray())
             {
                 if (obj != null)
                 {                  
