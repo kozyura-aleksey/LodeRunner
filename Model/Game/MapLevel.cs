@@ -30,23 +30,33 @@ namespace Model.Game
         /// <summary>
         /// 
         /// </summary>
-        public static String[,] num;
+        private static String[,] num;
 
         /// <summary>
         /// Шаг игры
         /// </summary>
-        public static int STEP = 1;
+        private const int STEP = 1;
 
         /// <summary>
         /// 
         /// </summary>
-        public bool moveToFinalStairs = false;
+        private bool moveToFinalStairs = false;
 
         /// <summary>
-        /// Лист объектов соответственно массиву локаторов
+        /// 
         /// </summary>
-        public static List<Model.Game.Objects.GameObject> objects;
-       
+        public bool MoveToFinalStairs { get => moveToFinalStairs; set => moveToFinalStairs = value; }
+
+
+        /// <summary>
+        /// Список объектов соответственно массиву локаторов
+        /// </summary>
+        private static List<Model.Game.Objects.GameObject> objects;
+
+        /// <summary>
+        /// Свойство для списка объектов
+        /// </summary>
+        public static List<GameObject> Objects { get => objects; set => objects = value; }
 
         /// <summary>
         /// Создать поле игры

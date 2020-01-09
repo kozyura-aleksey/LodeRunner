@@ -64,7 +64,7 @@ namespace View.Game
 
             //StringBuilder a = new StringBuilder(32);
 
-            foreach (Model.Game.Objects.GameObject obj in MapLevel.objects.ToArray())
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects.ToArray())
             {
                 if (obj != null)
                 {                  
@@ -118,7 +118,7 @@ namespace View.Game
                 }               
             }
 
-            foreach (Model.Game.Objects.GameObject obj in MapLevel.objects.ToArray())
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects.ToArray())
             {
                 if (obj != null)
                 {

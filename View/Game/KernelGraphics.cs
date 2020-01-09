@@ -111,7 +111,7 @@ namespace View.Game
                 _buf[i].Char.AsciiChar = 22;
             }
 
-            foreach (Model.Game.Objects.GameObject obj in MapLevel.objects)
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects)
             {
                 if (obj != null)
                 {
@@ -165,7 +165,7 @@ namespace View.Game
                 }
             }
 
-            foreach (Model.Game.Objects.GameObject obj in MapLevel.objects)
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects)
             {
                 if (obj != null)
                 {
