@@ -46,7 +46,7 @@ namespace View.Game
             _modelGame.Draw += DrawConsole;
             _mapLevel = new MapLevel();
             timer.Start();
-            timer.Elapsed += ReDrawGame;            
+            timer.Elapsed += ReDrawGame;  
         }
 
         /// <summary>
@@ -61,58 +61,39 @@ namespace View.Game
         /// Отрисовка в консоли
         /// </summary>
         public void DrawConsole()
-        {
-            //int x = 0;
-            //int y = 0;
-            //Console.BufferHeight = 410;
-            //Console.BufferWidth = 540;
-            //Console.SetWindowSize(70, 30);
-
-            //StringBuilder a = new StringBuilder(32);
-
+        {          
             foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects.ToArray())
             {
                 if (obj != null)
                 {
                     if (obj.GetType() == typeof(Brick))
                     {
-                        //System.Console.SetCursorPosition(obj.X, obj.Y);
                         _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "#");
                     }
 
                     if (obj.GetType() == typeof(Concrete))
                     {
-                        //System.Console.SetCursorPosition(obj.X, obj.Y);
                         _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "#");
-                        //a.Append("#");
                     }
 
                     if (obj.GetType() == typeof(Enemy))
                     {
-                        //System.Console.SetCursorPosition(obj.X, obj.Y);
                         _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "O");
-                        //a.Append("O");
                     }
 
                     if (obj.GetType() == typeof(Gold))
                     {
-                        //System.Console.SetCursorPosition(obj.X, obj.Y);
                         _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "$");
-                        //a.Append("$");
                     }
 
                     if (obj.GetType() == typeof(Rope))
                     {
-                        //System.Console.SetCursorPosition(obj.X, obj.Y);
                         _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "-");
-                        //a.Append("-");
                     }
 
                     if (obj.GetType() == typeof(Stairs))
                     {
-                        //System.Console.SetCursorPosition(obj.X, obj.Y);
                         _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "|");
-                        //a.Append("||");
                     }
                 }
 
@@ -122,15 +103,10 @@ namespace View.Game
                     {
                         if (obj1.GetType() == typeof(Man))
                         {
-                            //x = obj1.X;
-                            //y = obj1.Y;
                             _kernelGraphics.PrintString((short)obj1.X, (short)obj1.Y, "K");
                         }
                     }
                 }
-                //System.Console.SetCursorPosition(x, y);
-                //Console.CursorVisible = false;
-                //Console.Write(a);
             }
             _kernelGraphics.Flush();
         }
@@ -140,7 +116,6 @@ namespace View.Game
         /// </summary>
         public void ReDrawGame(object sender, EventArgs e)
         {
-            //System.Console.Clear();
             if (_modelGame._mapLevel != null)
             {
                 DrawConsole();
