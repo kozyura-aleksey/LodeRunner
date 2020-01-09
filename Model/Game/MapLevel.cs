@@ -454,12 +454,12 @@ namespace Model.Game
             if (count == CountLodes()) 
             {
                 moveToFinalStairs = true;
-                objects[573] = new SubStairs(368, 80);
-                objects[574] = new SubStairs(368, 64);
-                objects[575] = new SubStairs(368, 48);
-                objects[576] = new SubStairs(368, 32);
-                objects[577] = new SubStairs(368, 16);
-                objects[578] = new SubStairs(368, 0);
+                //objects[573] = new SubStairs(368, 80);
+                //objects[574] = new SubStairs(368, 64);
+                //objects[575] = new SubStairs(368, 48);
+                //objects[576] = new SubStairs(368, 32);
+                //objects[577] = new SubStairs(368, 16);
+                //objects[578] = new SubStairs(368, 0);
             }
         }
     }
