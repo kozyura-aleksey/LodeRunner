@@ -22,28 +22,18 @@ namespace Controller.Game
         /// <summary>
         /// Представление игры 
         /// </summary>
-        public View.Game.ViewGameConsole _viewGame;
+        private View.Game.ViewGameConsole _viewGame;
 
         /// <summary>
         /// 
         /// </summary>
-        public Model.Game.MapLevel _mapLevel;
+        private Model.Game.MapLevel _mapLevel;
 
        
         public GameController()
         {
             _gameModel = new Model.ModelGame();
             _viewGame = new View.Game.ViewGameConsole(_gameModel);
-            //_gameModel.Move += 
-
-        }
-
-        /// <summary>
-        /// Определить обработку нажатия клавиш
-        /// </summary>
-        public void DefineInteraction()
-        {
-            
         }
 
         /// <summary> 

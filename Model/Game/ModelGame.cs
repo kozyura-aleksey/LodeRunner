@@ -16,7 +16,12 @@ namespace Model
         /// <summary>
         /// Уровень игры
         /// </summary>
-        public MapLevel _mapLevel;
+        private MapLevel _mapLevel;
+
+        /// <summary>
+        /// Свойство для собирания золота
+        /// </summary>
+        public MapLevel MapLevel { get => _mapLevel; set => _mapLevel = value; }
 
         /// <summary>
         /// Делегат на создание уровня

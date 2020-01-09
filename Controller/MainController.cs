@@ -69,16 +69,16 @@ namespace Controller
                 switch (keyInfo.Key)
                 {
                     case ConsoleKey.RightArrow:
-                        _game._gameModel._mapLevel.MoveRightRunner();
+                        _game._gameModel.MapLevel.MoveRightRunner();
                         break;
                     case ConsoleKey.LeftArrow:
-                        _game._gameModel._mapLevel.MoveLeftRunner();
+                        _game._gameModel.MapLevel.MoveLeftRunner();
                         break;
                     case ConsoleKey.DownArrow:
-                        _game._gameModel._mapLevel.MoveDownRunner();
+                        _game._gameModel.MapLevel.MoveDownRunner();
                         break;
                     case ConsoleKey.UpArrow:
-                        _game._gameModel._mapLevel.MoveUpRunner();
+                        _game._gameModel.MapLevel.MoveUpRunner();
                         break;
                 }
             }

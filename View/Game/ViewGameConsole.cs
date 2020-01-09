@@ -116,7 +116,7 @@ namespace View.Game
         /// </summary>
         public void ReDrawGame(object sender, EventArgs e)
         {
-            if (_modelGame._mapLevel != null)
+            if (_modelGame.MapLevel != null)
             {
                 DrawConsole();
             }
