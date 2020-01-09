@@ -13,7 +13,7 @@ namespace View.Game
     /// <summary>
     /// Класс поле быстрой буферизации
     /// </summary>
-    public class KernelGraphics
+    internal class KernelGraphics
     {
         short _width;
         short _height;

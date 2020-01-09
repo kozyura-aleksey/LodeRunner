@@ -100,7 +100,7 @@ namespace Model.Game
             {
                 if (parOb != null)
                 {
-                    if (parOb.NameObject() == "Man")
+                    if (parOb.GetType() == typeof(Man))
                     {
                         number = objects.IndexOf(parOb);
                     }
@@ -119,7 +119,7 @@ namespace Model.Game
             {
                 if (parOb != null)
                 {
-                    if (parOb.NameObject() == "Man")
+                    if (parOb.GetType() == typeof(Man))
                     {
                         if ((objects[SearchNumberOfMan()].X < ((num.GetLength(0) * STEP) - STEP) & CheckSutuationRightLeft()))
                         {
@@ -142,7 +142,7 @@ namespace Model.Game
             {
                 if (parOb != null)
                 {
-                    if (parOb.NameObject() == "Man")
+                    if (parOb.GetType() == typeof(Man))
                     {
                         if ((objects[SearchNumberOfMan()].X > 0) & CheckSutuationRightLeft())
                         {
@@ -165,7 +165,7 @@ namespace Model.Game
             {
                 if (parOb != null)
                 {
-                    if (parOb.NameObject() == "Man")
+                    if (parOb.GetType() == typeof(Man))
                     {
                         if ((objects[SearchNumberOfMan()].Y > 0) & (CheckSutuationUp()))
                         {
@@ -187,7 +187,7 @@ namespace Model.Game
             {
                 if (parOb != null)
                 {
-                    if (parOb.NameObject() == "Man")
+                    if (parOb.GetType() == typeof(Man))
                     {
                         if ((objects[SearchNumberOfMan()].Y <= ((num.GetLength(1) * STEP) - STEP)) & (CheckSutuationDown()))
                         {
@@ -211,7 +211,7 @@ namespace Model.Game
             {
                 if (parOb != null)
                 {
-                    if (parOb.NameObject() == "Stairs")
+                    if (parOb.GetType() == typeof(Stairs))
                     {
                         if ((objects[SearchNumberOfMan()].Y == parOb.Y) & (objects[SearchNumberOfMan()].X == parOb.X))
                         {
@@ -239,7 +239,7 @@ namespace Model.Game
             {
                 if (parOb != null)
                 {
-                    if (parOb.NameObject() == "Stairs")
+                    if (parOb.GetType() == typeof(Stairs))
                     {
                         if (((objects[SearchNumberOfMan()].Y == parOb.Y) || (objects[SearchNumberOfMan()].Y == (parOb.Y - STEP))) & (objects[SearchNumberOfMan()].X == parOb.X))
                         {
@@ -268,7 +268,7 @@ namespace Model.Game
             {
                 if (parOb != null)
                 {
-                    if (parOb.NameObject() == "Brick")
+                    if (parOb.GetType() == typeof(Brick))
                     {
                         if (objects[SearchNumberOfMan()].X <= parOb.X)
                         {
@@ -289,7 +289,7 @@ namespace Model.Game
         /// <summary>
         /// Y минимальной строки
         /// </summary>
-        int YY = 0;
+        private int YY = 0;
 
         /// <summary>
         /// Гравитация
@@ -297,13 +297,12 @@ namespace Model.Game
         /// <returns></returns>
         public void Gravitation()
         {
-            bool loc;
             int max = 0;
             foreach (Model.Game.Objects.GameObject parOb in objects)
             {
                 if (parOb != null)
                 {
-                    if ((parOb.NameObject() == "Brick") || (parOb.NameObject() == "Stairs"))
+                    if ((parOb.GetType() == typeof(Brick)) || (parOb.GetType() == typeof(Stairs)))
                     {
                         if (objects[SearchNumberOfMan()].X == parOb.X)
                         {
@@ -317,22 +316,15 @@ namespace Model.Game
 
                         if (((objects[SearchNumberOfMan()].Y + STEP) == parOb.Y) && (objects[SearchNumberOfMan()].X == parOb.X))
                         {
-                            loc = true;
                             break;
                         }
-                        //while ((objects[SearchNumberOfMan()].Y < YY) && (objects[SearchNumberOfMan()].X == parOb.X))
-                        //{
-                        //var index = objects.IndexOf(parOb);
-                        //objects[SearchNumberOfMan()].Y = YY - STEP;   //objects[index].Y - STEP;//(parOb.Y - STEP);
-                        //break; // тут надо сразу брейкнутся, а он вылетает на следующий YY!!!!!!!!!!!!!!, считает вроде правильно
-                        //}
+                        
                     }
 
-                    if (parOb.NameObject() == "Rope")
+                    if (parOb.GetType() == typeof(Rope))
                     {
                         if (((objects[SearchNumberOfMan()].Y) == parOb.Y) && (objects[SearchNumberOfMan()].X == parOb.X))
                         {
-                            loc = true;
                             break;
                         }
                         else
@@ -346,12 +338,7 @@ namespace Model.Game
                                 }
                             }
                         }
-                        //while ((objects[SearchNumberOfMan()].Y < (parOb.Y)) && (objects[SearchNumberOfMan()].X == parOb.X))
-                        //{
-                        //var index = objects.IndexOf(parOb);
-                        //objects[SearchNumberOfMan()].Y = objects[index].Y - STEP;//(parOb.Y - STEP);
-                        //break;
-                        //}
+                        
                     }
                 }
             }
@@ -379,13 +366,13 @@ namespace Model.Game
         /// <summary>
         /// Количество сундуков
         /// </summary>
-        int count = 0;
+        private int count = 0;
 
 
         /// <summary>
         /// 
         /// </summary>
-        int index = 0;
+        private int index = 0;
 
         /// <summary>
         /// Собирание сундуков
@@ -410,12 +397,12 @@ namespace Model.Game
             if (count == CountLodes())
             {
                 moveToFinalStairs = true;
-                objects[573] = new Stairs(368, 80);
-                objects[574] = new Stairs(368, 64);
-                objects[575] = new Stairs(368, 48);
-                objects[576] = new Stairs(368, 32);
-                objects[577] = new Stairs(368, 16);
-                objects[578] = new Stairs(368, 0);
+                //objects[573] = new Stairs(368, 80);
+                //objects[574] = new Stairs(368, 64);
+                //objects[575] = new Stairs(368, 48);
+                //objects[576] = new Stairs(368, 32);
+                //objects[577] = new Stairs(368, 16);
+                //objects[578] = new Stairs(368, 0);
             }
         }
     }
