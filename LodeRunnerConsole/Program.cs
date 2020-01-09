@@ -14,8 +14,6 @@ namespace LodeRunnerConsole
         {
             MainController game = new MainController();
             game.InitConsole();
-            //KernelGraphics kernelGraphics = new KernelGraphics();
-            //kernelGraphics.PrintMap();
-    }
+        }
     }
 }

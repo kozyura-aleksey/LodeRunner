@@ -20,15 +20,15 @@ namespace Model.Game
         /// <summary>
         /// Экземпляр уровня
         /// </summary>
-        private static MapLevel mapLevel = null;
+        private static MapLevel mapLevel;
 
         /// <summary>
-        /// 
+        /// Массив линий
         /// </summary>
         private static string[] lines;
 
         /// <summary>
-        /// 
+        /// Массив локаторов
         /// </summary>
         private static String[,] num;
 
@@ -38,12 +38,12 @@ namespace Model.Game
         private const int STEP = 1;
 
         /// <summary>
-        /// 
+        /// Выход по собиранию золота
         /// </summary>
         private bool moveToFinalStairs = false;
 
         /// <summary>
-        /// 
+        /// Свойство для собирания золота
         /// </summary>
         public bool MoveToFinalStairs { get => moveToFinalStairs; set => moveToFinalStairs = value; }
 
@@ -133,8 +133,7 @@ namespace Model.Game
                     {
                         if ((objects[SearchNumberOfMan()].X < ((num.GetLength(0) * STEP) - STEP) & CheckSutuationRightLeft()))
                         {
-                            objects[SearchNumberOfMan()].X += STEP;
-                            System.Console.SetCursorPosition(objects[SearchNumberOfMan()].X, objects[SearchNumberOfMan()].Y);
+                            objects[SearchNumberOfMan()].X += STEP;                            
                         }
                     }
                 }
@@ -156,8 +155,7 @@ namespace Model.Game
                     {
                         if ((objects[SearchNumberOfMan()].X > 0) & CheckSutuationRightLeft())
                         {
-                            objects[SearchNumberOfMan()].X -= STEP;
-                            System.Console.SetCursorPosition(parOb.X, parOb.Y);
+                            objects[SearchNumberOfMan()].X -= STEP;                          
                         }
                     }
                 }

@@ -1,48 +1,14 @@
 ﻿using Microsoft.Win32.SafeHandles;
-using Model.Game;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace View.Game
+namespace CLIViews
 {
-    /// <summary>
-    /// Класс поле быстрой буферизации
-    /// </summary>
-    internal class KernelGraphics
+    public class KernelGraphics
     {
-        short _width;
-        short _height;
-
-        SafeFileHandle _fileHandle;
-        CharInfo[] _buf;
-        SmallRect _rect;
-
-
-        [DllImport("Kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-        static extern SafeFileHandle CreateFile(
-            string fileName,
-            [MarshalAs(UnmanagedType.U4)] uint fileAccess,
-            [MarshalAs(UnmanagedType.U4)] uint fileShare,
-            IntPtr securityAttributes,
-            [MarshalAs(UnmanagedType.U4)] FileMode creationDisposition,
-            [MarshalAs(UnmanagedType.U4)] int flags,
-            IntPtr template);
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        static extern bool WriteConsoleOutput(
-          SafeFileHandle hConsoleOutput,
-          CharInfo[] lpBuffer,
-          Coord dwBufferSize,
-          Coord dwBufferCoord,
-          ref SmallRect lpWriteRegion);
-
         [StructLayout(LayoutKind.Sequential)]
-        public struct Coord
+        private struct Coord
         {
             public short X;
             public short Y;
@@ -55,21 +21,21 @@ namespace View.Game
         };
 
         [StructLayout(LayoutKind.Explicit)]
-        public struct CharUnion
+        private struct CharUnion
         {
             [FieldOffset(0)] public char UnicodeChar;
             [FieldOffset(0)] public byte AsciiChar;
         }
 
         [StructLayout(LayoutKind.Explicit)]
-        public struct CharInfo
+        private struct CharInfo
         {
             [FieldOffset(0)] public CharUnion Char;
             [FieldOffset(2)] public short Attributes;
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        public struct SmallRect
+        private struct SmallRect
         {
             public short Left;
             public short Top;
@@ -77,116 +43,103 @@ namespace View.Game
             public short Bottom;
         }
 
-        /// <summary>
-        /// Создать представление быстрой графики
-        /// </summary>
-        public KernelGraphics()
+        private const char BLANK_SYMBOL = ' ';
+
+        private readonly SafeFileHandle _consoleHandle;
+
+        private short _width;
+        private short _height;
+
+        private SmallRect _screenRect;
+
+        private CharInfo[] _buffer;
+
+        private static KernelGraphics _instance = null;
+
+        public static KernelGraphics Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new KernelGraphics();
+                }
+                return _instance;
+            }
+        }
+
+        private KernelGraphics()
         {
             _width = 32;
             _height = 22;
 
-            _fileHandle = CreateFile("CONOUT$", 0x40000000, 2, IntPtr.Zero, FileMode.Open, 0, IntPtr.Zero);
-
-            _buf = new CharInfo[_width * _height];
-            _rect = new SmallRect() { Left = 0, Top = 0, Right = _width, Bottom = _height };
-        }
-
-        /// <summary>
-        /// Напечатать карту через быструю буферизацию
-        /// </summary>
-        /// <returns></returns>
-        public bool PrintMap()
-        {
-            int x = 0;
-            int y = 0;
-            Console.BufferHeight = 410;
-            Console.BufferWidth = 540;
-            Console.SetWindowSize(70, 30);
-
             Console.CursorVisible = false;
-            
-            for (int i = 0; i < _buf.Length; ++i)
-            {
-                _buf[i].Attributes = 32;
-                _buf[i].Char.AsciiChar = 22;
-            }
 
-            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects)
-            {
-                if (obj != null)
-                {
-                    if (obj.NameObject() == "Brick")
-                    {
-                        System.Console.SetCursorPosition(obj.X, obj.Y);
-                        Console.WriteLine("#");
-                        //a.Append("#");
-                    }
+            _consoleHandle = CreateFile("CONOUT$", 0x40000000, 2, IntPtr.Zero, FileMode.Open, 0, IntPtr.Zero);
+            _buffer = new CharInfo[_width * _height];
+            _screenRect = new SmallRect() { Left = 0, Top = 0, Right = _width, Bottom = _height };
 
-                    if (obj.NameObject() == "Concrete")
-                    {
-                        System.Console.SetCursorPosition(obj.X, obj.Y);
-                        Console.WriteLine("#");
-                        //a.Append("#");
-                    }
-
-                    if (obj.NameObject() == "Enemy")
-                    {
-                        System.Console.SetCursorPosition(obj.X, obj.Y);
-                        Console.WriteLine("O");
-                        //a.Append("O");
-                    }
-
-                    if (obj.NameObject() == "Gold")
-                    {
-                        System.Console.SetCursorPosition(obj.X, obj.Y);
-                        Console.WriteLine("$");
-                        //a.Append("$");
-                    }
-
-                    if (obj.NameObject() == "Rope")
-                    {
-                        System.Console.SetCursorPosition(obj.X, obj.Y);
-                        Console.WriteLine("-");
-                        //a.Append("-");
-                    }
-
-                    if (obj.NameObject() == "Stairs")
-                    {
-                        System.Console.SetCursorPosition(obj.X, obj.Y);
-                        Console.WriteLine("|");
-                        //a.Append("||");
-                    }
-                }
-                else
-                {
-                    System.Console.SetCursorPosition(0, 0);
-                    Console.Write(" ");
-                    //a.Append("");
-                }
-            }
-
-            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects)
-            {
-                if (obj != null)
-                {
-                    if (obj.NameObject() == "Man")
-                    {
-                        x = obj.X;
-                        y = obj.Y;
-                        System.Console.SetCursorPosition(x, y);
-                        Console.WriteLine("K");
-                        //a.Append("K");
-                    }
-                }
-            }
-
-            System.Console.SetCursorPosition(x, y);
-
-
-            return WriteConsoleOutput(_fileHandle, _buf,
-                          new Coord() { X = _width, Y = _height },
-                          new Coord() { X = 0, Y = 0 },
-                          ref _rect);
+            Clear();
         }
+
+        public void Fill(char parSymbol, ConsoleColor parColor = ConsoleColor.White)
+        {
+            byte symbolByte = Console.OutputEncoding.GetBytes(new char[] { parSymbol })[0];
+
+            for (int i = 0; i < _buffer.Length; i++)
+            {
+                _buffer[i].Attributes = (short)parColor;
+                _buffer[i].Char.AsciiChar = symbolByte;
+            }
+        }
+
+        public void Clear()
+        {
+            Fill(BLANK_SYMBOL);
+        }
+
+        public void PrintString(short parX, short parY, string parStr, ConsoleColor parColor = ConsoleColor.White)
+        {
+            byte[] strBytes = Console.OutputEncoding.GetBytes(parStr);
+
+            int strToPrintLength = Math.Min(_width - parX, strBytes.Length);
+            int initialPrintPosition = parY * _width + parX;
+            for (int i = 0; i < strToPrintLength; i++)
+            {
+                _buffer[initialPrintPosition + i].Attributes = (short)parColor;
+                _buffer[initialPrintPosition + i].Char.AsciiChar = strBytes[i];
+            }
+        }
+
+        public bool Flush(bool parClearBuffer = true)
+        {
+            bool success = WriteConsoleOutput(_consoleHandle, _buffer,
+                    new Coord() { X = _width, Y = _height },
+                    new Coord() { X = 0, Y = 0 },
+                    ref _screenRect);
+            if (parClearBuffer)
+            {
+                Clear();
+            }
+            return success;
+        }
+
+        [DllImport("Kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        private static extern SafeFileHandle CreateFile(
+            string fileName,
+            [MarshalAs(UnmanagedType.U4)] uint fileAccess,
+            [MarshalAs(UnmanagedType.U4)] uint fileShare,
+            IntPtr securityAttributes,
+            [MarshalAs(UnmanagedType.U4)] FileMode creationDisposition,
+            [MarshalAs(UnmanagedType.U4)] int flags,
+            IntPtr template);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern bool WriteConsoleOutput(
+          SafeFileHandle hConsoleOutput,
+          CharInfo[] lpBuffer,
+          Coord dwBufferSize,
+          Coord dwBufferCoord,
+          ref SmallRect lpWriteRegion);
     }
 }
