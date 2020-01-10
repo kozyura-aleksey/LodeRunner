@@ -72,99 +72,7 @@ namespace Model.Game.Objects
                     break;
             }
             return object1;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="parType"></param>
-        /// <param name="parX"></param>
-        /// <param name="parY"></param>
-        /// <returns></returns>
-        public static String CreateConsoleObjects(String parType) 
-        {
-            String object1 = null;
-            switch (parType)
-            {
-                case "0":
-                    object1 = " ";
-                    break;
-
-                case "1":
-                    object1 = "#";
-                    break;
-
-                case "2":
-                    object1 = "@";
-                    break;
-
-                case "3":
-                    object1 = "|-|";
-                    break;
-
-                case "4":
-                    object1 = "-";
-                    break;
-
-                case "5":
-                    object1 = "8";
-                    break;
-
-                case "6":
-                    object1 = "$";
-                    break;
-
-                case "7":
-                    object1 = "!";
-                    break;
-            }
-            return object1;
-        }
-
-
-        /// <summary>
-        /// Движение объекта игры вправо
-        /// </summary>
-        /// <param name="parX"></param>
-        /// <param name="parY"></param>
-        public int moveRightObject()
-        {
-            X += 16;
-            return X;
-        }
-
-        /// <summary>
-        /// Движение объекта игры вверх
-        /// </summary>
-        /// <param name="parY"></param>
-        public int moveUpObject()
-        {
-            Y -= 16;
-            return Y;
-        }
-
-        /// <summary>
-        /// Движение объекта игры влево
-        /// </summary>
-        /// <param name="parX"></param>
-        /// <param name="parY"></param>
-        public int moveLeftObject()
-        {
-            X -= 16;
-            return Y;
-        }
-
-        /// <summary>
-        /// Движение объекта игры вниз
-        /// </summary>
-        /// <param name="parX"></param>
-        /// <param name="parY"></param>
-        public int moveDownObject()
-        {
-            Y += 16;
-            return Y;
-        }
-
+        }  
 
         /// <summary>
         /// Получение информации об объекте
@@ -180,13 +88,10 @@ namespace Model.Game.Objects
             return info.ToString();
         }
 
-
         /// <summary>
-        /// 
+        /// Получение информации
         /// </summary>
-        public abstract String NameObject();
-
-
+        /// <returns></returns>
         public override string ToString()
         {
             return "X: " + X + "  Y: " + Y;

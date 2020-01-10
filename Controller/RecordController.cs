@@ -22,6 +22,9 @@ namespace Controller
         private View.Menu.ViewRecords _viewRecords;
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         public RecordController()
         {
             _modelRecords = new Model.Menu.ModelRecords();

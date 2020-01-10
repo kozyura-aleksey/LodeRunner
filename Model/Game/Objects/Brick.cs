@@ -11,19 +11,19 @@ namespace Model.Game.Objects
     /// </summary>
     public class Brick : GameObject
     {
+        /// <summary>
+        /// Конструктор объекта кирпич
+        /// </summary>
+        /// <param name="parX"></param>
+        /// <param name="parY"></param>
         public Brick(int parX, int parY) : base(parX, parY)
         {
         }
 
         /// <summary>
-        /// 
+        /// Получение информации
         /// </summary>
         /// <returns></returns>
-        public override string NameObject()
-        {
-            return "Brick";
-        }
-
         public override string ToString()
         {
             return " Brick: " + base.ToString();

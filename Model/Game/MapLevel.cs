@@ -378,7 +378,7 @@ namespace Model.Game
 
 
         /// <summary>
-        /// 
+        /// Номер объекта золото
         /// </summary>
         private int index = 0;
 

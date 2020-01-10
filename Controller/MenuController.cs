@@ -21,7 +21,9 @@ namespace Controller.Menu
         /// </summary>
         private View.Menu.ViewMenu _view;
 
-
+        /// <summary>
+        /// Конструктор контроллера меню
+        /// </summary>
         public MenuController()
         {
             _model = new Model.Menu.Menu();
@@ -30,7 +32,7 @@ namespace Controller.Menu
         }
 
         /// <summary>
-        /// 
+        /// Деинициализировать контроллер
         /// </summary>
         public override void DeInit()
         {
@@ -38,11 +40,11 @@ namespace Controller.Menu
         }
 
         /// <summary>
-        /// 
+        /// Инициализировать контроллер
         /// </summary>
         public override void Init()
         {
-            //FormMain.MouseClick
+         
         }
     }
 }

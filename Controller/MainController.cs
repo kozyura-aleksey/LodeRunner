@@ -44,7 +44,7 @@ namespace Controller
         }
 
         /// <summary>
-        /// 
+        /// Старт игры
         /// </summary>
         private void StartGame()
         {

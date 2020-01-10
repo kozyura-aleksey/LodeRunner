@@ -25,11 +25,14 @@ namespace Controller.Game
         private View.Game.ViewGameConsole _viewGame;
 
         /// <summary>
-        /// 
+        /// Карта
         /// </summary>
         private Model.Game.MapLevel _mapLevel;
 
        
+        /// <summary>
+        /// Конструктор игрового контроллера
+        /// </summary>
         public GameController()
         {
             _gameModel = new Model.ModelGame();
@@ -37,7 +40,7 @@ namespace Controller.Game
         }
 
         /// <summary> 
-        /// 
+        /// Деинициализировать контроллер
         /// </summary>
         public override void DeInit()
         {
@@ -45,7 +48,7 @@ namespace Controller.Game
         }
 
         /// <summary>
-        /// 
+        /// Инициализировать контроллер
         /// </summary>
         public override void Init()
         {
