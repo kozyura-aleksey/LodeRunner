@@ -33,7 +33,7 @@ namespace View.Game
         private Timer timer = new Timer() { Enabled = true, Interval = 40 };       
 
         /// <summary>
-        /// 
+        /// Конструктор отображение игры
         /// </summary>
         /// <param name="parModelGame"></param>
         public ViewGame(Model.ModelGame parModelGame)

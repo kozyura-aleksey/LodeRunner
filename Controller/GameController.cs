@@ -32,7 +32,7 @@ namespace Controller.Game
 
 
         /// <summary>
-        /// 
+        /// Уровень игры
         /// </summary>
         public Model.Game.MapLevel _mapLevel;
 
@@ -46,6 +46,9 @@ namespace Controller.Game
         /// </summary>
         private Dictionary<Keys, dKeyHandler> _keysDict;
 
+        /// <summary>
+        /// Конструктор игрового контроллера
+        /// </summary>
         public GameController()
         {
             _gameModel = new Model.ModelGame();
@@ -67,7 +70,7 @@ namespace Controller.Game
         }
 
         /// <summary> 
-        /// 
+        /// ДеИнициализироват контроллелер
         /// </summary>
         public override void DeInit()
         {
@@ -75,7 +78,7 @@ namespace Controller.Game
         }
 
         /// <summary>
-        /// 
+        /// Инициализироват контроллелер
         /// </summary>
         public override void Init()
         {

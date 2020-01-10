@@ -38,12 +38,12 @@ namespace Model.Game
         private static string[] lines;
 
         /// <summary>
-        /// Выходи из игры
+        /// Выход из игры
         /// </summary>
         private bool moveToFinalStairs = false;
 
         /// <summary>
-        /// 
+        /// Свойство для переменной выхода из игры
         /// </summary>
         public bool MoveToFinalStairs { get => moveToFinalStairs; set => moveToFinalStairs = value; }
 

@@ -76,51 +76,7 @@ namespace Model.Game.Objects
                     break;
             }
             return object1;
-        }
-
-        /// <summary>
-        /// Движение объекта игры вправо
-        /// </summary>
-        /// <param name="parX"></param>
-        /// <param name="parY"></param>
-        public int moveRightObject()
-        {
-            X += 16;
-            return X;
-        }
-
-        /// <summary>
-        /// Движение объекта игры вверх
-        /// </summary>
-        /// <param name="parY"></param>
-        public int moveUpObject()
-        {
-            Y += 16;
-            return Y;
-        }
-
-        /// <summary>
-        /// Движение объекта игры влево
-        /// </summary>
-        /// <param name="parX"></param>
-        /// <param name="parY"></param>
-        public int moveLeftObject()
-        {
-            X += 16;
-            return Y;
-        }
-
-        /// <summary>
-        /// Движение объекта игры вниз
-        /// </summary>
-        /// <param name="parX"></param>
-        /// <param name="parY"></param>
-        public int moveDownObject()
-        {
-            Y += 16;
-            return Y;
-        }
-
+        }           
 
         /// <summary>
         /// Получение информации об объекте
@@ -136,13 +92,10 @@ namespace Model.Game.Objects
             return info.ToString();
         }
 
-
         /// <summary>
-        /// 
+        /// Получение информации
         /// </summary>
-        public abstract String NameObject();
-
-
+        /// <returns></returns>
         public override string ToString()
         {
             return "X: " + X + "  Y: " + Y;

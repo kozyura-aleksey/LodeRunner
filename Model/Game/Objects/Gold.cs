@@ -11,15 +11,19 @@ namespace Model.Game.Objects
     /// </summary>
     public class Gold : GameObject
     {
+        /// <summary>
+        /// Конструктор объекта золото
+        /// </summary>
+        /// <param name="parX"></param>
+        /// <param name="parY"></param>
         public Gold(int parX, int parY) : base(parX, parY)
         {
         }
 
-        public override string NameObject()
-        {
-            return "Gold";
-        }
-
+        /// <summary>
+        /// Получение информации
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return " Золото: " + base.ToString();

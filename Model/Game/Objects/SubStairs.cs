@@ -11,15 +11,19 @@ namespace Model.Game.Objects
     /// </summary>
     public class SubStairs : GameObject
     {
+        /// <summary>
+        /// Конструктор объекта лестница
+        /// </summary>
+        /// <param name="parX"></param>
+        /// <param name="parY"></param>
         public SubStairs(int parX, int parY) : base(parX, parY)
         {
         }
 
-        public override string NameObject()
-        {
-            return "SubStairs";
-        }
-
+        /// <summary>
+        /// Получение информации
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return " Лестница: " + base.ToString();
