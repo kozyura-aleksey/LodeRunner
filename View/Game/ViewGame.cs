@@ -26,27 +26,7 @@ namespace View.Game
         /// Представление уровня игры
         /// </summary>
         private MapLevel _mapLevel;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private Form parForm;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private Graphics graphics;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private Rectangle clientRectangle;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private BufferedGraphics bufferedGraphics;
-
+     
         /// <summary>
         /// Таймер для перерисовки
         /// </summary>
@@ -62,8 +42,7 @@ namespace View.Game
             _modelGame.CreateMapLevel += CreateMap;
             _modelGame.Draw += DrawGame;
             timer.Start();
-            timer.Tick += ReDrawGame;
-            //_modelGame.Move += DrawGame;           
+            timer.Tick += ReDrawGame;           
         }
 
         /// <summary>
@@ -80,11 +59,11 @@ namespace View.Game
         /// <param name="parForm"></param>
         public void DrawGame()
         {
-            parForm = View.viewform;
-            graphics = parForm.CreateGraphics();
-            clientRectangle = parForm.ClientRectangle;
-            bufferedGraphics = BufferedGraphicsManager.Current.Allocate(graphics, clientRectangle);
-            bufferedGraphics.Graphics.Clear(Color.Black);
+            Form parForm = View.viewform;
+            Graphics graphics = parForm.CreateGraphics();
+            Rectangle clientRectangle = parForm.ClientRectangle;
+            BufferedGraphics bufferedGraphics = BufferedGraphicsManager.Current.Allocate(graphics, clientRectangle);
+
             foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects)
             {
                 Image image = null;

@@ -33,8 +33,7 @@ namespace View
         /// </summary>
         public static void Init()
         {
-            Application.Run(ViewForm);
-                       
+            Application.Run(ViewForm);                   
         }
 
         /// <summary>

@@ -76,12 +76,12 @@ namespace Model
         /// </summary>
         public void StartGame()
         {
-            if (_mapLevel != null)
-            {
-                OnCreateMapLevel();
-                //OnDraw();
-                OnMove();
-            }        
+                if (_mapLevel != null)
+                {
+                    OnCreateMapLevel();
+                    //OnDraw();
+                    OnMove();
+                }
         }
 
         /// <summary>
