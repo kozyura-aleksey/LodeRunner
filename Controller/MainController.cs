@@ -45,8 +45,8 @@ namespace Controller
             _menu.StartEvent += StartGame;
             GameController._endGameMethod += RecordsEnter;
             _game = new GameController();
-            //_recordName = new RecordController();
-            //_recordName.EndEvent += OpenMenu;
+            _recordName = new RecordController();
+            _recordName.EndEvent += OpenMenu;
             //StartApplication();           
         }
 
