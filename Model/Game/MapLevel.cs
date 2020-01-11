@@ -439,7 +439,7 @@ namespace Model.Game
                         if ((objects[SearchNumberOfMan()].X == parOb.X) && (objects[SearchNumberOfMan()].Y == parOb.Y))
                         {
                             count += 1;
-                            index = objects.IndexOf(parOb);
+                            index = objects.IndexOf(parOb);                         
                         }
                     }
                 }

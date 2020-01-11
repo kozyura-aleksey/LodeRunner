@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="Controller.cs" />
     <Compile Include="GameController.cs" />
+    <Compile Include="KeyDowner.cs" />
+    <Compile Include="KeyDownerController.cs" />
     <Compile Include="MainController.cs" />
     <Compile Include="MenuController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,9 +61,6 @@
       <Name>View</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Game\" />
-    <Folder Include="Menu\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

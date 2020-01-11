@@ -49,6 +49,23 @@ namespace Model
         public event dCreateMap CreateMapLevel;
 
         /// <summary>
+        /// Обработчик фигуры
+        /// </summary>
+        public delegate void dFigureHandler();
+        /// <summary>
+        /// Событие на движение фигуры
+        /// </summary>
+        public event dFigureHandler MoveEvent;
+        /// <summary>
+        /// Событие на создание фигуры
+        /// </summary>
+        public event dFigureHandler CreateEvent;
+        /// <summary>
+        /// Событие окончания игры
+        /// </summary>
+        public event dFigureHandler EndGameEvent;
+
+        /// <summary>
         /// Поток игры
         /// </summary>
         public Thread _gameThread;

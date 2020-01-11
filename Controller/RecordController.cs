@@ -21,6 +21,14 @@ namespace Controller
         /// </summary>
         private View.Menu.ViewRecords _viewRecords;
 
+        /// <summary>
+        /// Обработчик окончания ввода имени
+        /// </summary>
+        public delegate void dEndHandler();
+        /// <summary>
+        /// Событие окончания ввода
+        /// </summary>
+        public event dEndHandler EndEvent;
 
         /// <summary>
         /// 
@@ -30,6 +38,8 @@ namespace Controller
             _modelRecords = new Model.Menu.ModelRecords();
             _viewRecords = new View.Menu.ViewRecords();
         }
+
+
 
         /// <summary>
         /// 

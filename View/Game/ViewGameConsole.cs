@@ -19,12 +19,7 @@ namespace View.Game
         /// Модель игры
         /// </summary>
         private Model.ModelGame _modelGame;
-
-        /// <summary>
-        /// Быстрая буферизация
-        /// </summary>
-        private KernelGraphics _kernelGraphics = KernelGraphics.Instance;
-
+      
         /// <summary>
         /// Представление уровня игры
         /// </summary>
@@ -56,13 +51,13 @@ namespace View.Game
         {
             _mapLevel = new MapLevel();
         }
-
+        
         /// <summary>
         /// Отрисовка в консоли
         /// </summary>
         public void DrawConsole()
         {          
-            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects.ToArray())
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects)
             {
                 if (obj != null)
                 {
@@ -95,16 +90,15 @@ namespace View.Game
                     {
                         _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "|", ConsoleColor.Gray);
                     }
-                }
-
-                foreach (Model.Game.Objects.GameObject obj1 in MapLevel.Objects.ToArray())
+                }            
+            }
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects)
+            {
+                if (obj != null)
                 {
-                    if (obj1 != null)
+                    if (obj.GetType() == typeof(Man))
                     {
-                        if (obj1.GetType() == typeof(Man))
-                        {
-                            _kernelGraphics.PrintString((short)obj1.X, (short)obj1.Y, "K");
-                        }
+                        _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "K");
                     }
                 }
             }

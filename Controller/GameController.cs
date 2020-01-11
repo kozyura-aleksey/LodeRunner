@@ -17,7 +17,7 @@ namespace Controller.Game
         /// <summary>
         /// Модель игры
         /// </summary>
-        public Model.ModelGame _gameModel;
+        private Model.ModelGame _gameModel;
 
         /// <summary>
         /// Представление игры 
@@ -25,11 +25,21 @@ namespace Controller.Game
         private View.Game.ViewGameConsole _viewGame;
 
         /// <summary>
-        /// Карта
+        /// Метод для завершения игры
         /// </summary>
-        private Model.Game.MapLevel _mapLevel;
+        public static Model.ModelGame.dFigureHandler _endGameMethod;
 
-       
+        /// <summary>
+        /// Обработчик нажатия на кнопку
+        /// </summary>
+        private delegate void dKeyHandler();
+
+        /// <summary>
+        /// Словарь действий при нажатии кнопки
+        /// </summary>
+        private Dictionary<ConsoleKey, dKeyHandler> _keysDict;
+
+
         /// <summary>
         /// Конструктор игрового контроллера
         /// </summary>
@@ -37,14 +47,20 @@ namespace Controller.Game
         {
             _gameModel = new Model.ModelGame();
             _viewGame = new View.Game.ViewGameConsole(_gameModel);
+            _gameModel.CreateEvent += DefineInteraction;
+            _gameModel.EndGameEvent += _endGameMethod;
         }
 
-        /// <summary> 
-        /// Деинициализировать контроллер
+        /// <summary>
+        /// Определить обработку нажатия клавиш
         /// </summary>
-        public override void DeInit()
+        protected void DefineInteraction()
         {
-            
+            _keysDict = new Dictionary<ConsoleKey, dKeyHandler>();
+            _keysDict.Add(ConsoleKey.LeftArrow, _gameModel.MapLevel.MoveLeftRunner);
+            _keysDict.Add(ConsoleKey.RightArrow, _gameModel.MapLevel.MoveRightRunner);
+            _keysDict.Add(ConsoleKey.DownArrow, _gameModel.MapLevel.MoveDownRunner);
+            _keysDict.Add(ConsoleKey.UpArrow, _gameModel.MapLevel.MoveUpRunner);
         }
 
         /// <summary>
@@ -52,8 +68,36 @@ namespace Controller.Game
         /// </summary>
         public override void Init()
         {
-            _viewGame.DrawConsole();
+            KeyDownerController.KeyDowner.KeyDown += KeyDown;          
             _gameModel.Start();
+            _viewGame.DrawConsole();
+        }
+
+        /// <summary> 
+        /// Деинициализировать контроллер
+        /// </summary>
+        public override void DeInit()
+        {
+            KeyDownerController.KeyDowner.KeyDown -= KeyDown;
+            _viewGame.Hide();
+        }
+
+
+        /// <summary>
+        /// Обработка события нажатия кнопки
+        /// </summary>       
+        protected void KeyDown(ConsoleKey parKey)
+        {
+            lock (_gameModel)
+            {
+                if (_keysDict != null)
+                {
+                    if (_keysDict.ContainsKey(parKey))
+                    {
+                        _keysDict[parKey]();
+                    }
+                }
+            }
         }
     }
 }

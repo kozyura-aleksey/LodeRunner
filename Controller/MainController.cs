@@ -21,11 +21,6 @@ namespace Controller
         private RecordController _recordName;
 
         /// <summary>
-        /// Модель игры 
-        /// </summary>
-        public ModelGame modelGame = new ModelGame();
-
-        /// <summary>
         /// Контроллер меню
         /// </summary>
         private MenuController _menu;
@@ -33,14 +28,26 @@ namespace Controller
         /// <summary>
         /// Контроллер игры
         /// </summary>
-        private GameController _game = new GameController();
+        private GameController _game;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private KeyDownerController _downerController;
 
         /// <summary>
         /// Создать главный контроллер
         /// </summary>
         public MainController()
-        {     
-            StartApplication();           
+        {
+            _downerController = new KeyDownerController(); 
+            _menu = new MenuController();
+            _menu.StartEvent += StartGame;
+            GameController._endGameMethod += RecordsEnter;
+            _game = new GameController();
+            //_recordName = new RecordController();
+            //_recordName.EndEvent += OpenMenu;
+            //StartApplication();           
         }
 
         /// <summary>
@@ -53,11 +60,20 @@ namespace Controller
         }
 
         /// <summary>
+        /// Открыть главное меню
+        /// </summary>
+        private void OpenMenu()
+        {
+            _recordName.DeInit();
+            _menu.Init();
+        }
+
+        /// <summary>
         /// Инициализация консольного варианта
         /// </summary>
         public void InitConsole()
         {
-            while (!Console.KeyAvailable)
+            /*while (!Console.KeyAvailable)
             {
                 ConsoleKeyInfo keyInfo = Console.ReadKey();
                 switch (keyInfo.Key)
@@ -75,16 +91,25 @@ namespace Controller
                         _game._gameModel.MapLevel.MoveUpRunner();
                         break;
                 }
-            }
+            }*/
+            _menu.Init();
         }
 
         /// <summary>
         /// Открыть меню игры
         /// </summary>            
         private void StartApplication()
-        {
-            //_menu.Init();     
+        {    
             _game.Init();
+        }
+
+        /// <summary>
+        /// Добавление нового рекорда
+        /// </summary>
+        private void RecordsEnter()
+        {
+            _game.DeInit();
+            _recordName.Init();
         }
     }
 }

@@ -21,9 +21,9 @@ namespace Model.Menu
         /// </summary>
         public Menu()
         {
-            _menuItems[0] = new MenuItems("Run Game");
-            _menuItems[1] = new MenuItems("Records");
-            _menuItems[2] = new MenuItems("Exit");
+            _menuItems = new MenuItems[2];
+            _menuItems[0] = new MenuItems("Start");
+            _menuItems[1] = new MenuItems("Exit");
         }
 
         /// <summary>
@@ -34,6 +34,6 @@ namespace Model.Menu
         {
             return _menuItems;
         }
-
     }
+
 }

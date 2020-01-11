@@ -1,21 +1,43 @@
-﻿using Model;
-using Model.Game;
+﻿using CLIViews;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using GameObject = Model.Game.Objects.GameObject;
 
-namespace View
+namespace View.Game
 {
     /// <summary>
-    /// Абстрактный класс - отображение
+    /// 
     /// </summary>
-    public abstract class View
+    public class View
     {
-                               
+        /// <summary>
+        /// Поле игры(символы)
+        /// </summary>
+        public StringBuilder[] Field { get; set; }
+
+        /// <summary>
+        /// Быстрая буферизация
+        /// </summary>
+        protected KernelGraphics _kernelGraphics = KernelGraphics.Instance;
+
+        /// <summary>
+        /// Скрыть представление
+        /// </summary>
+        public void Hide()
+        {
+            Field = new StringBuilder[1];
+            Render();
+        }
+
+        /// <summary>
+        /// Рендер графики
+        /// </summary>
+        public void Render()
+        {
+            _kernelGraphics.Printstrings(Field);
+            //_kernelGraphics.Flush();
+        }
     }
 }

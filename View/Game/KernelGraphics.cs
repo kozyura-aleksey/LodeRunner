@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace CLIViews
 {
@@ -56,6 +57,9 @@ namespace CLIViews
 
         private static KernelGraphics _instance = null;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static KernelGraphics Instance
         {
             get
@@ -98,6 +102,13 @@ namespace CLIViews
             Fill(BLANK_SYMBOL);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parX"></param>
+        /// <param name="parY"></param>
+        /// <param name="parStr"></param>
+        /// <param name="parColor"></param>
         public void PrintString(short parX, short parY, string parStr, ConsoleColor parColor = ConsoleColor.White)
         {
             byte[] strBytes = Console.OutputEncoding.GetBytes(parStr);
@@ -111,6 +122,41 @@ namespace CLIViews
             }
         }
 
+        /// <summary>
+        /// Напечатать строки через быструю буферизацию
+        /// </summary>
+        /// <param name="parStrings">Подаваемое поле строк</param>
+        /// <returns></returns>
+        public void Printstrings(StringBuilder[] parStrings)
+        {
+            //Console.CursorVisible = false;
+            for (int i = 0; i < _buffer.Length; ++i)
+            {
+                _buffer[i].Attributes = 32;
+                _buffer[i].Char.AsciiChar = 22;
+            }
+            for (int i = 0; i < Math.Min(parStrings.Length, _height); i++)
+            {
+                StringBuilder sb = parStrings[i];
+                if (sb == null)
+                {
+                    break;
+                }
+
+                string str = sb.ToString();
+                for (int j = 0; j < Math.Min(str.Length, _width); j++)
+                {
+                    _buffer[i * _width + j].Char.AsciiChar = (byte)str[j];
+                }
+            }
+            Flush();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parClearBuffer"></param>
+        /// <returns></returns>
         public bool Flush(bool parClearBuffer = true)
         {
             bool success = WriteConsoleOutput(_consoleHandle, _buffer,

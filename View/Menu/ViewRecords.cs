@@ -9,7 +9,7 @@ namespace View.Menu
     /// <summary>
     /// Класс - отображение рекордов
     /// </summary>
-    public class ViewRecords : View
+    public class ViewRecords : View.Game.View
     {
     }
 }
