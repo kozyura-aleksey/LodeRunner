@@ -73,25 +73,6 @@ namespace Controller
         /// </summary>
         public void InitConsole()
         {
-            /*while (!Console.KeyAvailable)
-            {
-                ConsoleKeyInfo keyInfo = Console.ReadKey();
-                switch (keyInfo.Key)
-                {
-                    case ConsoleKey.RightArrow:
-                        _game._gameModel.MapLevel.MoveRightRunner();
-                        break;
-                    case ConsoleKey.LeftArrow:
-                        _game._gameModel.MapLevel.MoveLeftRunner();
-                        break;
-                    case ConsoleKey.DownArrow:
-                        _game._gameModel.MapLevel.MoveDownRunner();
-                        break;
-                    case ConsoleKey.UpArrow:
-                        _game._gameModel.MapLevel.MoveUpRunner();
-                        break;
-                }
-            }*/
             _menu.Init();
         }
 

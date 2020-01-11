@@ -27,7 +27,7 @@ namespace Controller.Game
         /// <summary>
         /// Метод для завершения игры
         /// </summary>
-        public static Model.ModelGame.dFigureHandler _endGameMethod;
+        public static Model.ModelGame.dMoveObjects _endGameMethod;
 
         /// <summary>
         /// Обработчик нажатия на кнопку
@@ -47,7 +47,7 @@ namespace Controller.Game
         {
             _gameModel = new Model.ModelGame();
             _viewGame = new View.Game.ViewGameConsole(_gameModel);
-            _gameModel.CreateEvent += DefineInteraction;
+            _gameModel.MoveEvent += DefineInteraction;
             _gameModel.EndGameEvent += _endGameMethod;
         }
 
@@ -62,6 +62,33 @@ namespace Controller.Game
             _keysDict.Add(ConsoleKey.DownArrow, _gameModel.MapLevel.MoveDownRunner);
             _keysDict.Add(ConsoleKey.UpArrow, _gameModel.MapLevel.MoveUpRunner);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void A()
+        {
+            while (!Console.KeyAvailable)
+            {
+                ConsoleKeyInfo keyInfo = Console.ReadKey();
+                switch (keyInfo.Key)
+                {
+                    case ConsoleKey.RightArrow:
+                        _gameModel.MapLevel.MoveRightRunner();
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        _gameModel.MapLevel.MoveLeftRunner();
+                        break;
+                    case ConsoleKey.DownArrow:
+                        _gameModel.MapLevel.MoveDownRunner();
+                        break;
+                    case ConsoleKey.UpArrow:
+                        _gameModel.MapLevel.MoveUpRunner();
+                        break;
+                }
+            }
+        }
+
 
         /// <summary>
         /// Инициализировать контроллер

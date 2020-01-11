@@ -55,15 +55,12 @@ namespace Model
         /// <summary>
         /// Событие на движение фигуры
         /// </summary>
-        public event dFigureHandler MoveEvent;
+        public event dMoveObjects MoveEvent;
+
         /// <summary>
-        /// Событие на создание фигуры
+        /// 
         /// </summary>
-        public event dFigureHandler CreateEvent;
-        /// <summary>
-        /// Событие окончания игры
-        /// </summary>
-        public event dFigureHandler EndGameEvent;
+        public event dMoveObjects EndGameEvent;
 
         /// <summary>
         /// Поток игры
