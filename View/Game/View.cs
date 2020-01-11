@@ -39,13 +39,6 @@ namespace View
         {
             Application.Run(ViewForm);                   
         }
-
-        /// <summary>
-        /// Контекст буферизации
-        /// </summary>
-        //private static BufferedGraphicsContext _context;
-
-        //protected static BufferedGraphics _bufer;
        
         /// <summary>
         /// Настройка параметров формы для работы
@@ -69,8 +62,6 @@ namespace View
         {
             ViewForm = parForm;
             FormDecorator();
-            
-            //Canvas = _bufer.Graphics;
         }
 
         /// <summary>

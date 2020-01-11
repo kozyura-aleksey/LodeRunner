@@ -58,7 +58,7 @@ namespace Controller
         /// </summary>
         private void StartGame()
         {
-            //_menu.DeInit();
+            _menu.DeInit();
             _game.Init();
         }
 
