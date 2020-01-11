@@ -17,6 +17,15 @@ namespace Model.Menu
         public String Name;
 
         /// <summary>
+        /// Обработчик событий для класса MenuItem
+        /// </summary>
+        public delegate void dMenuItemHandler();
+        /// <summary>
+        /// Событие на выбор пункта меню
+        /// </summary>
+        public event dMenuItemHandler EnterEvent;
+
+        /// <summary>
         /// Конструктор создания пункта меню
         /// </summary>
         /// <param name="parName"></param>
@@ -24,5 +33,26 @@ namespace Model.Menu
         {
             Name = parName;
         }
-    }
+
+        /// <summary>
+        /// Выбрать пункт меню
+        /// </summary>
+        public void Enter()
+        {
+            OnEnter();
+        }
+
+        /// <summary>
+        /// Запустить событие на выбор пункта меню
+        /// </summary>
+        private void OnEnter()
+        {
+            if (EnterEvent != null)
+            {
+                EnterEvent.Invoke();
+            }
+        }
+
+    }   
+        
 }

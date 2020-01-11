@@ -58,6 +58,11 @@ namespace Model.Game
         public static List<GameObject> Objects { get => objects; set => objects = value; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        private Thread _gameThread;
+
+        /// <summary>
         /// Создать поле игры
         /// </summary>
         public MapLevel()
@@ -173,6 +178,17 @@ namespace Model.Game
             }
             CollectLodes();
             Gravitation();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void GravitatioInThread() 
+        {
+            _gameThread = new Thread(Landing);
+            _gameThread.Name = "LodeRunner";
+            _gameThread.Start();
+            Thread.Sleep(300);
         }
 
         /// <summary>
@@ -342,6 +358,14 @@ namespace Model.Game
         private int YY = 0;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public void Landing()
+        {
+            objects[SearchNumberOfMan()].Y = YY - STEP;
+        }
+
+        /// <summary>
         /// Гравитация
         /// </summary>
         /// <returns></returns>
@@ -392,7 +416,7 @@ namespace Model.Game
                     }
                 }
             }
-            objects[SearchNumberOfMan()].Y = YY - STEP;
+            Landing();
         }
 
         /// <summary>
@@ -448,12 +472,12 @@ namespace Model.Game
             if (count == CountLodes()) 
             {
                 moveToFinalStairs = true;
-                objects[573] = new SubStairs(368, 80);
-                objects[574] = new SubStairs(368, 64);
-                objects[575] = new SubStairs(368, 48);
-                objects[576] = new SubStairs(368, 32);
-                objects[577] = new SubStairs(368, 16);
-                objects[578] = new SubStairs(368, 0);
+                //objects[573] = new SubStairs(368, 80);
+                //objects[574] = new SubStairs(368, 64);
+                //objects[575] = new SubStairs(368, 48);
+                //objects[576] = new SubStairs(368, 32);
+                //objects[577] = new SubStairs(368, 16);
+                //objects[578] = new SubStairs(368, 0);
             }
         }
     }

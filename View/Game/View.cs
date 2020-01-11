@@ -27,7 +27,11 @@ namespace View
         /// </summary>
         public static Form viewform { get => ViewForm; set => ViewForm = value; }
 
-       
+        /// <summary>
+        /// Поле для рисования
+        /// </summary>
+        public static Graphics Canvas;
+
         /// <summary>
         /// Инициализация формы
         /// </summary>
@@ -37,18 +41,11 @@ namespace View
         }
 
         /// <summary>
-        /// Инициализация консоли
-        /// </summary>
-        public static void InitConsole()
-        {
-            Console.ReadKey();
-        }
-
-        /// <summary>
         /// Контекст буферизации
         /// </summary>
-        private static BufferedGraphicsContext _context;
-        private static BufferedGraphics _bufer;
+        //private static BufferedGraphicsContext _context;
+
+        //protected static BufferedGraphics _bufer;
        
         /// <summary>
         /// Настройка параметров формы для работы
@@ -56,10 +53,13 @@ namespace View
         private static void FormDecorator()
         {
             ViewForm.Width = 540;
-            ViewForm.Height = 410;
+            ViewForm.Height = 550;
             ViewForm.FormBorderStyle = FormBorderStyle.FixedDialog;
             ViewForm.BackColor = Color.Black;
         }
+
+
+        public BufferedGraphics _bufer = BufferedGraphicsManager.Current.Allocate(viewform.CreateGraphics(), viewform.ClientRectangle);
 
         /// <summary>
         /// Установить настройки для формы
@@ -69,9 +69,16 @@ namespace View
         {
             ViewForm = parForm;
             FormDecorator();
-            _context = BufferedGraphicsManager.Current;
-            _bufer = _context.Allocate(ViewForm.CreateGraphics(), ViewForm.ClientRectangle);         
+            
+            //Canvas = _bufer.Graphics;
+        }
 
+        /// <summary>
+        /// Рендер графики
+        /// </summary>
+        public void Render()
+        {
+            _bufer.Render();
         }
     }
 }

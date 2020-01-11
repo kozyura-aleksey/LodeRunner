@@ -51,14 +51,16 @@
     <Compile Include="Game\Objects\GameObject.cs" />
     <Compile Include="Game\Objects\Gold.cs" />
     <Compile Include="Game\Objects\Man.cs" />
+    <Compile Include="Game\Objects\NullObject.cs" />
     <Compile Include="Game\ObjectTypes.cs" />
     <Compile Include="Game\Objects\Rope.cs" />
     <Compile Include="Game\Objects\Stairs.cs" />
     <Compile Include="Game\Objects\SubStairs.cs" />
     <Compile Include="Menu\Menu.cs" />
     <Compile Include="Menu\MenuItems.cs" />
+    <Compile Include="Menu\ModelMenu.cs" />
     <Compile Include="Menu\ModelRecords.cs" />
-    <Compile Include="Menu\Recordscs.cs" />
+    <Compile Include="Menu\Records.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

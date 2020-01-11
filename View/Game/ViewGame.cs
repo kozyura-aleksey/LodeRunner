@@ -26,11 +26,11 @@ namespace View.Game
         /// Представление уровня игры
         /// </summary>
         private MapLevel _mapLevel;
-     
+
         /// <summary>
         /// Таймер для перерисовки
         /// </summary>
-        private Timer timer = new Timer() { Enabled = true, Interval = 40 };       
+        private Timer timer = new Timer() { Enabled = true, Interval = 40 };
 
         /// <summary>
         /// Конструктор отображение игры
@@ -42,7 +42,7 @@ namespace View.Game
             _modelGame.CreateMapLevel += CreateMap;
             _modelGame.Draw += DrawGame;
             timer.Start();
-            timer.Tick += ReDrawGame;           
+            timer.Tick += ReDrawGame;
         }
 
         /// <summary>
@@ -59,11 +59,7 @@ namespace View.Game
         /// <param name="parForm"></param>
         public void DrawGame()
         {
-            Form parForm = View.viewform;
-            Graphics graphics = parForm.CreateGraphics();
-            Rectangle clientRectangle = parForm.ClientRectangle;
-            BufferedGraphics bufferedGraphics = BufferedGraphicsManager.Current.Allocate(graphics, clientRectangle);
-
+            BufferedGraphics _bufer = BufferedGraphicsManager.Current.Allocate(viewform.CreateGraphics(), viewform.ClientRectangle);
             foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects)
             {
                 Image image = null;
@@ -72,49 +68,49 @@ namespace View.Game
                     if (obj.GetType() == typeof(Brick))
                     {
                         image = Properties.Resources.brick1;
-                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);                  
+                        _bufer.Graphics.DrawImage(image, obj.X, obj.Y);
                     }
 
                     if (obj.GetType() == typeof(Concrete))
                     {
                         image = Properties.Resources.brick2;
-                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
+                        _bufer.Graphics.DrawImage(image, obj.X, obj.Y);
                     }
 
                     if (obj.GetType() == typeof(Enemy))
                     {
                         image = Properties.Resources.enemy0;
-                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
+                        _bufer.Graphics.DrawImage(image, obj.X, obj.Y);
                     }
 
                     if (obj.GetType() == typeof(Gold))
                     {
                         image = Properties.Resources.lode;
-                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
-                    }                 
+                        _bufer.Graphics.DrawImage(image, obj.X, obj.Y);
+                    }
 
                     if (obj.GetType() == typeof(Rope))
                     {
                         image = Properties.Resources.rope;
-                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
+                        _bufer.Graphics.DrawImage(image, obj.X, obj.Y);
                     }
 
                     if (obj.GetType() == typeof(Stairs))
                     {
-                        image = Properties.Resources.stair;                       
-                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
+                        image = Properties.Resources.stair;
+                        _bufer.Graphics.DrawImage(image, obj.X, obj.Y);
                     }
 
                     if (obj.GetType() == typeof(SubStairs))
                     {
                         image = Properties.Resources.stair;
-                        bufferedGraphics.Graphics.DrawImage(image, obj.X, obj.Y);
+                        _bufer.Graphics.DrawImage(image, obj.X, obj.Y);
                     }
                 }
                 else
                 {
                     image = Properties.Resources._null;
-                    bufferedGraphics.Graphics.DrawImage(image, 0, 0);                  
+                    _bufer.Graphics.DrawImage(image, 0, 0);
                 }
             }
             foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects)
@@ -127,19 +123,32 @@ namespace View.Game
                         Bitmap imageMan;
                         imageMan = Properties.Resources.runner0;
                         imageMan.MakeTransparent();
-                        bufferedGraphics.Graphics.DrawImage(imageMan, obj.X, obj.Y);
+                        _bufer.Graphics.DrawImage(imageMan, obj.X, obj.Y);
                     }
                 }
                 else
                 {
                     image = Properties.Resources._null;
-                    bufferedGraphics.Graphics.DrawImage(image, 0, 0);
+                    _bufer.Graphics.DrawImage(image, 0, 0);
                 }
             }
-            bufferedGraphics.Render();
-            graphics.Dispose();
-            bufferedGraphics.Dispose();
+            _bufer.Render();          
+            _bufer.Graphics.Dispose();
+            _bufer.Dispose();
         }
+
+        /// <summary>
+        /// Нарисовать представление меню
+        /// </summary>
+        public void Draw()
+        {
+            _bufer.Graphics.Clear(Color.Black);
+            DrawGame();
+            //_bufer.Render();
+            //_bufer.Graphics.Dispose();
+            _bufer.Dispose();
+        }
+
 
         /// <summary>
         /// Перерисовка уровня
@@ -152,5 +161,5 @@ namespace View.Game
                 DrawGame();
             }
         }
-    }
+    }    
 }

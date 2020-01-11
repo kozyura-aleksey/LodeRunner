@@ -44,6 +44,11 @@ namespace Model
         public event dMoveObjects Draw;
 
         /// <summary>
+        /// Событие окончания игры
+        /// </summary>
+        public event dMoveObjects EndGameEvent;
+
+        /// <summary>
         /// Событие на создание уровня
         /// </summary>
         public event dCreateMap CreateMapLevel;
@@ -62,26 +67,14 @@ namespace Model
         }
 
         /// <summary>
-        /// Запустить игру в игровом потоке
-        /// </summary>
-        public void Start()
-        {
-            _gameThread = new Thread(StartGame);
-            _gameThread.Name = "LodeRunner";
-            _gameThread.Start();
-        }
-
-        /// <summary>
         /// Начать игру
         /// </summary>
         public void StartGame()
         {
-                if (_mapLevel != null)
-                {
-                    OnCreateMapLevel();
-                    //OnDraw();
-                    OnMove();
-                }
+            if (_mapLevel != null)
+            {
+                OnMove();
+            }
         }
 
         /// <summary>

@@ -27,13 +27,7 @@ namespace Controller
         /// <summary>
         /// Контроллер игры
         /// </summary>
-        private GameController _game = new GameController();
-
-        /// <summary>
-        /// Уровень игры
-        /// </summary>
-        public MapLevel _mapLevel;
-
+        private GameController _game;
 
         /// <summary>
         /// Создать главный контроллер
@@ -42,9 +36,21 @@ namespace Controller
         {
             Controller.CreateForm();
             View.View.SetFormParameters(Controller.FormMain);
-            Controller.FormMain.Shown += StartApplication;
+            Controller.FormMain.Shown += StartApplication;      
+            _menu = new MenuController();
+            _menu.StartEvent += StartGame;
+            GameController._endGameMethod = RecordsEnter;
+            _game = new GameController();
+            _recordName = new RecordController();
+            _recordName.EndEvent += OpenMenu;
+        }
 
-
+        /// <summary>
+        /// Открыть меню игры
+        /// </summary>            
+        private void StartApplication(object sender, System.EventArgs e)
+        {
+            _menu.Init();
         }
 
         /// <summary>
@@ -52,7 +58,7 @@ namespace Controller
         /// </summary>
         private void StartGame()
         {
-            _menu.DeInit();
+            //_menu.DeInit();
             _game.Init();
         }
 
@@ -65,20 +71,21 @@ namespace Controller
         }
 
         /// <summary>
-        /// Инициализация консольного варианта
+        /// Добавление нового рекорда
         /// </summary>
-        public void InitConsole()
+        private void RecordsEnter()
         {
-            View.View.InitConsole();
+            _game.DeInit();
+            _recordName.Init();
         }
 
         /// <summary>
-        /// Открыть меню игры
-        /// </summary>            
-        private void StartApplication(object sender, System.EventArgs e)
+        /// Открыть главное меню
+        /// </summary>
+        private void OpenMenu()
         {
-            //_menu.Init();     
-            _game.Init();
+            _recordName.DeInit();
+            _menu.Init();
         }
     }
 }

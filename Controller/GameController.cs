@@ -47,6 +47,11 @@ namespace Controller.Game
         private Dictionary<Keys, dKeyHandler> _keysDict;
 
         /// <summary>
+        /// Метод для завершения игры
+        /// </summary>
+        public static Model.ModelGame.dMoveObjects _endGameMethod;
+
+        /// <summary>
         /// Конструктор игрового контроллера
         /// </summary>
         public GameController()
@@ -54,7 +59,7 @@ namespace Controller.Game
             _gameModel = new Model.ModelGame();
             _viewGame = new View.Game.ViewGame(_gameModel);
             _gameModel.Move += DefineInteraction;
-
+            _gameModel.EndGameEvent += _endGameMethod;
         }
 
         /// <summary>
@@ -69,23 +74,23 @@ namespace Controller.Game
             _keysDict.Add(Keys.Left, _gameModel.MapLevel.MoveLeftRunner);
         }
 
-        /// <summary> 
-        /// ДеИнициализироват контроллелер
-        /// </summary>
-        public override void DeInit()
-        {
-            FormMain.KeyDown -= KeyDown;
-        }
-
         /// <summary>
-        /// Инициализироват контроллелер
+        /// Инициализироват контролллер
         /// </summary>
         public override void Init()
         {
             FormMain.KeyDown += KeyDown;
-            _viewGame.DrawGame();
-            _gameModel.Start();
+            _viewGame.Draw();
+            _gameModel.StartGame();
         }
+
+        /// <summary> 
+        /// ДеИнициализироват контролллер
+        /// </summary>
+        public override void DeInit()
+        {
+            FormMain.KeyDown -= KeyDown;
+        }       
 
         /// <summary>
         /// Запустить игру в игровом потоке

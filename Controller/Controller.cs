@@ -26,7 +26,6 @@ namespace Controller
             {
                 FormMain = new Form();
             }
-            //FormMain.KeyPreview = true;
         }
 
         /// <summary>

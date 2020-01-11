@@ -43,6 +43,10 @@ namespace Model.Game.Objects
             GameObject object1 = null;
             switch (parType)
             {
+                case "0":
+                    object1 = new NullObject(parX, parY);
+                    break;
+
                 case "1":
                     object1 = new Brick(parX, parY);
                     break;
