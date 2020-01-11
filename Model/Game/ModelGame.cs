@@ -54,11 +54,6 @@ namespace Model
         public event dCreateMap CreateMapLevel;
 
         /// <summary>
-        /// Поток игры
-        /// </summary>
-        private Thread _gameThread;
-
-        /// <summary>
         /// Создать модель игры
         /// </summary>
         public ModelGame()
