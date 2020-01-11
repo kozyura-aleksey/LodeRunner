@@ -52,8 +52,9 @@ namespace Model
         /// Обработчик фигуры
         /// </summary>
         public delegate void dFigureHandler();
+
         /// <summary>
-        /// Событие на движение фигуры
+        /// 
         /// </summary>
         public event dMoveObjects MoveEvent;
 
@@ -76,13 +77,11 @@ namespace Model
         }
 
         /// <summary>
-        /// Запустить игру в игровом потоке
+        /// Запустить игру
         /// </summary>
         public void Start()
         {
-            _gameThread = new Thread(StartGame);
-            _gameThread.Name = "LodeRunner";
-            _gameThread.Start();
+            StartGame();
         }
 
         /// <summary>

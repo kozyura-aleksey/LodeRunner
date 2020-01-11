@@ -64,10 +64,11 @@ namespace Controller.Game
         }
 
         /// <summary>
-        /// 
+        /// Инициализировать контроллер
         /// </summary>
-        public void A()
+        public override void Init()
         {
+            //KeyDownerController.KeyDowner.KeyDown += KeyDown;
             while (!Console.KeyAvailable)
             {
                 ConsoleKeyInfo keyInfo = Console.ReadKey();
@@ -87,15 +88,6 @@ namespace Controller.Game
                         break;
                 }
             }
-        }
-
-
-        /// <summary>
-        /// Инициализировать контроллер
-        /// </summary>
-        public override void Init()
-        {
-            KeyDownerController.KeyDowner.KeyDown += KeyDown;          
             _gameModel.Start();
             _viewGame.DrawConsole();
         }

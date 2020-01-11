@@ -39,6 +39,7 @@ namespace View.Game
             _modelGame = parModelGame;
             _modelGame.CreateMapLevel += CreateMap;
             _modelGame.Draw += DrawConsole;
+            //_modelGame.Move += DrawConsole;
             _mapLevel = new MapLevel();
             timer.Start();
             timer.Elapsed += ReDrawGame;  

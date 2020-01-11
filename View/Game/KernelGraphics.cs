@@ -129,7 +129,8 @@ namespace CLIViews
         /// <returns></returns>
         public void Printstrings(StringBuilder[] parStrings)
         {
-            //Console.CursorVisible = false;
+            Console.CursorVisible = false;
+            Console.BackgroundColor = ConsoleColor.Black;
             for (int i = 0; i < _buffer.Length; ++i)
             {
                 _buffer[i].Attributes = 32;
