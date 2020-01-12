@@ -138,7 +138,7 @@ namespace View.Game
         }
 
         /// <summary>
-        /// Нарисовать представление меню
+        /// Нарисовать представление игры
         /// </summary>
         public void Draw()
         {
@@ -146,6 +146,14 @@ namespace View.Game
             DrawGame();
             //_bufer.Render();
             //_bufer.Graphics.Dispose();
+            //_bufer.Dispose();
+        }
+
+        /// <summary>
+        /// Очистить представление игры
+        /// </summary>
+        public void Clear()
+        {
             _bufer.Dispose();
         }
 

@@ -90,6 +90,7 @@ namespace Controller.Game
         public override void DeInit()
         {
             FormMain.KeyDown -= KeyDown;
+            _viewGame.Clear();
         }       
 
         /// <summary>
