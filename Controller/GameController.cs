@@ -47,7 +47,7 @@ namespace Controller.Game
         {
             _gameModel = new Model.ModelGame();
             _viewGame = new View.Game.ViewGameConsole(_gameModel);
-            _gameModel.MoveEvent += DefineInteraction;
+            _gameModel.Move += DefineInteraction;
             _gameModel.EndGameEvent += _endGameMethod;
         }
 
@@ -68,28 +68,10 @@ namespace Controller.Game
         /// </summary>
         public override void Init()
         {
-            //KeyDownerController.KeyDowner.KeyDown += KeyDown;
-            while (!Console.KeyAvailable)
-            {
-                ConsoleKeyInfo keyInfo = Console.ReadKey();
-                switch (keyInfo.Key)
-                {
-                    case ConsoleKey.RightArrow:
-                        _gameModel.MapLevel.MoveRightRunner();
-                        break;
-                    case ConsoleKey.LeftArrow:
-                        _gameModel.MapLevel.MoveLeftRunner();
-                        break;
-                    case ConsoleKey.DownArrow:
-                        _gameModel.MapLevel.MoveDownRunner();
-                        break;
-                    case ConsoleKey.UpArrow:
-                        _gameModel.MapLevel.MoveUpRunner();
-                        break;
-                }
-            }
-            _gameModel.Start();
+            KeyDownerController.KeyDowner.KeyDown += KeyDown;          
             _viewGame.DrawConsole();
+            _viewGame.ReDrawInConsole();
+            _gameModel.Start();            
         }
 
         /// <summary> 
@@ -107,8 +89,8 @@ namespace Controller.Game
         /// </summary>       
         protected void KeyDown(ConsoleKey parKey)
         {
-            //lock (_gameModel)
-            //{
+            lock (_gameModel)
+            {
                 if (_keysDict != null)
                 {
                     if (_keysDict.ContainsKey(parKey))
@@ -116,7 +98,30 @@ namespace Controller.Game
                         _keysDict[parKey]();
                     }
                 }
-            //}
+            }
+        }
+
+        /// <summary>
+        /// Событие на нажатие кнопки мыши
+        /// </summary>                
+        private void GameItemChoice(ConsoleKey key)
+        {
+            if (key == ConsoleKey.RightWindows)
+            {
+                _gameModel.MapLevel.MoveRightRunner();
+            }
+            if (key == ConsoleKey.LeftArrow)
+            {
+                _gameModel.MapLevel.MoveLeftRunner();
+            }
+            if (key == ConsoleKey.UpArrow)
+            {
+                _gameModel.MapLevel.MoveUpRunner();
+            }
+            if (key == ConsoleKey.DownArrow)
+            {
+                _gameModel.MapLevel.MoveDownRunner();
+            }
         }
     }
 }

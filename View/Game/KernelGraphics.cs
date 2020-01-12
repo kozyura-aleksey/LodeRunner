@@ -130,11 +130,12 @@ namespace CLIViews
         public void Printstrings(StringBuilder[] parStrings)
         {
             Console.CursorVisible = false;
+            ConsoleColor parColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
             for (int i = 0; i < _buffer.Length; ++i)
             {
-                _buffer[i].Attributes = 32;
-                _buffer[i].Char.AsciiChar = 22;
+                _buffer[i].Attributes = (short)parColor;
+                //_buffer[i].Char.AsciiChar = (byte)parColor;
             }
             for (int i = 0; i < Math.Min(parStrings.Length, _height); i++)
             {
@@ -150,7 +151,6 @@ namespace CLIViews
                     _buffer[i * _width + j].Char.AsciiChar = (byte)str[j];
                 }
             }
-            Flush();
         }
 
         /// <summary>

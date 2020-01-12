@@ -39,10 +39,7 @@ namespace View.Game
             _modelGame = parModelGame;
             _modelGame.CreateMapLevel += CreateMap;
             _modelGame.Draw += DrawConsole;
-            //_modelGame.Move += DrawConsole;
-            _mapLevel = new MapLevel();
-            timer.Start();
-            timer.Elapsed += ReDrawGame;  
+            _mapLevel = new MapLevel();       
         }
 
         /// <summary>
@@ -53,6 +50,15 @@ namespace View.Game
             _mapLevel = new MapLevel();
         }
         
+        /// <summary>
+        /// Перерисовка в консоли
+        /// </summary>
+        public void ReDrawInConsole()
+        {
+            timer.Start();
+            timer.Elapsed += ReDrawGame;
+        }
+
         /// <summary>
         /// Отрисовка в консоли
         /// </summary>

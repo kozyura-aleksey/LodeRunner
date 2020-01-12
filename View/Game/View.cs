@@ -27,7 +27,8 @@ namespace View.Game
         /// </summary>
         public void Hide()
         {
-            Field = new StringBuilder[1];
+            _kernelGraphics.Clear();
+            //Field = new StringBuilder[1];
             Render();
         }
 
@@ -37,7 +38,7 @@ namespace View.Game
         public void Render()
         {
             _kernelGraphics.Printstrings(Field);
-            //_kernelGraphics.Flush();
+            _kernelGraphics.Flush();
         }
     }
 }
