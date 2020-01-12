@@ -107,8 +107,8 @@ namespace Controller.Game
         /// </summary>       
         protected void KeyDown(ConsoleKey parKey)
         {
-            lock (_gameModel)
-            {
+            //lock (_gameModel)
+            //{
                 if (_keysDict != null)
                 {
                     if (_keysDict.ContainsKey(parKey))
@@ -116,7 +116,7 @@ namespace Controller.Game
                         _keysDict[parKey]();
                     }
                 }
-            }
+            //}
         }
     }
 }
