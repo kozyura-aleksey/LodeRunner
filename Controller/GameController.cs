@@ -81,6 +81,7 @@ namespace Controller.Game
         {
             FormMain.KeyDown += KeyDown;
             _viewGame.Draw();
+            _viewGame.ReDrawWithTimer();
             _gameModel.StartGame();
         }
 
@@ -98,9 +99,9 @@ namespace Controller.Game
         /// </summary>
         public void Start()
         {
-            _gameThread = new Thread(_viewGame.DrawGame);
-            _gameThread.Name = "LodeRunner";
-            _gameThread.Start();
+            //_gameThread = new Thread(_viewGame.DrawGame);
+            //_gameThread.Name = "LodeRunner";
+            //_gameThread.Start();
         }
 
         /// <summary>

@@ -41,6 +41,13 @@ namespace View.Game
             _modelGame = parModelGame;
             _modelGame.CreateMapLevel += CreateMap;
             _modelGame.Draw += DrawGame;
+        }
+
+        /// <summary>
+        /// Перерисовка по таймеру
+        /// </summary>
+        public void ReDrawWithTimer()
+        {
             timer.Start();
             timer.Tick += ReDrawGame;
         }
@@ -154,7 +161,7 @@ namespace View.Game
         /// </summary>
         public void Clear()
         {
-            _bufer.Dispose();
+            _bufer.Graphics.Clear(Color.Black);
         }
 
 
