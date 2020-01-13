@@ -61,6 +61,25 @@ namespace View.Game
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public void Clear()
+        {
+            _kernelGraphics.Clear();
+            ReDrawInConsoleStop();
+        }
+
+        /// <summary>
+        /// Останавливаем перерисовку
+        /// </summary>
+        public void ReDrawInConsoleStop()
+        {
+            timer.Stop();
+            timer.Elapsed -= ReDrawGame;
+        }
+
+
+        /// <summary>
         /// Отрисовка в консоли
         /// </summary>
         public void DrawConsole()

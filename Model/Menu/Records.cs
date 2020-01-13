@@ -60,7 +60,37 @@ namespace Model.Menu
         /// <returns>Получилось ли добавить</returns>
         public static bool AddRecord()
         {
-            return true;
+            bool exists = RecordsDict.ContainsKey(EnterNameString);
+            bool emptyName = EnterNameString == "";
+            bool pointLessZero = Model.Game.MapLevel.count < 0;
+            if (!exists && !pointLessZero && !emptyName)
+            {
+                int k = RecordsDict.Count;
+                for (int i = 0; i < _recordMoney.Count; i++)
+                {
+                    if (Model.Game.MapLevel.count > _recordMoney[i])
+                    {
+                        k = i;
+                        break;
+                    }
+                }
+                RecordNames.Insert(k, EnterNameString);
+                _recordMoney.Insert(k, Model.Game.MapLevel.count);
+                RecordsDict.Add(EnterNameString, Model.Game.MapLevel.count);
+                if (RecordsDict.Count >= MaxCountRecords)
+                {
+                    RecordsDict.Remove(RecordNames[MaxCountRecords - 1]);
+                    RecordNames.RemoveAt(MaxCountRecords - 1);
+                    _recordMoney.RemoveAt(MaxCountRecords - 1);
+                }
+                WriteFileFromRecords();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
         /// <summary>

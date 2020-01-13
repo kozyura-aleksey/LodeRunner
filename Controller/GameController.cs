@@ -80,7 +80,7 @@ namespace Controller.Game
         public override void DeInit()
         {
             KeyDownerController.KeyDowner.KeyDown -= KeyDown;
-            _viewGame.Hide();
+            _viewGame.Clear();
         }
 
 

@@ -46,15 +46,15 @@ namespace View.Menu
         /// <param name="parIndex">Индекс символа</param>
         private void DrawTextForButton(int parIndex)
         {
-            Field[1] = new StringBuilder(string.Format("{0,10} {1,-10}", "", "Game rules:"));
-            Field[2] = new StringBuilder(string.Format("{0,-30}", "Collect all the gold on the map  "));
-            Field[3] = new StringBuilder(string.Format("{0,-20}", "by moving the keys: 'up', 'down',"));
-            Field[4] = new StringBuilder(string.Format("{0,-20}", " 'right', 'left'."));
-            Field[5] = new StringBuilder(string.Format("{0,-20}", "You can also move along the"));
-            Field[6] = new StringBuilder(string.Format("{0,-20}", "ropes"));
-            Field[7] = new StringBuilder(string.Format("{0,-20}", "                                  "));
-            Field[8] = new StringBuilder(string.Format("{0,3} {1,-10}", "", "Press Enter to Start Game"));
-            Field[9] = new StringBuilder(string.Format("{0,3} {1,-10}", "", "Press Esc to Exit"));
+            Field[9] = new StringBuilder(string.Format("{0,10} {1,-10}", "", "Game rules:"));
+            Field[10] = new StringBuilder(string.Format("{0,-30}", "Collect all the gold on the map  "));
+            Field[11] = new StringBuilder(string.Format("{0,-20}", "by moving the keys: 'up', 'down',"));
+            Field[12] = new StringBuilder(string.Format("{0,-20}", " 'right', 'left'."));
+            Field[13] = new StringBuilder(string.Format("{0,-20}", "You can also move along the"));
+            Field[14] = new StringBuilder(string.Format("{0,-20}", "ropes"));
+            Field[15] = new StringBuilder(string.Format("{0,-20}", "                                  "));
+            Field[16] = new StringBuilder(string.Format("{0,3} {1,-10}", "", "Press Enter to Start Game"));
+            Field[17] = new StringBuilder(string.Format("{0,3} {1,-10}", "", "Press Esc to Exit"));
         }
 
         /// <summary>
@@ -63,8 +63,8 @@ namespace View.Menu
         private void DrawMenu()
         {
             DrawTitle();
-            //DrawRecords(1);
-            DrawTextForButton(9);
+            DrawRecords(1);
+            DrawTextForButton(9);        
         }
 
         /// <summary>
@@ -78,11 +78,11 @@ namespace View.Menu
             {
                 if (i >= count)
                 {
-                    Field[parIndex + i] = new StringBuilder(string.Format("{0,10} {1,10}", "----", "----"));
+                    Field[parIndex + i] = new StringBuilder(string.Format("{0,12} {1,10}", "----", "----"));
                 }
                 else
                 {
-                    Field[parIndex + i] = new StringBuilder(string.Format("{0,10} {1,10}", Records.RecordNames[i], Records.RecordsDict[Records.RecordNames[i]]));
+                    Field[parIndex + i] = new StringBuilder(string.Format("{0,12} {1,10}", Records.RecordNames[i], Records.RecordsDict[Records.RecordNames[i]]));
                 }
             }
         }
@@ -92,7 +92,7 @@ namespace View.Menu
         /// </summary>
         public void Draw()
         {
-            //Field = new StringBuilder[Records.MaxCountRecords + 20];
+            Field = new StringBuilder[Records.MaxCountRecords + 20];
             DrawMenu();
             Render();
         }        

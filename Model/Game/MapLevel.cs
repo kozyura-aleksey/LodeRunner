@@ -40,12 +40,12 @@ namespace Model.Game
         /// <summary>
         /// Выход по собиранию золота
         /// </summary>
-        private bool moveToFinalStairs = false;
+        private static bool moveToFinalStairs = true;
 
         /// <summary>
         /// Свойство для собирания золота
         /// </summary>
-        public bool MoveToFinalStairs { get => moveToFinalStairs; set => moveToFinalStairs = value; }
+        public static bool MoveToFinalStairs { get => moveToFinalStairs; set => moveToFinalStairs = value; }
 
 
         /// <summary>
@@ -445,9 +445,9 @@ namespace Model.Game
                 }
             }
             objects[index] = null;
-            if (count == CountLodes())
+            if (count == 6)
             {
-                moveToFinalStairs = true;
+                moveToFinalStairs = false;
                 //objects[573] = new Stairs(368, 80);
                 //objects[574] = new Stairs(368, 64);
                 //objects[575] = new Stairs(368, 48);
@@ -456,5 +456,15 @@ namespace Model.Game
                 //objects[578] = new Stairs(368, 0);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static bool isTrue()
+        {
+            return moveToFinalStairs;
+        }
+
     }
 }

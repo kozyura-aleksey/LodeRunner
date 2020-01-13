@@ -37,7 +37,7 @@ namespace View.Game
         /// </summary>
         public void Render()
         {
-            //_kernelGraphics.Clear();
+            _kernelGraphics.Clear();
             _kernelGraphics.Printstrings(Field);
             _kernelGraphics.Flush();
         }

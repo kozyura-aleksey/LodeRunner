@@ -66,7 +66,10 @@ namespace Model
         /// </summary>
         public void Start()
         {
-            StartGame();
+            _gameThread = new Thread(new ThreadStart(StartGame));
+            _gameThread.Name = "LodeRunner";
+            _gameThread.Start();
+            _gameThread.Priority = ThreadPriority.Highest;
         }
 
         /// <summary>
@@ -76,14 +79,12 @@ namespace Model
         {
             if (_mapLevel != null)
             {
-                if (MapLevel.count < 6)
+                while (MapLevel.isTrue())
                 {
-                    //OnCreateMapLevel();
-                    //OnDraw();
                     OnMove();
                 }
+                OnEndGameEvent();
             }
-            OnEndGameEvent();
         }
 
         /// <summary>
