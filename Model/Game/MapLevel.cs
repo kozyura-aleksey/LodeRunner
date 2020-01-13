@@ -438,13 +438,14 @@ namespace Model.Game
                     {
                         if ((objects[SearchNumberOfMan()].X == parOb.X) && (objects[SearchNumberOfMan()].Y == parOb.Y))
                         {
-                            count += 1;
-                            index = objects.IndexOf(parOb);                         
+                            count = count + 1;
+                            index = objects.IndexOf(parOb);
                         }
                     }
                 }
             }
             objects[index] = null;
+
             if (count == 6)
             {
                 moveToFinalStairs = false;
@@ -465,6 +466,5 @@ namespace Model.Game
         {
             return moveToFinalStairs;
         }
-
     }
 }

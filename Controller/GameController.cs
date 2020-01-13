@@ -69,8 +69,8 @@ namespace Controller.Game
         public override void Init()
         {
             KeyDownerController.KeyDowner.KeyDown += KeyDown;          
-            _viewGame.DrawConsole();
-            _viewGame.ReDrawInConsole();
+            //_viewGame.DrawConsole();
+            //_viewGame.ReDrawInConsole();
             _gameModel.Start();            
         }
 
@@ -98,29 +98,6 @@ namespace Controller.Game
                         _keysDict[parKey]();
                     }
                 }
-            }
-        }
-
-        /// <summary>
-        /// Событие на нажатие кнопки мыши
-        /// </summary>                
-        private void GameItemChoice(ConsoleKey key)
-        {
-            if (key == ConsoleKey.RightWindows)
-            {
-                _gameModel.MapLevel.MoveRightRunner();
-            }
-            if (key == ConsoleKey.LeftArrow)
-            {
-                _gameModel.MapLevel.MoveLeftRunner();
-            }
-            if (key == ConsoleKey.UpArrow)
-            {
-                _gameModel.MapLevel.MoveUpRunner();
-            }
-            if (key == ConsoleKey.DownArrow)
-            {
-                _gameModel.MapLevel.MoveDownRunner();
             }
         }
     }

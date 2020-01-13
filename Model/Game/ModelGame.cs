@@ -69,7 +69,7 @@ namespace Model
             _gameThread = new Thread(new ThreadStart(StartGame));
             _gameThread.Name = "LodeRunner";
             _gameThread.Start();
-            _gameThread.Priority = ThreadPriority.Highest;
+            _gameThread.Priority = ThreadPriority.Normal;
         }
 
         /// <summary>

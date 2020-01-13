@@ -66,7 +66,7 @@ namespace View.Game
         public void Clear()
         {
             _kernelGraphics.Clear();
-            ReDrawInConsoleStop();
+            //ReDrawInConsoleStop();
         }
 
         /// <summary>

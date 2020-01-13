@@ -29,7 +29,7 @@ namespace Controller
         {
             while (true)
             {
-                ConsoleKey key = Console.ReadKey(true).Key;
+                ConsoleKey key = Console.ReadKey().Key;
                 if (KeyDown != null)
                 {
                     KeyDown.Invoke(key);
