@@ -24,11 +24,6 @@ namespace Model
         public MapLevel MapLevel { get => _mapLevel; set => _mapLevel = value; }
 
         /// <summary>
-        /// Делегат на создание уровня
-        /// </summary>
-        public delegate void dCreateMap();
-
-        /// <summary>
         /// Делагат на движение
         /// </summary>
         public delegate void dMoveObjects();
@@ -46,17 +41,7 @@ namespace Model
         /// <summary>
         /// Событие на создание уровня
         /// </summary>
-        public event dCreateMap CreateMapLevel;
-
-        /// <summary>
-        /// Обработчик фигуры
-        /// </summary>
-        public delegate void dFigureHandler();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public event dMoveObjects MoveEvent;
+        public event dMoveObjects CreateMapLevel;
 
         /// <summary>
         /// 
@@ -91,10 +76,14 @@ namespace Model
         {
             if (_mapLevel != null)
             {
-                OnCreateMapLevel();
-                OnDraw();
-                OnMove();
+                if (MapLevel.count < 6)
+                {
+                    //OnCreateMapLevel();
+                    //OnDraw();
+                    OnMove();
+                }
             }
+            OnEndGameEvent();
         }
 
         /// <summary>
@@ -126,6 +115,17 @@ namespace Model
             if (CreateMapLevel != null)
             {
                 CreateMapLevel.Invoke();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void OnEndGameEvent()
+        {
+            if (EndGameEvent != null)
+            {
+                EndGameEvent.Invoke();
             }
         }
     }

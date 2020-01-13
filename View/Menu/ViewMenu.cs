@@ -92,7 +92,7 @@ namespace View.Menu
         /// </summary>
         public void Draw()
         {
-            Field = new StringBuilder[Records.MaxCountRecords + 20];
+            //Field = new StringBuilder[Records.MaxCountRecords + 20];
             DrawMenu();
             Render();
         }        

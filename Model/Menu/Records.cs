@@ -58,10 +58,10 @@ namespace Model.Menu
         /// <param name="parName">Имя игрока</param>
         /// <param name="parMoney">Количество очков</param>
         /// <returns>Получилось ли добавить</returns>
-        //public static bool AddRecord()
-        //{
-
-        //}
+        public static bool AddRecord()
+        {
+            return true;
+        }
 
         /// <summary>
         /// Добавление строки к строке имени игрока

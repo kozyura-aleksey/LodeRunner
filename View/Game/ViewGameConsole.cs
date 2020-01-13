@@ -39,6 +39,7 @@ namespace View.Game
             _modelGame = parModelGame;
             _modelGame.CreateMapLevel += CreateMap;
             _modelGame.Draw += DrawConsole;
+            _modelGame.Move += DrawConsole;
             _mapLevel = new MapLevel();       
         }
 
@@ -64,7 +65,7 @@ namespace View.Game
         /// </summary>
         public void DrawConsole()
         {          
-            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects)
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects.ToArray())
             {
                 if (obj != null)
                 {
@@ -97,9 +98,9 @@ namespace View.Game
                     {
                         _kernelGraphics.PrintString((short)obj.X, (short)obj.Y, "|", ConsoleColor.Gray);
                     }
-                }            
+                }        
             }
-            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects)
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects.ToArray())
             {
                 if (obj != null)
                 {

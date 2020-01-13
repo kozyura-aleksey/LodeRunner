@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Menu;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,28 @@ namespace View.Menu
     /// </summary>
     public class ViewRecords : View.Game.View
     {
+        /// <summary>
+        /// Модель рекордов
+        /// </summary>
+        private ModelRecords _model;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ViewRecords(ModelRecords parModel)
+        {
+            _model = parModel;
+            _model.gerRecords().ChangeNameEvent += Draw;
+            Field = new StringBuilder[1];
+        }
+
+        /// <summary>
+        /// Нарисовать элемент ввода имени
+        /// </summary>
+        public void Draw()
+        {
+            Field[0] = new StringBuilder("Enter name: " + Records.EnterNameString);
+            Render();
+        }
     }
 }

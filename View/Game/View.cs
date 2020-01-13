@@ -28,8 +28,8 @@ namespace View.Game
         public void Hide()
         {
             _kernelGraphics.Clear();
-            //Field = new StringBuilder[1];
-            Render();
+            Field = new StringBuilder[1];
+            _kernelGraphics.Printstrings(Field);
         }
 
         /// <summary>
@@ -37,6 +37,7 @@ namespace View.Game
         /// </summary>
         public void Render()
         {
+            //_kernelGraphics.Clear();
             _kernelGraphics.Printstrings(Field);
             _kernelGraphics.Flush();
         }
