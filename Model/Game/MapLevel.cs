@@ -35,17 +35,7 @@ namespace Model.Game
         /// <summary>
         /// Массив линий
         /// </summary>
-        private static string[] lines;
-
-        /// <summary>
-        /// Выход из игры
-        /// </summary>
-        private bool moveToFinalStairs = false;
-
-        /// <summary>
-        /// Свойство для переменной выхода из игры
-        /// </summary>
-        public bool MoveToFinalStairs { get => moveToFinalStairs; set => moveToFinalStairs = value; }
+        private static string[] lines;       
 
         /// <summary>
         /// Список объектов соответственно массиву локаторов
@@ -56,6 +46,16 @@ namespace Model.Game
         /// Свойство для списка объектов
         /// </summary>
         public static List<GameObject> Objects { get => objects; set => objects = value; }
+
+        /// <summary>
+        /// Выход из игры
+        /// </summary>
+        private static bool moveToFinalStairs = false;
+
+        /// <summary>
+        /// Свойство для переменной выхода из игры
+        /// </summary>
+        public static bool MoveToFinalStairs { get => moveToFinalStairs; set => moveToFinalStairs = value; }
 
         /// <summary>
         /// 
@@ -422,7 +422,7 @@ namespace Model.Game
         /// <summary>
         /// Количество сундуков
         /// </summary>
-        private int count = 0;
+        public static int count;
 
         /// <summary>
         /// Подсчет сундуков
@@ -462,16 +462,18 @@ namespace Model.Game
                     {                                              
                         if ((objects[SearchNumberOfMan()].X == parOb.X) && (objects[SearchNumberOfMan()].Y == parOb.Y))
                         {
-                            count += 1;
-                            index = objects.IndexOf(parOb);                         
+                            count = count + 1;
+                            index = objects.IndexOf(parOb);                           
                         }                       
                     }               
                 }
             }
             objects[index] = null;
-            if (count == CountLodes()) 
+
+            if (count == 6)
             {
-                moveToFinalStairs = true;
+                MoveToFinalStairs = true;
+                //break;
                 //objects[573] = new SubStairs(368, 80);
                 //objects[574] = new SubStairs(368, 64);
                 //objects[575] = new SubStairs(368, 48);

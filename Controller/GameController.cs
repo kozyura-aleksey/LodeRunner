@@ -83,6 +83,7 @@ namespace Controller.Game
             _viewGame.Draw();
             _viewGame.ReDrawWithTimer();
             _gameModel.StartGame();
+            //_gameModel.StartGame2();
         }
 
         /// <summary> 

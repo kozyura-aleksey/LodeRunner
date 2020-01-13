@@ -43,7 +43,7 @@ namespace View.Menu
             _bufer.Graphics.DrawLine(new Pen(new SolidBrush(Color.White)), 0, 70, View.viewform.ClientRectangle.Height, 70);
             _bufer.Graphics.DrawString("Collect all the gold on the map by moving the keys: 'up', ", new Font("Calibri", 15), new SolidBrush(Color.White), 10, View.viewform.ClientRectangle.Height - 440);
             _bufer.Graphics.DrawString("'down', 'right', 'left'.", new Font("Calibri", 15), new SolidBrush(Color.White), 10, View.viewform.ClientRectangle.Height - 410);
-            _bufer.Graphics.DrawString("You can also move along the ropes", new Font("Calibri", 15), new SolidBrush(Color.White), 10, View.viewform.ClientRectangle.Height - 380);
+            _bufer.Graphics.DrawString("You can also move along the ropes.", new Font("Calibri", 15), new SolidBrush(Color.White), 10, View.viewform.ClientRectangle.Height - 380);
             _bufer.Graphics.DrawString("Press Enter to Start Game", new Font("Calibri", 18), new SolidBrush(Color.White), 10, View.viewform.ClientRectangle.Height - 300);
             _bufer.Graphics.DrawString("Press Esc to Exit", new Font("Calibri", 18), new SolidBrush(Color.White), 10, View.viewform.ClientRectangle.Height - 270);
         }

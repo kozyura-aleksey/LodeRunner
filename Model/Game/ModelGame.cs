@@ -24,11 +24,6 @@ namespace Model
         public MapLevel MapLevel { get => _mapLevel; set => _mapLevel = value; }
 
         /// <summary>
-        /// Делегат на создание уровня
-        /// </summary>
-        public delegate void dCreateMap();
-
-        /// <summary>
         /// Делагат на движение
         /// </summary>
         public delegate void dMoveObjects();
@@ -51,8 +46,14 @@ namespace Model
         /// <summary>
         /// Событие на создание уровня
         /// </summary>
-        public event dCreateMap CreateMapLevel;
+        public event dMoveObjects CreateMapLevel;
 
+        /// <summary>
+        /// Игровой поток
+        /// </summary>
+        private Thread _gameThread;
+
+       
         /// <summary>
         /// Создать модель игры
         /// </summary>
@@ -62,14 +63,36 @@ namespace Model
         }
 
         /// <summary>
+        /// Запустить игру в игровом потоке
+        /// </summary>
+        public void Start()
+        {
+            _gameThread = new Thread(new ThreadStart(StartGame));
+            _gameThread.Name = "Game";
+            _gameThread.Start();
+            _gameThread.Priority = ThreadPriority.Highest;
+        }
+
+        /// <summary>
         /// Начать игру
         /// </summary>
         public void StartGame()
         {
             if (_mapLevel != null)
             {
-                OnMove();
-            }
+                if (MapLevel.count < 6)
+                {
+                    OnMove();
+                }
+            }       
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void StartGame2()
+        {
+            OnEndGameEvent();
         }
 
         /// <summary>
@@ -102,6 +125,17 @@ namespace Model
             if (CreateMapLevel != null)
             {
                 CreateMapLevel.Invoke();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void OnEndGameEvent()
+        {
+            if (EndGameEvent != null)
+            {
+                EndGameEvent.Invoke();
             }
         }
     }
