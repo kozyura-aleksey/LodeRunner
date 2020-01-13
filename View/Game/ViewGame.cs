@@ -160,8 +160,15 @@ namespace View.Game
         public void Clear()
         {
             _bufer.Graphics.Clear(Color.Black);
-            //_bufer.Render();
-            _bufer.Dispose();
+            _bufer.Render();
+            ReDrawStop();
+        }
+
+        /// <summary>
+        /// Останавливаем перерисовку
+        /// </summary>
+        public void ReDrawStop()
+        {
             timer.Stop();
             timer.Tick -= ReDrawGame;
         }

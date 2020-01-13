@@ -19,8 +19,6 @@ namespace Controller
         /// </summary>
         private RecordController _recordName;
 
-        private Model.ModelGame _gameModel = new Model.ModelGame();
-
         /// <summary>
         /// Контроллер меню
         /// </summary>

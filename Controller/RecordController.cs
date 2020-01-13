@@ -86,12 +86,12 @@ namespace Controller
         /// </summary>                         
         public void DeinitAlphabetDown(string parString)
         {
-            //if (Model.Menu.Records.AddRecord())
-            //{
+            if (Model.Menu.Records.AddRecord())
+            {
                 DeInit();
                 Model.Menu.Records.EnterNameString = "";
                 OnEnd();
-            //}
+            }
         }
 
         /// <summary>

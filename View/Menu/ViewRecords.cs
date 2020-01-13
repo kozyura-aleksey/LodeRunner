@@ -30,12 +30,12 @@ namespace View.Menu
         public void Draw()
         {
             _bufer.Graphics.Clear(Color.Black);
-            _bufer.Graphics.DrawString("Enter name: ", new Font("Calibri", 20), new SolidBrush(Color.White), 80, 80);
-            _bufer.Graphics.FillRectangle(new SolidBrush(Color.Black), View.viewform.ClientRectangle.Width / 2 - 200 / 2,
-                View.viewform.ClientRectangle.Height / 4 - 50 / 2, 200, 50);
-            _bufer.Graphics.DrawRectangle(new Pen(Color.White), View.viewform.ClientRectangle.Width / 2 - 200 / 2,
-                View.viewform.ClientRectangle.Height / 4 - 50 / 2, 200, 50);
-            _bufer.Graphics.DrawString(Records.EnterNameString, new Font("Calibri", 20), new SolidBrush(Color.White),
+            _bufer.Graphics.DrawString("Enter name: ", new Font("Times New Roman", 20), new SolidBrush(Color.White), 60, 60);
+            _bufer.Graphics.FillRectangle(new SolidBrush(Color.Black), View.viewform.ClientRectangle.Width / 2 - 300 / 2,
+                View.viewform.ClientRectangle.Height / 4 - 50 / 2, 300, 50);
+            _bufer.Graphics.DrawRectangle(new Pen(Color.White), View.viewform.ClientRectangle.Width / 2 - 300 / 2,
+                View.viewform.ClientRectangle.Height / 4 - 50 / 2, 300, 50);
+            _bufer.Graphics.DrawString(Records.EnterNameString, new Font("Times New Roman", 20), new SolidBrush(Color.White),
                 View.viewform.ClientRectangle.Width / 2 - 200 / 2,
                 View.viewform.ClientRectangle.Height / 4 - 50 / 2 + 10);
             Render();
