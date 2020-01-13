@@ -42,6 +42,7 @@ namespace View.Game
             _modelGame.CreateMapLevel += CreateMap;
             _modelGame.Draw += DrawGame;
             _modelGame.Move += DrawGame;
+            _mapLevel = new MapLevel();
         }
 
         /// <summary>
@@ -150,7 +151,6 @@ namespace View.Game
         /// </summary>
         public void Draw()
         {
-            _bufer.Graphics.Clear(Color.Black);
             DrawGame();
         }
 
@@ -159,9 +159,8 @@ namespace View.Game
         /// </summary>
         public void Clear()
         {
-            _bufer.Graphics.Clear(Color.Black);
+            _bufer.Graphics.Clear(viewform.BackColor);
             _bufer.Render();
-            ReDrawStop();
         }
 
         /// <summary>
@@ -170,9 +169,8 @@ namespace View.Game
         public void ReDrawStop()
         {
             timer.Stop();
-            timer.Tick -= ReDrawGame;
+            timer.Tick -= ReDrawGame;                  
         }
-
 
         /// <summary>
         /// Перерисовка уровня

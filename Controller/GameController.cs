@@ -79,8 +79,6 @@ namespace Controller.Game
         public override void Init()
         {
             FormMain.KeyDown += KeyDown;
-            _viewGame.Draw();
-            _viewGame.ReDrawWithTimer();
             _gameModel.Start();
         }
 
@@ -90,6 +88,7 @@ namespace Controller.Game
         public override void DeInit()
         {
             FormMain.KeyDown -= KeyDown;
+            _viewGame.ReDrawStop();
             _viewGame.Clear();
         }       
 

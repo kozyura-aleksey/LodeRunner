@@ -122,7 +122,7 @@ namespace Model
         }
 
         /// <summary>
-        /// 
+        /// Запуск события на конец игры
         /// </summary>
         public void OnEndGameEvent()
         {

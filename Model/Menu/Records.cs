@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -135,8 +136,42 @@ namespace Model.Menu
         /// </summary>
         public static void ReadFileToRecords()
         {
-            
-            
+            FileStream recordFile = new FileStream("..\\records.txt", FileMode.OpenOrCreate, FileAccess.Read);
+            StreamReader reader = new StreamReader(recordFile);
+            List<string> lines = new List<string>();
+            try
+            {
+                if (!(recordFile.Length == 0))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        lines.Add(reader.ReadLine());
+                    }
+                    for (int i = 0; i < lines.Count; i++)
+                    {
+                        string name = "";
+                        string money = "";
+                        int j = 0;
+                        while (lines[i][j] != '|' && j < lines[i].Length)
+                        {
+                            name += lines[i][j];
+                            j++;
+                        };
+                        RecordNames.Add(name);
+                        for (int k = j + 1; k < lines[i].Length; k++)
+                        {
+                            money += lines[i][k];
+                        }
+                        _recordMoney.Add(Convert.ToInt16(money));
+                        RecordsDict.Add(RecordNames[i], Convert.ToInt16(money));
+                    }
+                }
+            }
+            finally
+            {
+                reader.Close();
+                recordFile.Close();
+            }
         }
 
         /// <summary>
@@ -144,7 +179,19 @@ namespace Model.Menu
         /// </summary>
         public static void WriteFileFromRecords()
         {
-            
+            FileStream recordFile = new FileStream("..\\records.txt", FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(recordFile);
+            try
+            {
+                for (int i = 0; i < RecordsDict.Count; i++)
+                {
+                    writer.WriteLine(RecordNames[i] + '|' + RecordsDict[RecordNames[i]]);
+                }
+            }
+            finally
+            {
+                writer.Close();
+            }
         }
     }
 }
