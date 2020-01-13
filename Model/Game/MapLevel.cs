@@ -50,7 +50,7 @@ namespace Model.Game
         /// <summary>
         /// Выход из игры
         /// </summary>
-        private static bool moveToFinalStairs = false;
+        private static bool moveToFinalStairs = true;
 
         /// <summary>
         /// Свойство для переменной выхода из игры
@@ -429,19 +429,19 @@ namespace Model.Game
         /// </summary>
         public int CountLodes()
         {
-            {
-                foreach (Model.Game.Objects.GameObject parOb in objects)
-                {
-                    if (parOb != null)
-                    {
-                        if (parOb.GetType() == typeof(Gold))
-                        {
-                            count += 1;
-                        }
-                    }
-                }
-                return count;
-            }
+           // {
+                //foreach (Model.Game.Objects.GameObject parOb in objects)
+                //{
+                 //   if (parOb != null)
+                   // {
+                     //   if (parOb.GetType() == typeof(Gold))
+                       // {
+                        //    count += 1;
+                        //}
+                   // }
+               // }
+               return count;
+            //}
         }      
 
         /// <summary>
@@ -472,7 +472,7 @@ namespace Model.Game
 
             if (count == 6)
             {
-                MoveToFinalStairs = true;
+                MoveToFinalStairs = false;
                 //break;
                 //objects[573] = new SubStairs(368, 80);
                 //objects[574] = new SubStairs(368, 64);
@@ -482,5 +482,16 @@ namespace Model.Game
                 //objects[578] = new SubStairs(368, 0);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static bool isTrue()
+        {
+            return moveToFinalStairs;
+        }
+
+
     }
 }

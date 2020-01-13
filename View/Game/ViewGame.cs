@@ -41,6 +41,7 @@ namespace View.Game
             _modelGame = parModelGame;
             _modelGame.CreateMapLevel += CreateMap;
             _modelGame.Draw += DrawGame;
+            _modelGame.Move += DrawGame;
         }
 
         /// <summary>
@@ -67,7 +68,7 @@ namespace View.Game
         public void DrawGame()
         {
             BufferedGraphics _bufer = BufferedGraphicsManager.Current.Allocate(viewform.CreateGraphics(), viewform.ClientRectangle);
-            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects)
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects.ToArray())
             {
                 Image image = null;
                 if (obj != null)
@@ -120,7 +121,7 @@ namespace View.Game
                     _bufer.Graphics.DrawImage(image, 0, 0);
                 }
             }
-            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects)
+            foreach (Model.Game.Objects.GameObject obj in MapLevel.Objects.ToArray())
             {
                 Image image = null;
                 if (obj != null)
@@ -151,9 +152,6 @@ namespace View.Game
         {
             _bufer.Graphics.Clear(Color.Black);
             DrawGame();
-            //_bufer.Render();
-            //_bufer.Graphics.Dispose();
-            //_bufer.Dispose();
         }
 
         /// <summary>
@@ -162,6 +160,10 @@ namespace View.Game
         public void Clear()
         {
             _bufer.Graphics.Clear(Color.Black);
+            //_bufer.Render();
+            _bufer.Dispose();
+            timer.Stop();
+            timer.Tick -= ReDrawGame;
         }
 
 

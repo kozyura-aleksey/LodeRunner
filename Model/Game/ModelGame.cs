@@ -68,7 +68,7 @@ namespace Model
         public void Start()
         {
             _gameThread = new Thread(new ThreadStart(StartGame));
-            _gameThread.Name = "Game";
+            _gameThread.Name = "LodeRunner";
             _gameThread.Start();
             _gameThread.Priority = ThreadPriority.Highest;
         }
@@ -80,19 +80,12 @@ namespace Model
         {
             if (_mapLevel != null)
             {
-                if (MapLevel.count < 6)
+                while (MapLevel.isTrue())
                 {
                     OnMove();
                 }
+                OnEndGameEvent();
             }       
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void StartGame2()
-        {
-            OnEndGameEvent();
         }
 
         /// <summary>

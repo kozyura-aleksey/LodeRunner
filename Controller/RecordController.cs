@@ -54,7 +54,8 @@ namespace Controller
         /// </summary>
         public override void DeInit()
         {
-
+            FormMain.KeyDown -= EnterName;
+            _viewRecords.Hide();
         }
 
         /// <summary>
@@ -62,7 +63,8 @@ namespace Controller
         /// </summary>
         public override void Init()
         {
-
+            FormMain.KeyDown += EnterName;
+            _viewRecords.Draw();
         }
 
         /// <summary>
@@ -103,5 +105,18 @@ namespace Controller
             }
         }
 
+        /// <summary>
+        /// Ввод имени
+        /// </summary>              
+        private void EnterName(object sender, KeyEventArgs e)
+        {
+            if (_keysDict != null)
+            {
+                if (_keysDict.ContainsKey(e.KeyData))
+                {
+                    _keysDict[e.KeyData](e.KeyData.ToString());
+                }
+            }
+        }
     }
 }

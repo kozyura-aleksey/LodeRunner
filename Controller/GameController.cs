@@ -30,7 +30,6 @@ namespace Controller.Game
         /// </summary>
         public Thread _gameThread;
 
-
         /// <summary>
         /// Уровень игры
         /// </summary>
@@ -82,8 +81,7 @@ namespace Controller.Game
             FormMain.KeyDown += KeyDown;
             _viewGame.Draw();
             _viewGame.ReDrawWithTimer();
-            _gameModel.StartGame();
-            //_gameModel.StartGame2();
+            _gameModel.Start();
         }
 
         /// <summary> 
@@ -94,16 +92,6 @@ namespace Controller.Game
             FormMain.KeyDown -= KeyDown;
             _viewGame.Clear();
         }       
-
-        /// <summary>
-        /// Запустить игру в игровом потоке
-        /// </summary>
-        public void Start()
-        {
-            //_gameThread = new Thread(_viewGame.DrawGame);
-            //_gameThread.Name = "LodeRunner";
-            //_gameThread.Start();
-        }
 
         /// <summary>
         /// Обработка события нажатия кнопки
