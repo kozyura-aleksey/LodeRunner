@@ -447,9 +447,14 @@ namespace Model.Game
         /// </summary>
         public static int Index { get => index; set => index = value; }
 
-
+        /// <summary>
+        /// Перемнная для рекорда
+        /// </summary>
         private static int record;
 
+        /// <summary>
+        /// Свойство для переменной рекордов
+        /// </summary>
         public static int Record { get => record; set => record = value; }
 
         /// <summary>
