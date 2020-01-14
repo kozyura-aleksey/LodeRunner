@@ -94,7 +94,7 @@ namespace Model
         public void ResetGame()
         {
             MapLevel.GetMapLevel();
-            MapLevel.count = 0;
+            MapLevel.Count = 0;
             MapLevel.MoveToFinalStairs = true;
             MapLevel.Index = 0;
         }

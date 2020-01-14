@@ -63,21 +63,21 @@ namespace Model.Menu
         {
             bool exists = RecordsDict.ContainsKey(EnterNameString);
             bool emptyName = EnterNameString == "";
-            bool pointLessZero = Model.Game.MapLevel.count < 0;
+            bool pointLessZero = Model.Game.MapLevel.Count < 0;
             if (!exists && !pointLessZero && !emptyName)
             {
                 int k = RecordsDict.Count;
                 for (int i = 0; i < _recordMoney.Count; i++)
                 {
-                    if (Model.Game.MapLevel.count > _recordMoney[i])
+                    if (Model.Game.MapLevel.Count > _recordMoney[i])
                     {
                         k = i;
                         break;
                     }
                 }
                 RecordNames.Insert(k, EnterNameString);
-                _recordMoney.Insert(k, Model.Game.MapLevel.count);
-                RecordsDict.Add(EnterNameString, Model.Game.MapLevel.count);
+                _recordMoney.Insert(k, Model.Game.MapLevel.Count);
+                RecordsDict.Add(EnterNameString, Model.Game.MapLevel.Count);
                 if (RecordsDict.Count >= MaxCountRecords)
                 {
                     RecordsDict.Remove(RecordNames[MaxCountRecords - 1]);

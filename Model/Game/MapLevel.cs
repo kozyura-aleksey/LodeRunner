@@ -113,10 +113,10 @@ namespace Model.Game
         /// <returns></returns>
         public static MapLevel GetMapLevel()
         {
-            if (mapLevel == null)
-            {
+            //if (mapLevel == null)
+            //{
                 mapLevel = new MapLevel();
-            }
+            //}
             return mapLevel;
         }
 
@@ -398,9 +398,12 @@ namespace Model.Game
         /// <summary>
         /// Количество сундуков
         /// </summary>
-        public static int count = 0;
+        private static int count = 0;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        public static int Count { get => count; set => count = value; }
 
         /// <summary>
         /// Подсчет сундуков
@@ -454,7 +457,7 @@ namespace Model.Game
             }
             objects[index] = null;
 
-            if (count == 6)
+            if (count == CountLodes())
             {
                 moveToFinalStairs = false;
                 //objects[573] = new Stairs(368, 80);
