@@ -410,7 +410,12 @@ namespace Model.Game
         /// <summary>
         /// Количество сундуков
         /// </summary>
-        public static int count;
+        private static int count;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static int Count { get => count; set => count = value; }
 
         /// <summary>
         /// Подсчет сундуков
