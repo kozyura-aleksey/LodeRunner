@@ -20,7 +20,7 @@ namespace Model.Game
         /// <summary>
         /// Экземпляр уровня
         /// </summary>
-        private static MapLevel mapLevel;
+        private static MapLevel mapLevel = null;
 
         /// <summary>
         /// Массив линий
@@ -342,6 +342,14 @@ namespace Model.Game
         private int YY = 0;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public void Landing()
+        {
+            objects[SearchNumberOfMan()].Y = YY - STEP;
+        }
+        
+        /// <summary>
         /// Гравитация
         /// </summary>
         /// <returns></returns>
@@ -392,13 +400,13 @@ namespace Model.Game
                     }
                 }
             }
-            objects[SearchNumberOfMan()].Y = YY - STEP;
+            Landing();
         }
 
         /// <summary>
         /// Количество сундуков
         /// </summary>
-        private static int count = 0;
+        private static int count;
 
         /// <summary>
         /// 
