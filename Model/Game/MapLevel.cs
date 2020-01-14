@@ -400,6 +400,8 @@ namespace Model.Game
         /// </summary>
         public static int count = 0;
 
+
+
         /// <summary>
         /// Подсчет сундуков
         /// </summary>
@@ -423,7 +425,13 @@ namespace Model.Game
         /// <summary>
         /// Номер сундука
         /// </summary>
-        private int index = 0;
+        private static int index = 0;
+
+        /// <summary>
+        /// Свойство для собирания золота
+        /// </summary>
+        public static int Index { get => index; set => index = value; }
+
 
         /// <summary>
         /// Собирание сундуков

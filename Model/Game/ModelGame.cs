@@ -82,10 +82,10 @@ namespace Model
                 while (MapLevel.isTrue())
                 {
                     OnMove();
-                }           
+                }
+                ResetGame();
                 OnEndGameEvent();
             }
-            ResetGame();
         }
 
         /// <summary>
@@ -93,7 +93,10 @@ namespace Model
         /// </summary>
         public void ResetGame()
         {
-            _mapLevel = new MapLevel();
+            MapLevel.GetMapLevel();
+            MapLevel.count = 0;
+            MapLevel.MoveToFinalStairs = true;
+            MapLevel.Index = 0;
         }
 
         /// <summary>
