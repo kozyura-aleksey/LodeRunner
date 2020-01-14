@@ -28,6 +28,12 @@ namespace Model.Game
         private const int STEP = 16;
 
         /// <summary>
+        /// Свойство для списка объектов
+        /// </summary>
+        public static int step { get => STEP; set => step = value; }
+
+
+        /// <summary>
         /// Массив локаторов
         /// </summary>
         private static String[,] num;
@@ -181,17 +187,6 @@ namespace Model.Game
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        public void GravitatioInThread() 
-        {
-            _gameThread = new Thread(Landing);
-            _gameThread.Name = "LodeRunner";
-            _gameThread.Start();
-            Thread.Sleep(300);
-        }
-
-        /// <summary>
         /// Проверка ситуации вверх
         /// </summary>
         /// <returns></returns>
@@ -318,9 +313,7 @@ namespace Model.Game
                             loc = false;
                             break;
                         }
-                    }
-
-                    
+                    }              
                 }
             }
             return loc;
@@ -429,19 +422,19 @@ namespace Model.Game
         /// </summary>
         public int CountLodes()
         {
-           // {
-                //foreach (Model.Game.Objects.GameObject parOb in objects)
-                //{
-                 //   if (parOb != null)
-                   // {
-                     //   if (parOb.GetType() == typeof(Gold))
-                       // {
-                        //    count += 1;
-                        //}
-                   // }
-               // }
+            {
+                foreach (Model.Game.Objects.GameObject parOb in objects)
+                {
+                    if (parOb != null)
+                    {
+                        if (parOb.GetType() == typeof(Gold))
+                        {
+                            count += 1;
+                        }
+                    }
+                }
                return count;
-            //}
+            }
         }      
 
         /// <summary>
