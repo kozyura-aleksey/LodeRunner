@@ -84,8 +84,20 @@ namespace Model
                 {
                     OnMove();
                 }
+                ResetGame();
                 OnEndGameEvent();
-            }       
+            }
+        }
+
+        /// <summary>
+        /// Пересоздать игру
+        /// </summary>
+        public void ResetGame()
+        {
+            MapLevel.GetMapLevel();
+            MapLevel.count = 0;
+            MapLevel.MoveToFinalStairs = true;
+            MapLevel.Index = 0;
         }
 
         /// <summary>

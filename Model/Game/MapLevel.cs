@@ -32,7 +32,6 @@ namespace Model.Game
         /// </summary>
         public static int step { get => STEP; set => step = value; }
 
-
         /// <summary>
         /// Массив локаторов
         /// </summary>
@@ -63,10 +62,6 @@ namespace Model.Game
         /// </summary>
         public static bool MoveToFinalStairs { get => moveToFinalStairs; set => moveToFinalStairs = value; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private Thread _gameThread;
 
         /// <summary>
         /// Создать поле игры
@@ -124,10 +119,10 @@ namespace Model.Game
         /// <returns></returns>
         public static MapLevel GetMapLevel()
         {
-            if (mapLevel == null)
-            {
+            //if (mapLevel == null)
+            //{
                 mapLevel = new MapLevel();
-            }
+            //}
             return mapLevel;
         }
 
@@ -440,7 +435,12 @@ namespace Model.Game
         /// <summary>
         /// Номер сундука
         /// </summary>
-        private int index = 0;
+        private static int index = 0;
+
+        /// <summary>
+        /// Свойство для списка объектов
+        /// </summary>
+        public static int Index { get => index; set => index = value; }
 
         /// <summary>
         /// Собирание сундуков

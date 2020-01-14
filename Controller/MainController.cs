@@ -39,9 +39,9 @@ namespace Controller
             Controller.FormMain.Shown += StartApplication;      
             _menu = new MenuController();
             _menu.StartEvent += StartGame;
-            GameController._endGameMethod = RecordsEnter;
-            _game = new GameController();
+            GameController._endGameMethod = RecordsEnter;          
             _recordName = new RecordController();
+            _game = new GameController();
             _recordName.EndEvent += OpenMenu;
         }
 
