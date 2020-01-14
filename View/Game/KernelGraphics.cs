@@ -6,6 +6,9 @@ using System.Text;
 
 namespace CLIViews
 {
+    /// <summary>
+    /// Класс - быстрая буферизация
+    /// </summary>
     public class KernelGraphics
     {
         [StructLayout(LayoutKind.Sequential)]
@@ -58,7 +61,7 @@ namespace CLIViews
         private static KernelGraphics _instance = null;
 
         /// <summary>
-        /// 
+        /// Singleton
         /// </summary>
         public static KernelGraphics Instance
         {
@@ -72,6 +75,9 @@ namespace CLIViews
             }
         }
 
+        /// <summary>
+        /// Создать KernelGraphics
+        /// </summary>
         private KernelGraphics()
         {
             _width = 32;
@@ -86,6 +92,11 @@ namespace CLIViews
             Clear();
         }
 
+        /// <summary>
+        /// Очищение
+        /// </summary>
+        /// <param name="parSymbol"></param>
+        /// <param name="parColor"></param>
         public void Fill(char parSymbol, ConsoleColor parColor = ConsoleColor.White)
         {
             byte symbolByte = Console.OutputEncoding.GetBytes(new char[] { parSymbol })[0];
@@ -97,13 +108,16 @@ namespace CLIViews
             }
         }
 
+        /// <summary>
+        /// Очистить
+        /// </summary>
         public void Clear()
         {
             Fill(BLANK_SYMBOL);
         }
 
         /// <summary>
-        /// 
+        /// Нарисовать представление
         /// </summary>
         /// <param name="parX"></param>
         /// <param name="parY"></param>
@@ -154,7 +168,7 @@ namespace CLIViews
         }
 
         /// <summary>
-        /// 
+        /// Закинуть в bufer
         /// </summary>
         /// <param name="parClearBuffer"></param>
         /// <returns></returns>

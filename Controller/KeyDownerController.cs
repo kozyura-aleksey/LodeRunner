@@ -13,9 +13,10 @@ namespace Controller
     public class KeyDownerController
     {
         /// <summary>
-        /// Поле слушателя нажатия кнопки
+        /// Поле отлова нажатия кнопки
         /// </summary>
         public static KeyDowner KeyDowner;
+
         /// <summary>
         /// Поток на нажатие кнопки
         /// </summary>
@@ -29,6 +30,7 @@ namespace Controller
             InitKeyDowner();
             KeyDownerStart();
         }
+
         /// <summary>
         /// Инициализация потока нажатия кнопки
         /// </summary>

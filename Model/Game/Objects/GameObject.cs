@@ -32,7 +32,7 @@ namespace Model.Game.Objects
         }
 
         /// <summary>
-        /// Метод создания объекта
+        /// Метод создания объекта с помощью Factory Method
         /// </summary>
         /// <param name="parType"></param>
         /// <param name="parX"></param>

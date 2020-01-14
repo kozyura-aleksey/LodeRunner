@@ -17,7 +17,7 @@ namespace Model.Menu
         private Records _records;
 
         /// <summary>
-        /// 
+        /// Создать модель рекордов
         /// </summary>
         public ModelRecords()
         {

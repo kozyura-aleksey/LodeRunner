@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace View.Game
 {
     /// <summary>
-    /// 
+    /// Абстрактный класс - view
     /// </summary>
     public class View
     {

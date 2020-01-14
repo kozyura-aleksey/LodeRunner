@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Model.Menu
 {
+    /// <summary>
+    /// Класс - рекорды
+    /// </summary>
     public class Records
     {
         /// <summary>

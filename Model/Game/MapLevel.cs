@@ -16,7 +16,6 @@ namespace Model.Game
     /// </summary>
     public class MapLevel
     {
-
         /// <summary>
         /// Экземпляр уровня
         /// </summary>
@@ -409,7 +408,7 @@ namespace Model.Game
         private static int count;
 
         /// <summary>
-        /// 
+        /// свойство для количества сундуков
         /// </summary>
         public static int Count { get => count; set => count = value; }
 
@@ -443,9 +442,15 @@ namespace Model.Game
         /// </summary>
         public static int Index { get => index; set => index = value; }
 
+        /// <summary>
+        /// Поле рекордов
+        /// </summary>
 
         private static int record;
 
+        /// <summary>
+        /// Свойство для поля рекордов
+        /// </summary>
         public static int Record { get => record; set => record = value; }
 
         /// <summary>
@@ -482,7 +487,7 @@ namespace Model.Game
         }
 
         /// <summary>
-        /// 
+        /// Условие выхода из игры
         /// </summary>
         /// <returns></returns>
         public static bool isTrue()

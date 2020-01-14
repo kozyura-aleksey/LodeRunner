@@ -23,7 +23,7 @@ namespace Controller
         public event dKeyDowning KeyDown;
 
         /// <summary>
-        /// Слушать нажатие на клавишу
+        /// Ловить нажатие на клавишу
         /// </summary>
         public void KeyDowneer()
         {

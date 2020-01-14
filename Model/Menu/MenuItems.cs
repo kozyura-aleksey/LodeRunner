@@ -20,11 +20,11 @@ namespace Model.Menu
         /// Обработчик событий для класса MenuItem
         /// </summary>
         public delegate void dMenuItemHandler();
+
         /// <summary>
         /// Событие на выбор пункта меню
         /// </summary>
         public event dMenuItemHandler EnterEvent;
-
 
         /// <summary>
         /// Конструктор создания пункта меню

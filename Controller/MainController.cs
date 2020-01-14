@@ -31,7 +31,7 @@ namespace Controller
         private GameController _game;
 
         /// <summary>
-        /// 
+        /// Контроллер нажатия кнопки
         /// </summary>
         private KeyDownerController _downerController;
 

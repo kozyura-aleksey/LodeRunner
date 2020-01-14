@@ -31,7 +31,7 @@ namespace View.Game
         private System.Timers.Timer timer = new System.Timers.Timer(100);
 
         /// <summary>
-        /// 
+        /// Создать отображение игры в консоли
         /// </summary>
         /// <param name="parModelGame"></param>
         public ViewGameConsole(Model.ModelGame parModelGame)
@@ -61,7 +61,7 @@ namespace View.Game
         }
 
         /// <summary>
-        /// 
+        /// Очистить представление
         /// </summary>
         public void Clear()
         {

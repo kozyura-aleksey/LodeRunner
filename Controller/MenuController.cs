@@ -8,20 +8,26 @@ using View.Menu;
 
 namespace Controller.Menu
 {
+    /// <summary>
+    /// Класс - котроллер меню
+    /// </summary>
     public class MenuController : Controller
     {
         /// <summary>
         /// Модель меню
         /// </summary>
         private ModelMenu _model;
+
         /// <summary>
         /// Представление меню
         /// </summary>
         private ViewMenu _view;
+
         /// <summary>
         /// Обработчик события старта игры
         /// </summary>
         public delegate void dStartHandler();
+
         /// <summary>
         /// Событие старта игры
         /// </summary>

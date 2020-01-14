@@ -18,7 +18,7 @@ namespace View.Menu
         private ModelRecords _model;
 
         /// <summary>
-        /// 
+        /// Создать представление рекордов 
         /// </summary>
         public ViewRecords(ModelRecords parModel)
         {

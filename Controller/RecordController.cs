@@ -41,7 +41,7 @@ namespace Controller
         private Dictionary<ConsoleKey, dEnterNameHandler> _keysDict;
 
         /// <summary>
-        /// 
+        /// Создать контроллер рекордов
         /// </summary>
         public RecordController()
         {
@@ -79,7 +79,7 @@ namespace Controller
         }
 
         /// <summary>
-        /// 
+        /// Деинициализировать контроллер
         /// </summary>
         public override void DeInit()
         {
@@ -87,14 +87,13 @@ namespace Controller
         }
 
         /// <summary>
-        /// 
+        /// Инициализировать коонтроллер
         /// </summary>
         public override void Init()
         {
             KeyDownerController.KeyDowner.KeyDown += EnterName;
             _viewRecords.Draw();
         }
-
 
         /// <summary>
         /// Ввод имени

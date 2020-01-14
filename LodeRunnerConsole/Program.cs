@@ -9,6 +9,10 @@ namespace LodeRunnerConsole
 {
     class Program
     {    
+        /// <summary>
+        /// Точка входа в программу
+        /// </summary>
+        /// <param name="args"></param>
         [STAThread]
         static void Main(string[] args)
         {

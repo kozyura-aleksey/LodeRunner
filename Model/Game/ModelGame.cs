@@ -44,7 +44,7 @@ namespace Model
         public event dMoveObjects CreateMapLevel;
 
         /// <summary>
-        /// 
+        /// Событие на окончание игры
         /// </summary>
         public event dMoveObjects EndGameEvent;
 
@@ -132,7 +132,7 @@ namespace Model
         }
 
         /// <summary>
-        /// 
+        /// Запуск события на конец игры
         /// </summary>
         public void OnEndGameEvent()
         {
