@@ -82,9 +82,18 @@ namespace Model
                 while (MapLevel.isTrue())
                 {
                     OnMove();
-                }
+                }           
                 OnEndGameEvent();
             }
+            ResetGame();
+        }
+
+        /// <summary>
+        /// Пересоздать игру
+        /// </summary>
+        public void ResetGame()
+        {
+            _mapLevel = new MapLevel();
         }
 
         /// <summary>
