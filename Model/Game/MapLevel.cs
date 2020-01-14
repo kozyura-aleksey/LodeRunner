@@ -113,7 +113,7 @@ namespace Model.Game
         /// <returns></returns>
         public static MapLevel GetMapLevel()
         {
-            //if (mapLevel == null)
+            if (mapLevel == null)
             {
                 mapLevel = new MapLevel();
             }
