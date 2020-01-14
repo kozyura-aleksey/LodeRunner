@@ -442,6 +442,11 @@ namespace Model.Game
         /// </summary>
         public static int Index { get => index; set => index = value; }
 
+
+        private static int record;
+
+        public static int Record { get => record; set => record = value; }
+
         /// <summary>
         /// Собирание сундуков
         /// </summary>
@@ -462,7 +467,6 @@ namespace Model.Game
                 }
             }
             objects[index] = null;
-
             if (count == 6)
             {
                 MoveToFinalStairs = false;
@@ -474,6 +478,7 @@ namespace Model.Game
                 //objects[577] = new SubStairs(368, 16);
                 //objects[578] = new SubStairs(368, 0);
             }
+            record = count;
         }
 
         /// <summary>
