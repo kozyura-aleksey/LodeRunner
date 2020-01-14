@@ -34,6 +34,11 @@ namespace View
         public static Graphics Canvas;
 
         /// <summary>
+        /// Буферизованная графика
+        /// </summary>
+        public BufferedGraphics _bufer = BufferedGraphicsManager.Current.Allocate(viewform.CreateGraphics(), viewform.ClientRectangle);
+
+        /// <summary>
         /// Инициализация формы
         /// </summary>
         public static void Init()
@@ -50,10 +55,7 @@ namespace View
             ViewForm.Height = 550;
             ViewForm.FormBorderStyle = FormBorderStyle.FixedDialog;
             ViewForm.BackColor = Color.Black;
-        }
-
-
-        public BufferedGraphics _bufer = BufferedGraphicsManager.Current.Allocate(viewform.CreateGraphics(), viewform.ClientRectangle);
+        }      
 
         /// <summary>
         /// Установить настройки для формы

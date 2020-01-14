@@ -41,6 +41,9 @@ namespace Controller
         /// </summary>
         public event dEndHandler EndEvent;
 
+        /// <summary>
+        /// Создать контроллер рекордов
+        /// </summary>
         public RecordController()
         {
             _modelRecords = new Model.Menu.ModelRecords();
@@ -50,7 +53,7 @@ namespace Controller
         }
 
         /// <summary>
-        /// 
+        /// Деинициализировать контроллер
         /// </summary>
         public override void DeInit()
         {
@@ -59,7 +62,7 @@ namespace Controller
         }
 
         /// <summary>
-        /// 
+        /// Инициализировать контроллер
         /// </summary>
         public override void Init()
         {

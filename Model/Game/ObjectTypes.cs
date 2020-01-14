@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model.Game.Objects
 {
+    /// <summary>
+    /// Перечисление объектов
+    /// </summary>
     public enum ObjectTypes
     {
         Brick,

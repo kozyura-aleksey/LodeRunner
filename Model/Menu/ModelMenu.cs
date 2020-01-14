@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 namespace Model.Menu
 {
     /// <summary>
-    /// 
+    /// Класс - модель меню
     /// </summary>
     public class ModelMenu
     {
         /// <summary>
-        /// 
+        /// Экземпляр меню
         /// </summary>
         public Menu _menu = null;
 
         /// <summary>
-        /// 
+        /// Конструктор созданию модели меню
         /// </summary>
         public ModelMenu()
         {

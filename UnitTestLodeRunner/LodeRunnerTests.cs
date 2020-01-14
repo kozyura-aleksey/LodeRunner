@@ -7,6 +7,9 @@ namespace UnitTestLodeRunner
     [TestClass]
     public class LodeRunnerTests
     {
+        /// <summary>
+        /// Экземпляр поля игры
+        /// </summary>
         MapLevel _mapLevel = new MapLevel();
 
         /// <summary>

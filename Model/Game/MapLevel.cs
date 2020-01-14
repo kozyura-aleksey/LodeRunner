@@ -492,14 +492,12 @@ namespace Model.Game
         }
 
         /// <summary>
-        /// 
+        /// Условие выхода из игры
         /// </summary>
         /// <returns></returns>
         public static bool isTrue()
         {
             return moveToFinalStairs;
         }
-
-
     }
 }

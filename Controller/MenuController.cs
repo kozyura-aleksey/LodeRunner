@@ -32,6 +32,9 @@ namespace Controller.Menu
         /// </summary>
         public event dStartHandler StartEvent;
 
+        /// <summary>
+        /// Создать контроллер меню
+        /// </summary>
         public MenuController()
         {
             _model = new Model.Menu.ModelMenu();
@@ -41,7 +44,7 @@ namespace Controller.Menu
         }
 
         /// <summary>
-        /// 
+        /// Деинициализировать контроллер
         /// </summary>
         public override void DeInit()
         {
@@ -50,7 +53,7 @@ namespace Controller.Menu
         }
 
         /// <summary>
-        /// 
+        /// Инициализировать контроллер
         /// </summary>
         public override void Init()
         {
