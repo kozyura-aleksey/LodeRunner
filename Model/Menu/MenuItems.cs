@@ -16,10 +16,11 @@ namespace Model.Menu
         /// </summary>
         public String Name;
 
-        /// <summary>
+        // <summary>
         /// Обработчик событий для класса MenuItem
         /// </summary>
         public delegate void dMenuItemHandler();
+
         /// <summary>
         /// Событие на выбор пункта меню
         /// </summary>
@@ -52,7 +53,5 @@ namespace Model.Menu
                 EnterEvent.Invoke();
             }
         }
-
-    }   
-        
+    }
 }

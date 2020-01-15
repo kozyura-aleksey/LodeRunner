@@ -20,7 +20,6 @@ namespace Model.Game.Objects
         {
         }
 
-
         /// <summary>
         /// Получение информации
         /// </summary>

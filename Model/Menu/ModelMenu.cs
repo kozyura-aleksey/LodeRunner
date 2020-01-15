@@ -17,7 +17,7 @@ namespace Model.Menu
         public Menu _menu = null;
 
         /// <summary>
-        /// Конструктор созданию модели меню
+        /// Создать модель меню
         /// </summary>
         public ModelMenu()
         {
@@ -34,4 +34,5 @@ namespace Model.Menu
         }
 
     }
+
 }

@@ -32,7 +32,7 @@ namespace Model.Game.Objects
         }
 
         /// <summary>
-        /// Метод создания объекта
+        /// Метод создания объекта с помощью Factory Method
         /// </summary>
         /// <param name="parType"></param>
         /// <param name="parX"></param>
@@ -43,10 +43,6 @@ namespace Model.Game.Objects
             GameObject object1 = null;
             switch (parType)
             {
-                case "0":
-                    object1 = new NullObject(parX, parY);
-                    break;
-
                 case "1":
                     object1 = new Brick(parX, parY);
                     break;
@@ -74,13 +70,9 @@ namespace Model.Game.Objects
                 case "7":
                     object1 = new Man(parX, parY);
                     break;
-
-                case "9":
-                    object1 = new SubStairs(parX, parY);
-                    break;
             }
             return object1;
-        }           
+        }  
 
         /// <summary>
         /// Получение информации об объекте

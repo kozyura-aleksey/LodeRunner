@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,14 +22,9 @@ namespace Model.Game
         private static MapLevel mapLevel = null;
 
         /// <summary>
-        /// Шаг игры
+        /// Массив линий
         /// </summary>
-        private const int STEP = 16;
-
-        /// <summary>
-        /// Свойство для списка объектов
-        /// </summary>
-        public static int step { get => STEP; set => step = value; }
+        private static string[] lines;
 
         /// <summary>
         /// Массив локаторов
@@ -38,30 +32,30 @@ namespace Model.Game
         private static String[,] num;
 
         /// <summary>
-        /// Массив линий
+        /// Шаг игры
         /// </summary>
-        private static string[] lines;       
+        private const int STEP_CONSOLE = 1;
+
+        /// <summary>
+        /// Выход по собиранию золота
+        /// </summary>
+        private static bool moveToFinalStairs = true;
+
+        /// <summary>
+        /// Свойство для собирания золота
+        /// </summary>
+        public static bool MoveToFinalStairs { get => moveToFinalStairs; set => moveToFinalStairs = value; }
+
 
         /// <summary>
         /// Список объектов соответственно массиву локаторов
         /// </summary>
-        private static List<GameObject> objects;
+        private static List<Model.Game.Objects.GameObject> objects;
 
         /// <summary>
         /// Свойство для списка объектов
         /// </summary>
         public static List<GameObject> Objects { get => objects; set => objects = value; }
-
-        /// <summary>
-        /// Выход из игры
-        /// </summary>
-        private static bool moveToFinalStairs = true;
-
-        /// <summary>
-        /// Свойство для переменной выхода из игры
-        /// </summary>
-        public static bool MoveToFinalStairs { get => moveToFinalStairs; set => moveToFinalStairs = value; }
-
 
         /// <summary>
         /// Создать поле игры
@@ -70,7 +64,6 @@ namespace Model.Game
         {
             string str = Properties.Resources.file;
             lines = str.Split(new Char[] { '\n' });
-
             num = new String[lines.Length, lines[0].Split(' ').Length];
             for (int i = 0; i < lines.Length; i++)
             {
@@ -87,9 +80,9 @@ namespace Model.Game
             {
                 for (int j = 0; j < num.GetLength(1); j++)
                 {
-                    objects.Add(GameObject.CreateObject(num[i, j], STEP * i, STEP * j));
+                    objects.Add(GameObject.CreateObject(num[i, j],  i, j));
                 }
-            }
+            }          
         }
 
         /// <summary>
@@ -105,7 +98,7 @@ namespace Model.Game
                 {
                     if (parOb.GetType() == typeof(Man))
                     {
-                        number = objects.IndexOf(parOb);                      
+                        number = objects.IndexOf(parOb);
                     }
                 }
             }
@@ -119,10 +112,10 @@ namespace Model.Game
         /// <returns></returns>
         public static MapLevel GetMapLevel()
         {
-            //if (mapLevel == null)
-            //{
+            if (mapLevel == null)
+            {
                 mapLevel = new MapLevel();
-            //}
+            }
             return mapLevel;
         }
 
@@ -131,9 +124,9 @@ namespace Model.Game
         /// </summary>
         public void MoveRightRunner()
         {
-            if ((objects[SearchNumberOfMan()].X < ((num.GetLength(0) * STEP) - STEP) && CheckSutuationRight()))
+            if ((objects[SearchNumberOfMan()].X < ((num.GetLength(0) * STEP_CONSOLE) - STEP_CONSOLE) && CheckSutuationRight()))
             {
-                objects[SearchNumberOfMan()].X += STEP;
+                objects[SearchNumberOfMan()].X += STEP_CONSOLE;
             }
             CollectLodes();
             Gravitation();
@@ -146,7 +139,7 @@ namespace Model.Game
         {
             if ((objects[SearchNumberOfMan()].X > 0) && CheckSutuationLeft())
             {
-                objects[SearchNumberOfMan()].X -= STEP;
+                objects[SearchNumberOfMan()].X -= STEP_CONSOLE;
             }
             CollectLodes();
             Gravitation();
@@ -161,21 +154,21 @@ namespace Model.Game
             {
                 if ((CheckSutuationUpSubStairs()) || (CheckSutuationUp()))
                 {
-                    objects[SearchNumberOfMan()].Y -= STEP;
+                    objects[SearchNumberOfMan()].Y -= STEP_CONSOLE;
                 }
             }
             CollectLodes();
             Gravitation();
-        }         
+        }
 
         /// <summary>
         /// Движение персонажа вниз
         /// </summary>
         public void MoveDownRunner()
         {
-            if ((objects[SearchNumberOfMan()].Y <= ((num.GetLength(1) * STEP) - STEP)) && (CheckSutuationDown()))
+            if ((objects[SearchNumberOfMan()].Y <= ((num.GetLength(1) * STEP_CONSOLE) - STEP_CONSOLE)) && (CheckSutuationDown()))
             {
-                objects[SearchNumberOfMan()].Y += STEP;
+                objects[SearchNumberOfMan()].Y += STEP_CONSOLE;
             }
             CollectLodes();
             Gravitation();
@@ -202,9 +195,9 @@ namespace Model.Game
                         else
                         {
                             loc = false;
-                        }                                               
+                        }
                     }
-                }            
+                }
             }
             return loc;
         }
@@ -220,7 +213,7 @@ namespace Model.Game
             {
                 if (parOb != null)
                 {
-                    if (parOb.GetType() == typeof(SubStairs))
+                    if (parOb.GetType() == typeof(Stairs))
                     {
                         if ((objects[SearchNumberOfMan()].Y == 80) && (objects[SearchNumberOfMan()].X == 368))
                         {
@@ -250,7 +243,7 @@ namespace Model.Game
                 {
                     if (parOb.GetType() == typeof(Stairs))
                     {
-                        if (((objects[20].Y + STEP == parOb.Y) ) && (objects[20].X == parOb.X))
+                        if (((objects[20].Y + STEP_CONSOLE == parOb.Y)) && (objects[20].X == parOb.X))
                         {
                             loc = true;
                             break;
@@ -279,12 +272,12 @@ namespace Model.Game
                 {
                     if (parOb.GetType() == typeof(Brick))
                     {
-                        if (((objects[SearchNumberOfMan()].X + STEP) == parOb.X) && (objects[SearchNumberOfMan()].Y == parOb.Y))
+                        if (((objects[SearchNumberOfMan()].X + STEP_CONSOLE) == parOb.X) && (objects[SearchNumberOfMan()].Y == parOb.Y))
                         {
                             loc = false;
                             break;
                         }
-                    }                    
+                    }
                 }
             }
             return loc;
@@ -303,12 +296,14 @@ namespace Model.Game
                 {
                     if (parOb.GetType() == typeof(Brick))
                     {
-                        if (((objects[SearchNumberOfMan()].X - STEP) == parOb.X) && (objects[SearchNumberOfMan()].Y == parOb.Y))
+                        if (((objects[SearchNumberOfMan()].X - STEP_CONSOLE) == parOb.X) && (objects[SearchNumberOfMan()].Y == parOb.Y))
                         {
                             loc = false;
                             break;
                         }
-                    }              
+                    }
+
+
                 }
             }
             return loc;
@@ -329,7 +324,7 @@ namespace Model.Game
                     if (parOb.GetType() == typeof(Brick))
                     {
                         if (objects[SearchNumberOfMan()].X == parOb.X)
-                        {                        
+                        {
                             spisok.Add((objects[SearchNumberOfMan()].Y) - parOb.Y);
                             spisok.Sort();
                             countLebgth = spisok.Min();
@@ -350,9 +345,9 @@ namespace Model.Game
         /// </summary>
         public void Landing()
         {
-            objects[SearchNumberOfMan()].Y = YY - STEP;
+            objects[SearchNumberOfMan()].Y = YY - STEP_CONSOLE;
         }
-
+        
         /// <summary>
         /// Гравитация
         /// </summary>
@@ -376,11 +371,11 @@ namespace Model.Game
                             }
                         }
 
-                        if (((objects[SearchNumberOfMan()].Y + STEP) == parOb.Y) && (objects[SearchNumberOfMan()].X == parOb.X)) 
+                        if (((objects[SearchNumberOfMan()].Y + STEP_CONSOLE) == parOb.Y) && (objects[SearchNumberOfMan()].X == parOb.X))
                         {
                             break;
                         }
-                        
+
                     }
 
                     if (parOb.GetType() == typeof(Rope))
@@ -400,7 +395,7 @@ namespace Model.Game
                                 }
                             }
                         }
-                        
+
                     }
                 }
             }
@@ -413,7 +408,7 @@ namespace Model.Game
         private static int count;
 
         /// <summary>
-        /// 
+        /// свойство для количества сундуков
         /// </summary>
         public static int Count { get => count; set => count = value; }
 
@@ -433,9 +428,9 @@ namespace Model.Game
                         }
                     }
                 }
-               return count;
+                return count;
             }
-        }      
+        }
 
         /// <summary>
         /// Номер сундука
@@ -443,17 +438,18 @@ namespace Model.Game
         private static int index = 0;
 
         /// <summary>
-        /// Свойство для списка объектов
+        /// Свойство для собирания золота
         /// </summary>
         public static int Index { get => index; set => index = value; }
 
         /// <summary>
-        /// Перемнная для рекорда
+        /// Поле рекордов
         /// </summary>
+
         private static int record;
 
         /// <summary>
-        /// Свойство для переменной рекордов
+        /// Свойство для поля рекордов
         /// </summary>
         public static int Record { get => record; set => record = value; }
 
@@ -467,26 +463,25 @@ namespace Model.Game
                 if ((parOb != null) && (objects != null))
                 {
                     if (parOb.GetType() == typeof(Gold))
-                    {                                              
+                    {
                         if ((objects[SearchNumberOfMan()].X == parOb.X) && (objects[SearchNumberOfMan()].Y == parOb.Y))
                         {
                             count = count + 1;
-                            index = objects.IndexOf(parOb);                           
-                        }                       
-                    }               
+                            index = objects.IndexOf(parOb);
+                        }
+                    }
                 }
             }
             objects[index] = null;
             if (count == 6)
             {
-                MoveToFinalStairs = false;
-                //break;
-                //objects[573] = new SubStairs(368, 80);
-                //objects[574] = new SubStairs(368, 64);
-                //objects[575] = new SubStairs(368, 48);
-                //objects[576] = new SubStairs(368, 32);
-                //objects[577] = new SubStairs(368, 16);
-                //objects[578] = new SubStairs(368, 0);
+                moveToFinalStairs = false;
+                //objects[573] = new Stairs(368, 80);
+                //objects[574] = new Stairs(368, 64);
+                //objects[575] = new Stairs(368, 48);
+                //objects[576] = new Stairs(368, 32);
+                //objects[577] = new Stairs(368, 16);
+                //objects[578] = new Stairs(368, 0);
             }
             record = count;
         }

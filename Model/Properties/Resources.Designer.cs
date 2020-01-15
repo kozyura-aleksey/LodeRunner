@@ -330,26 +330,6 @@ namespace Model.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 0 0 2 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 7 1 
-        ///0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 
-        ///0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 
-        ///0 0 2 0 0 0 0 0 0 0 3 3 3 3 1 0 0 0 0 0 0 1 
-        ///0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 
-        ///0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 
-        ///0 0 2 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 3 3 3 1 
-        ///0 0 1 0 0 0 0 0 0 0 1 0 0 8 1 0 0 0 1 0 0 1 
-        ///0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 1 0 0 1 
-        ///0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 6 1 0 6 1 
-        ///0 0 2 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 1 0 0 1 
-        ///0 0 3  [остаток строки не уместился]&quot;;.
-        /// </summary>
-        internal static string level1 {
-            get {
-                return ResourceManager.GetString("level1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap lode {
@@ -546,15 +526,6 @@ namespace Model.Properties {
             get {
                 object obj = ResourceManager.GetObject("stairs2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на  .
-        /// </summary>
-        internal static string String1 {
-            get {
-                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
     }

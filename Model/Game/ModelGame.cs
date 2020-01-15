@@ -19,7 +19,7 @@ namespace Model
         private MapLevel _mapLevel;
 
         /// <summary>
-        /// Свойство для уровня игры
+        /// Свойство для собирания золота
         /// </summary>
         public MapLevel MapLevel { get => _mapLevel; set => _mapLevel = value; }
 
@@ -39,21 +39,20 @@ namespace Model
         public event dMoveObjects Draw;
 
         /// <summary>
-        /// Событие окончания игры
-        /// </summary>
-        public event dMoveObjects EndGameEvent;
-
-        /// <summary>
         /// Событие на создание уровня
         /// </summary>
         public event dMoveObjects CreateMapLevel;
 
         /// <summary>
-        /// Игровой поток
+        /// Событие на окончание игры
         /// </summary>
-        private Thread _gameThread;
+        public event dMoveObjects EndGameEvent;
 
-       
+        /// <summary>
+        /// Поток игры
+        /// </summary>
+        public Thread _gameThread;
+
         /// <summary>
         /// Создать модель игры
         /// </summary>
@@ -63,14 +62,14 @@ namespace Model
         }
 
         /// <summary>
-        /// Запустить игру в игровом потоке
+        /// Запустить игру
         /// </summary>
         public void Start()
         {
             _gameThread = new Thread(new ThreadStart(StartGame));
             _gameThread.Name = "LodeRunner";
             _gameThread.Start();
-            _gameThread.Priority = ThreadPriority.Highest;
+            _gameThread.Priority = ThreadPriority.Normal;
         }
 
         /// <summary>
@@ -110,7 +109,6 @@ namespace Model
                 Draw.Invoke();
             }
         }
-
         /// <summary>
         /// Запуск события на движение
         /// </summary>
@@ -120,8 +118,8 @@ namespace Model
             {
                 Move.Invoke();
             }
-        }   
-        
+        }
+
         /// <summary>
         /// Запуск события на создание уровня
         /// </summary>

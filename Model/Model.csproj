@@ -51,11 +51,8 @@
     <Compile Include="Game\Objects\GameObject.cs" />
     <Compile Include="Game\Objects\Gold.cs" />
     <Compile Include="Game\Objects\Man.cs" />
-    <Compile Include="Game\Objects\NullObject.cs" />
-    <Compile Include="Game\ObjectTypes.cs" />
     <Compile Include="Game\Objects\Rope.cs" />
     <Compile Include="Game\Objects\Stairs.cs" />
-    <Compile Include="Game\Objects\SubStairs.cs" />
     <Compile Include="Menu\Menu.cs" />
     <Compile Include="Menu\MenuItems.cs" />
     <Compile Include="Menu\ModelMenu.cs" />
@@ -208,9 +205,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\stairs2.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\level1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
