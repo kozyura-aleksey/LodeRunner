@@ -18,6 +18,11 @@ namespace View.Game
         public StringBuilder[] Field { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public const int STEP = 1;
+
+        /// <summary>
         /// Быстрая буферизация
         /// </summary>
         protected KernelGraphics _kernelGraphics = KernelGraphics.Instance;

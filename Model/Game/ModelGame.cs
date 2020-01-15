@@ -56,9 +56,9 @@ namespace Model
         /// <summary>
         /// Создать модель игры
         /// </summary>
-        public ModelGame()
+        public ModelGame(int parStep)
         {
-            _mapLevel = MapLevel.GetMapLevel();
+            _mapLevel = MapLevel.GetMapLevel(parStep);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Model
         /// </summary>
         public void ResetGame()
         {
-            MapLevel.GetMapLevel();
+            MapLevel.GetMapLevel(_mapLevel.Step);
             MapLevel.Count = 0;
             MapLevel.MoveToFinalStairs = true;
             MapLevel.Index = 0;

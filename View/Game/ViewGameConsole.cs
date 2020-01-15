@@ -40,7 +40,7 @@ namespace View.Game
             _modelGame.CreateMapLevel += CreateMap;
             _modelGame.Draw += DrawConsole;
             _modelGame.Move += DrawConsole;
-            _mapLevel = new MapLevel();       
+            _mapLevel = new MapLevel(ViewConsole.STEP);       
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace View.Game
         /// </summary>
         public void CreateMap()
         {
-            _mapLevel = new MapLevel();
+            _mapLevel = new MapLevel(ViewConsole.STEP);
         }
         
         /// <summary>

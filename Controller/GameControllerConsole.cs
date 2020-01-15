@@ -45,7 +45,7 @@ namespace Controller.Game
         /// </summary>
         public GameController()
         {
-            _gameModel = new Model.ModelGame();
+            _gameModel = new Model.ModelGame(ViewConsole.STEP);
             _viewGame = new View.Game.ViewGameConsole(_gameModel);
             _gameModel.Move += DefineInteraction;
             _gameModel.EndGameEvent += _endGameMethod;
