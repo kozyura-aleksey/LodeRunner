@@ -117,10 +117,10 @@ namespace Model.Game
         /// <returns></returns>
         public static MapLevel GetMapLevel(int parStep)
         {
-            if (mapLevel == null)
-            {
+            //if (mapLevel == null)
+            //{
                 mapLevel = new MapLevel(parStep);
-            }
+            //}
             return mapLevel;
         }
 
