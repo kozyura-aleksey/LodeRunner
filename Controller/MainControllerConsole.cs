@@ -23,12 +23,12 @@ namespace Controller
         /// <summary>
         /// Контроллер меню
         /// </summary>
-        private MenuController _menu;
+        private MenuControllerConsole _menu;
 
         /// <summary>
         /// Контроллер игры
         /// </summary>
-        private GameController _game;
+        private GameControllerConsole _game;
 
         /// <summary>
         /// Контроллер нажатия кнопки
@@ -41,10 +41,10 @@ namespace Controller
         public MainControllerConsole()
         {
             _downerController = new KeyDownerController(); 
-            _menu = new MenuController();
+            _menu = new MenuControllerConsole();
             _menu.StartEvent += StartGame;
             GameController._endGameMethod += RecordsEnter;
-            _game = new GameController();
+            _game = new GameControllerConsole();
             _recordName = new RecordControllerConsole();
             _recordName.EndEvent += OpenMenu;       
         }

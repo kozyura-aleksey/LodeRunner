@@ -42,11 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller.cs" />
     <Compile Include="ControllerConsole.cs" />
     <Compile Include="GameController.cs" />
     <Compile Include="GameControllerConsole.cs" />
     <Compile Include="KeyDowner.cs" />
     <Compile Include="KeyDownerController.cs" />
+    <Compile Include="MainController.cs" />
     <Compile Include="MainControllerConsole.cs" />
     <Compile Include="MenuController.cs" />
     <Compile Include="MenuControllerConsole.cs" />

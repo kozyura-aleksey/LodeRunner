@@ -11,7 +11,7 @@ namespace Controller.Menu
     /// <summary>
     /// Класс - котроллер меню
     /// </summary>
-    public class MenuController : ControllerConsole
+    public class MenuControllerConsole : ControllerConsole
     {
         /// <summary>
         /// Модель меню
@@ -36,7 +36,7 @@ namespace Controller.Menu
         /// <summary>
         /// Создать контроллер меню
         /// </summary>
-        public MenuController()
+        public MenuControllerConsole()
         {
             _model = new ModelMenu();
             _view = new ViewMenuConsole(_model);

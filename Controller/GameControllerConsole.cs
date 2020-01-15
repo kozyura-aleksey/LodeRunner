@@ -12,7 +12,7 @@ namespace Controller.Game
     /// <summary>
     /// Класс - контроллер игры
     /// </summary>
-    public class GameController : ControllerConsole
+    public class GameControllerConsole : ControllerConsole
     {
         /// <summary>
         /// Модель игры
@@ -43,7 +43,7 @@ namespace Controller.Game
         /// <summary>
         /// Конструктор игрового контроллера
         /// </summary>
-        public GameController()
+        public GameControllerConsole()
         {
             _gameModel = new Model.ModelGame(ViewConsole.STEP);
             _viewGame = new View.Game.ViewGameConsole(_gameModel);
