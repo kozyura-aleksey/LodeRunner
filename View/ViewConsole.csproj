@@ -46,8 +46,8 @@
     <Compile Include="Game\KernelGraphics.cs" />
     <Compile Include="Game\ViewConsole.cs" />
     <Compile Include="Game\ViewGameConsole.cs" />
-    <Compile Include="Menu\ViewMenu.cs" />
-    <Compile Include="Menu\ViewRecords.cs" />
+    <Compile Include="Menu\ViewMenuConsole.cs" />
+    <Compile Include="Menu\ViewRecordsConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -60,141 +60,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\brick1.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\brick2.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\clue.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\enemy0.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\enemy-left1.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\enemy-left2.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\enemy-left3.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\enemy-right1.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\enemy-right2.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\enemy-right3.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\enemy-rope-left1.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\enemy-rope-left2.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\enemy-rope-left3.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\enemy-rope-right1.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\enemy-rope-right2.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\enemy-rope-right3.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\enemy-stairs1.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\enemy-stairs2.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\hole0.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\hole1.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\hole2.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\hole3.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\hole4.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\hole5.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\lode.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\null.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\picture.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\rope.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\rope-left1.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\rope-left2.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\rope-left3.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\rope-right1.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\rope-right2.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\rope-right3.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\rop-right1.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\runner0.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\runner-left1.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\runner-left2.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\runner-left3.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\runner-right1.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\runner-right2.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\runner-right3.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\stair.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\stairs1.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\stairs2.gif" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

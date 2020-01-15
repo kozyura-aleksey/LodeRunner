@@ -10,7 +10,7 @@ namespace View.Menu
     /// <summary>
     /// Класс - отображение рекордов
     /// </summary>
-    public class ViewRecords : View.Game.ViewConsole
+    public class ViewRecordsConsole : View.Game.ViewConsole
     {
         /// <summary>
         /// Модель рекордов
@@ -20,7 +20,7 @@ namespace View.Menu
         /// <summary>
         /// Создать представление рекордов 
         /// </summary>
-        public ViewRecords(ModelRecords parModel)
+        public ViewRecordsConsole(ModelRecords parModel)
         {
             _model = parModel;
             _model.gerRecords().ChangeNameEvent += Draw;

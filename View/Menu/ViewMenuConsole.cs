@@ -11,7 +11,7 @@ namespace View.Menu
     /// <summary>
     /// Класс - представление меню
     /// </summary>
-    public class ViewMenu : View.Game.ViewConsole
+    public class ViewMenuConsole : View.Game.ViewConsole
     {
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace View.Menu
         /// Создать представление меню
         /// </summary>
         /// <param name="parModel">Модель меню</param>
-        public ViewMenu(ModelMenu parModel)
+        public ViewMenuConsole(ModelMenu parModel)
         {
             _modelMenu = parModel;
             menu = parModel.GetMenu();

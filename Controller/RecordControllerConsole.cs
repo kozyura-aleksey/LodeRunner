@@ -19,7 +19,7 @@ namespace Controller
         /// <summary>
         /// Отображение рекордов
         /// </summary>
-        private View.Menu.ViewRecords _viewRecords;
+        private View.Menu.ViewRecordsConsole _viewRecords;
 
         /// <summary>
         /// Обработчик окончания ввода имени
@@ -46,7 +46,7 @@ namespace Controller
         public RecordControllerConsole()
         {
             _modelRecords = new Model.Menu.ModelRecords();
-            _viewRecords = new View.Menu.ViewRecords(_modelRecords);
+            _viewRecords = new View.Menu.ViewRecordsConsole(_modelRecords);
             _keysDict = new Dictionary<ConsoleKey, dEnterNameHandler>();
             SetKeys();
         }
