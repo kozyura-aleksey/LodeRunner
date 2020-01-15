@@ -60,9 +60,9 @@
       <Project>{805B99B8-C817-4C87-8AEE-6C77817831EA}</Project>
       <Name>Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\View\ViewForm.csproj">
+    <ProjectReference Include="..\View\View.csproj">
       <Project>{416C125F-4826-49BD-BCD3-9C35C2037494}</Project>
-      <Name>ViewForm</Name>
+      <Name>View</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
