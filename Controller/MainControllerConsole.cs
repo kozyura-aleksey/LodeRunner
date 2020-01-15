@@ -13,12 +13,12 @@ namespace Controller
     /// <summary>
     /// Класс - главный контроллер
     /// </summary>
-    public class MainController
+    public class MainControllerConsole
     {
         /// <summary>
         /// Контроллер рекордов
         /// </summary>
-        private RecordController _recordName;
+        private RecordControllerConsole _recordName;
 
         /// <summary>
         /// Контроллер меню
@@ -38,14 +38,14 @@ namespace Controller
         /// <summary>
         /// Создать главный контроллер
         /// </summary>
-        public MainController()
+        public MainControllerConsole()
         {
             _downerController = new KeyDownerController(); 
             _menu = new MenuController();
             _menu.StartEvent += StartGame;
             GameController._endGameMethod += RecordsEnter;
             _game = new GameController();
-            _recordName = new RecordController();
+            _recordName = new RecordControllerConsole();
             _recordName.EndEvent += OpenMenu;       
         }
 

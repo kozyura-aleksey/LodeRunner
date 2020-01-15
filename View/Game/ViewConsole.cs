@@ -10,7 +10,7 @@ namespace View.Game
     /// <summary>
     /// Абстрактный класс - view
     /// </summary>
-    public class View
+    public class ViewConsole
     {
         /// <summary>
         /// Поле игры(символы)

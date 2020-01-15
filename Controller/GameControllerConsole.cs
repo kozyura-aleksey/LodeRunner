@@ -12,7 +12,7 @@ namespace Controller.Game
     /// <summary>
     /// Класс - контроллер игры
     /// </summary>
-    public class GameController : Controller
+    public class GameController : ControllerConsole
     {
         /// <summary>
         /// Модель игры

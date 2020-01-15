@@ -13,7 +13,7 @@ namespace View.Game
     /// <summary>
     /// Класс - отображение игры
     /// </summary>
-    public class ViewGameConsole : View
+    public class ViewGameConsole : ViewConsole
     {
         /// <summary>
         /// Модель игры

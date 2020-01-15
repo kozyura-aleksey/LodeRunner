@@ -11,7 +11,7 @@ namespace View.Menu
     /// <summary>
     /// Класс - представление меню
     /// </summary>
-    public class ViewMenu : View.Game.View
+    public class ViewMenu : View.Game.ViewConsole
     {
 
         /// <summary>

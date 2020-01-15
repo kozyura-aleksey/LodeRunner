@@ -11,7 +11,7 @@ namespace Controller.Menu
     /// <summary>
     /// Класс - котроллер меню
     /// </summary>
-    public class MenuController : Controller
+    public class MenuController : ControllerConsole
     {
         /// <summary>
         /// Модель меню

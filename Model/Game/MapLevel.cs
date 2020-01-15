@@ -34,7 +34,7 @@ namespace Model.Game
         /// <summary>
         /// Шаг игры
         /// </summary>
-        private const int STEP = 1;
+        private const int STEP_CONSOLE = 1;
 
         /// <summary>
         /// Выход по собиранию золота
@@ -124,9 +124,9 @@ namespace Model.Game
         /// </summary>
         public void MoveRightRunner()
         {
-            if ((objects[SearchNumberOfMan()].X < ((num.GetLength(0) * STEP) - STEP) && CheckSutuationRight()))
+            if ((objects[SearchNumberOfMan()].X < ((num.GetLength(0) * STEP_CONSOLE) - STEP_CONSOLE) && CheckSutuationRight()))
             {
-                objects[SearchNumberOfMan()].X += STEP;
+                objects[SearchNumberOfMan()].X += STEP_CONSOLE;
             }
             CollectLodes();
             Gravitation();
@@ -139,7 +139,7 @@ namespace Model.Game
         {
             if ((objects[SearchNumberOfMan()].X > 0) && CheckSutuationLeft())
             {
-                objects[SearchNumberOfMan()].X -= STEP;
+                objects[SearchNumberOfMan()].X -= STEP_CONSOLE;
             }
             CollectLodes();
             Gravitation();
@@ -154,7 +154,7 @@ namespace Model.Game
             {
                 if ((CheckSutuationUpSubStairs()) || (CheckSutuationUp()))
                 {
-                    objects[SearchNumberOfMan()].Y -= STEP;
+                    objects[SearchNumberOfMan()].Y -= STEP_CONSOLE;
                 }
             }
             CollectLodes();
@@ -166,9 +166,9 @@ namespace Model.Game
         /// </summary>
         public void MoveDownRunner()
         {
-            if ((objects[SearchNumberOfMan()].Y <= ((num.GetLength(1) * STEP) - STEP)) && (CheckSutuationDown()))
+            if ((objects[SearchNumberOfMan()].Y <= ((num.GetLength(1) * STEP_CONSOLE) - STEP_CONSOLE)) && (CheckSutuationDown()))
             {
-                objects[SearchNumberOfMan()].Y += STEP;
+                objects[SearchNumberOfMan()].Y += STEP_CONSOLE;
             }
             CollectLodes();
             Gravitation();
@@ -243,7 +243,7 @@ namespace Model.Game
                 {
                     if (parOb.GetType() == typeof(Stairs))
                     {
-                        if (((objects[20].Y + STEP == parOb.Y)) && (objects[20].X == parOb.X))
+                        if (((objects[20].Y + STEP_CONSOLE == parOb.Y)) && (objects[20].X == parOb.X))
                         {
                             loc = true;
                             break;
@@ -272,7 +272,7 @@ namespace Model.Game
                 {
                     if (parOb.GetType() == typeof(Brick))
                     {
-                        if (((objects[SearchNumberOfMan()].X + STEP) == parOb.X) && (objects[SearchNumberOfMan()].Y == parOb.Y))
+                        if (((objects[SearchNumberOfMan()].X + STEP_CONSOLE) == parOb.X) && (objects[SearchNumberOfMan()].Y == parOb.Y))
                         {
                             loc = false;
                             break;
@@ -296,7 +296,7 @@ namespace Model.Game
                 {
                     if (parOb.GetType() == typeof(Brick))
                     {
-                        if (((objects[SearchNumberOfMan()].X - STEP) == parOb.X) && (objects[SearchNumberOfMan()].Y == parOb.Y))
+                        if (((objects[SearchNumberOfMan()].X - STEP_CONSOLE) == parOb.X) && (objects[SearchNumberOfMan()].Y == parOb.Y))
                         {
                             loc = false;
                             break;
@@ -345,7 +345,7 @@ namespace Model.Game
         /// </summary>
         public void Landing()
         {
-            objects[SearchNumberOfMan()].Y = YY - STEP;
+            objects[SearchNumberOfMan()].Y = YY - STEP_CONSOLE;
         }
         
         /// <summary>
@@ -371,7 +371,7 @@ namespace Model.Game
                             }
                         }
 
-                        if (((objects[SearchNumberOfMan()].Y + STEP) == parOb.Y) && (objects[SearchNumberOfMan()].X == parOb.X))
+                        if (((objects[SearchNumberOfMan()].Y + STEP_CONSOLE) == parOb.Y) && (objects[SearchNumberOfMan()].X == parOb.X))
                         {
                             break;
                         }

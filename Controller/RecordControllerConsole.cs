@@ -9,7 +9,7 @@ namespace Controller
     /// <summary>
     /// Класс - контроллер рекордов
     /// </summary>
-    public class RecordController : Controller
+    public class RecordControllerConsole : ControllerConsole
     {
         /// <summary>
         /// Модель рекордов
@@ -43,7 +43,7 @@ namespace Controller
         /// <summary>
         /// Создать контроллер рекордов
         /// </summary>
-        public RecordController()
+        public RecordControllerConsole()
         {
             _modelRecords = new Model.Menu.ModelRecords();
             _viewRecords = new View.Menu.ViewRecords(_modelRecords);

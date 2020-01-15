@@ -42,23 +42,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller.cs" />
-    <Compile Include="GameController.cs" />
+    <Compile Include="ControllerConsole.cs" />
+    <Compile Include="GameControllerConsole.cs" />
     <Compile Include="KeyDowner.cs" />
     <Compile Include="KeyDownerController.cs" />
-    <Compile Include="MainController.cs" />
-    <Compile Include="MenuController.cs" />
+    <Compile Include="MainControllerConsole.cs" />
+    <Compile Include="MenuControllerConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecordController.cs" />
+    <Compile Include="RecordControllerConsole.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{805b99b8-c817-4c87-8aee-6c77817831ea}</Project>
       <Name>Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\View\View.csproj">
+    <ProjectReference Include="..\View\ViewConsole.csproj">
       <Project>{416c125f-4826-49bd-bcd3-9c35c2037494}</Project>
-      <Name>View</Name>
+      <Name>ViewConsole</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

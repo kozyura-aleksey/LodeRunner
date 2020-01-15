@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game\KernelGraphics.cs" />
-    <Compile Include="Game\View.cs" />
+    <Compile Include="Game\ViewConsole.cs" />
     <Compile Include="Game\ViewGameConsole.cs" />
     <Compile Include="Menu\ViewMenu.cs" />
     <Compile Include="Menu\ViewRecords.cs" />

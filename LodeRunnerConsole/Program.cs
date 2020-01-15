@@ -16,7 +16,7 @@ namespace LodeRunnerConsole
         [STAThread]
         static void Main(string[] args)
         {
-            MainController game = new MainController();
+            MainControllerConsole game = new MainControllerConsole();
             game.InitConsole();
         }
     }

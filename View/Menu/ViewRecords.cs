@@ -10,7 +10,7 @@ namespace View.Menu
     /// <summary>
     /// Класс - отображение рекордов
     /// </summary>
-    public class ViewRecords : View.Game.View
+    public class ViewRecords : View.Game.ViewConsole
     {
         /// <summary>
         /// Модель рекордов

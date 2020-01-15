@@ -10,7 +10,7 @@ namespace Controller
     /// <summary>
     /// Класс - контроллер
     /// </summary>
-    public abstract class Controller
+    public abstract class ControllerConsole
     {
        
         /// <summary>
