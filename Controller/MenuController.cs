@@ -20,7 +20,7 @@ namespace Controller.Menu
         /// <summary>
         /// Отображение меню
         /// </summary>
-        private View.Menu.ViewMenu _view;
+        private View.Menu.ViewMenuForm _view;
 
         /// <summary>
         /// Обработчик события старта игры
@@ -38,7 +38,7 @@ namespace Controller.Menu
         public MenuController()
         {
             _model = new Model.Menu.ModelMenu();
-            _view = new View.Menu.ViewMenu(_model);
+            _view = new View.Menu.ViewMenuForm(_model);
             _model.GetMenu().getMenuItems()[0].EnterEvent += Start;
             _model.GetMenu().getMenuItems()[1].EnterEvent += Exit;
         }

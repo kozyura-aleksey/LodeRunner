@@ -15,7 +15,7 @@ namespace View.Game
     /// <summary>
     /// Класс - отображение игры
     /// </summary>
-    public class ViewGame : View
+    public class ViewGameForm : FormView
     {
         /// <summary>
         /// Модель игры
@@ -36,7 +36,7 @@ namespace View.Game
         /// Конструктор отображение игры
         /// </summary>
         /// <param name="parModelGame"></param>
-        public ViewGame(Model.ModelGame parModelGame)
+        public ViewGameForm(Model.ModelGame parModelGame)
         {
             _modelGame = parModelGame;
             _modelGame.CreateMapLevel += CreateMap;

@@ -11,14 +11,14 @@ namespace View.Menu
     /// <summary>
     /// Класс - отображение рекордов
     /// </summary>
-    public class ViewRecords : View
+    public class ViewRecordsForm : FormView
     {
         /// <summary>
         /// Модель рекордов
         /// </summary>
         private ModelRecords _model;
 
-        public ViewRecords(ModelRecords parModel)
+        public ViewRecordsForm(ModelRecords parModel)
         {
             _model = parModel;
             _model.gerRecords().ChangeNameEvent += Draw;
@@ -31,13 +31,13 @@ namespace View.Menu
         {
             _bufer.Graphics.Clear(Color.Black);
             _bufer.Graphics.DrawString("Enter name: ", new Font("Times New Roman", 20), new SolidBrush(Color.White), 110, 50);
-            _bufer.Graphics.FillRectangle(new SolidBrush(Color.Black), View.viewform.ClientRectangle.Width / 2 - 300 / 2,
-                View.viewform.ClientRectangle.Height / 4 - 50 / 2, 300, 50);
-            _bufer.Graphics.DrawRectangle(new Pen(Color.White), View.viewform.ClientRectangle.Width / 2 - 300 / 2,
-                View.viewform.ClientRectangle.Height / 4 - 50 / 2, 300, 50);
+            _bufer.Graphics.FillRectangle(new SolidBrush(Color.Black), FormView.viewform.ClientRectangle.Width / 2 - 300 / 2,
+                FormView.viewform.ClientRectangle.Height / 4 - 50 / 2, 300, 50);
+            _bufer.Graphics.DrawRectangle(new Pen(Color.White), FormView.viewform.ClientRectangle.Width / 2 - 300 / 2,
+                FormView.viewform.ClientRectangle.Height / 4 - 50 / 2, 300, 50);
             _bufer.Graphics.DrawString(Records.EnterNameString, new Font("Times New Roman", 20), new SolidBrush(Color.White),
-                View.viewform.ClientRectangle.Width / 2 - 200 / 2,
-                View.viewform.ClientRectangle.Height / 4 - 50 / 2 + 10);
+                FormView.viewform.ClientRectangle.Width / 2 - 200 / 2,
+                FormView.viewform.ClientRectangle.Height / 4 - 50 / 2 + 10);
             Render();
         }
 

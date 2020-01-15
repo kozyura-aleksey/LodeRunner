@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{805B99B8-C817-4C87-8AEE-6C77817831EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{416C125F-4826-49BD-BCD3-9C35C2037494}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewForm", "View\ViewForm.csproj", "{416C125F-4826-49BD-BCD3-9C35C2037494}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LodeRunnerForms", "LodeRunnerForms\LodeRunnerForms.csproj", "{ADB20926-2307-4AB8-B570-C917008D84DE}"
 EndProject

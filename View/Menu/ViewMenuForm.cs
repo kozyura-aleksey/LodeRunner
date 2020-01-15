@@ -12,7 +12,7 @@ namespace View.Menu
     /// <summary>
     /// Класс - отображение меню
     /// </summary>
-    public class ViewMenu : View
+    public class ViewMenuForm : FormView
     {
         /// <summary>
         /// Модель игры
@@ -27,7 +27,7 @@ namespace View.Menu
         /// <summary>
         /// Конструктор представления меню
         /// </summary>
-        public ViewMenu(Model.Menu.ModelMenu parModel)
+        public ViewMenuForm(Model.Menu.ModelMenu parModel)
         {
             _modelGame = parModel;
             Menu = parModel.GetMenu();
@@ -39,13 +39,13 @@ namespace View.Menu
         /// <param name="parItem"></param>
         private void DrawMenuItem(MenuItems parItem)
         {
-            _bufer.Graphics.DrawString("Game rules:", new Font("Times New Roman", 18), new SolidBrush(Color.White), 10, View.viewform.ClientRectangle.Height - 470);
-            _bufer.Graphics.DrawLine(new Pen(new SolidBrush(Color.White)), 0, 65, View.viewform.ClientRectangle.Height, 65);
-            _bufer.Graphics.DrawString("Collect all the gold on the map by moving the keys: 'up', ", new Font("Times New Roman", 15), new SolidBrush(Color.White), 10, View.viewform.ClientRectangle.Height - 440);
-            _bufer.Graphics.DrawString("'down', 'right', 'left'.", new Font("Times New Roman", 15), new SolidBrush(Color.White), 10, View.viewform.ClientRectangle.Height - 410);
-            _bufer.Graphics.DrawString("You can also move along the ropes.", new Font("Times New Roman", 15), new SolidBrush(Color.White), 10, View.viewform.ClientRectangle.Height - 380);
-            _bufer.Graphics.DrawString("Press Enter to Start Game", new Font("Times New Roman", 18), new SolidBrush(Color.White), 10, View.viewform.ClientRectangle.Height - 330);
-            _bufer.Graphics.DrawString("Press Esc to Exit", new Font("Times New Roman", 18), new SolidBrush(Color.White), 10, View.viewform.ClientRectangle.Height - 300);
+            _bufer.Graphics.DrawString("Game rules:", new Font("Times New Roman", 18), new SolidBrush(Color.White), 10, FormView.viewform.ClientRectangle.Height - 470);
+            _bufer.Graphics.DrawLine(new Pen(new SolidBrush(Color.White)), 0, 65, FormView.viewform.ClientRectangle.Height, 65);
+            _bufer.Graphics.DrawString("Collect all the gold on the map by moving the keys: 'up', ", new Font("Times New Roman", 15), new SolidBrush(Color.White), 10, FormView.viewform.ClientRectangle.Height - 440);
+            _bufer.Graphics.DrawString("'down', 'right', 'left'.", new Font("Times New Roman", 15), new SolidBrush(Color.White), 10, FormView.viewform.ClientRectangle.Height - 410);
+            _bufer.Graphics.DrawString("You can also move along the ropes.", new Font("Times New Roman", 15), new SolidBrush(Color.White), 10, FormView.viewform.ClientRectangle.Height - 380);
+            _bufer.Graphics.DrawString("Press Enter to Start Game", new Font("Times New Roman", 18), new SolidBrush(Color.White), 10, FormView.viewform.ClientRectangle.Height - 330);
+            _bufer.Graphics.DrawString("Press Esc to Exit", new Font("Times New Roman", 18), new SolidBrush(Color.White), 10, FormView.viewform.ClientRectangle.Height - 300);
         }
 
         /// <summary>
@@ -53,8 +53,8 @@ namespace View.Menu
         /// </summary>
         private void DrawTitle()
         {
-            _bufer.Graphics.DrawString("LodeRunner", new Font("Times New Roman", 20), new SolidBrush(Color.White) , 170 , View.viewform.ClientRectangle.Height - 500);
-            _bufer.Graphics.DrawLine(new Pen(new SolidBrush(Color.White)), 0, 40, View.viewform.ClientRectangle.Height, 40);
+            _bufer.Graphics.DrawString("LodeRunner", new Font("Times New Roman", 20), new SolidBrush(Color.White) , 170 , FormView.viewform.ClientRectangle.Height - 500);
+            _bufer.Graphics.DrawLine(new Pen(new SolidBrush(Color.White)), 0, 40, FormView.viewform.ClientRectangle.Height, 40);
         }
 
         /// <summary>

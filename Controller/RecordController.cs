@@ -20,7 +20,7 @@ namespace Controller
         /// <summary>
         /// Отображение рекордов
         /// </summary>
-        private View.Menu.ViewRecords _viewRecords;
+        private View.Menu.ViewRecordsForm _viewRecords;
 
         /// <summary>
         /// Обработчик нажатия на кнопку
@@ -47,7 +47,7 @@ namespace Controller
         public RecordController()
         {
             _modelRecords = new Model.Menu.ModelRecords();
-            _viewRecords = new View.Menu.ViewRecords(_modelRecords);
+            _viewRecords = new View.Menu.ViewRecordsForm(_modelRecords);
             _keysDict = new Dictionary<Keys, dEnterNameHandler>();
             SetKeys();
         }

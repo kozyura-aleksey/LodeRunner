@@ -23,7 +23,7 @@ namespace Controller.Game
         /// <summary>
         /// Представление игры 
         /// </summary>
-        public View.Game.ViewGame _viewGame;
+        public View.Game.ViewGameForm _viewGame;
 
         /// <summary>
         /// Поток игры
@@ -56,7 +56,7 @@ namespace Controller.Game
         public GameController()
         {
             _gameModel = new Model.ModelGame();
-            _viewGame = new View.Game.ViewGame(_gameModel);
+            _viewGame = new View.Game.ViewGameForm(_gameModel);
             _gameModel.Move += DefineInteraction;
             _gameModel.EndGameEvent += _endGameMethod;
         }

@@ -16,7 +16,7 @@ namespace View
     /// <summary>
     /// Абстрактный класс - отображение
     /// </summary>
-    public abstract class View
+    public abstract class FormView
     {
         /// <summary>
         /// Форма для отображения элементов

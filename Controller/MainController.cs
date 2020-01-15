@@ -35,7 +35,7 @@ namespace Controller
         public MainController()
         {
             Controller.CreateForm();
-            View.View.SetFormParameters(Controller.FormMain);
+            View.FormView.SetFormParameters(Controller.FormMain);
             Controller.FormMain.Shown += StartApplication;      
             _menu = new MenuController();
             _menu.StartEvent += StartGame;
@@ -67,7 +67,7 @@ namespace Controller
         /// </summary>
         public void Init()
         {
-            View.View.Init();
+            View.FormView.Init();
         }
 
         /// <summary>

@@ -54,9 +54,9 @@
       <Project>{805b99b8-c817-4c87-8aee-6c77817831ea}</Project>
       <Name>Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\View\View.csproj">
+    <ProjectReference Include="..\View\ViewForm.csproj">
       <Project>{416c125f-4826-49bd-bcd3-9c35c2037494}</Project>
-      <Name>View</Name>
+      <Name>ViewForm</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
