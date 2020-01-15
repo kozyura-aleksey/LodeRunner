@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CEB375EA-93F5-447E-964C-1B7CAF99FEA6}</ProjectGuid>
+    <ProjectGuid>{416C125F-4826-49BD-BCD3-9C35C2037494}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Controller</RootNamespace>
-    <AssemblyName>Controller</AssemblyName>
+    <RootNamespace>View</RootNamespace>
+    <AssemblyName>View</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,25 +43,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControllerConsole.cs" />
-    <Compile Include="GameControllerConsole.cs" />
-    <Compile Include="KeyDowner.cs" />
-    <Compile Include="KeyDownerController.cs" />
-    <Compile Include="MainControllerConsole.cs" />
-    <Compile Include="MenuControllerConsole.cs" />
+    <Compile Include="Game\KernelGraphics.cs" />
+    <Compile Include="Game\ViewConsole.cs" />
+    <Compile Include="Game\ViewGameConsole.cs" />
+    <Compile Include="Menu\ViewMenuConsole.cs" />
+    <Compile Include="Menu\ViewRecordsConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecordControllerConsole.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{805b99b8-c817-4c87-8aee-6c77817831ea}</Project>
       <Name>Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\View\ViewConsole.csproj">
-      <Project>{416c125f-4826-49bd-bcd3-9c35c2037494}</Project>
-      <Name>ViewConsole</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
