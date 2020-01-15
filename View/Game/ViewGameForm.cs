@@ -42,7 +42,7 @@ namespace View.Game
             _modelGame.CreateMapLevel += CreateMap;
             _modelGame.Draw += DrawGame;
             _modelGame.Move += DrawGame;
-            _mapLevel = new MapLevel();
+            //_mapLevel = new MapLevel();
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace View.Game
         /// </summary>
         public void CreateMap()
         {
-            _mapLevel = new MapLevel();
+            _mapLevel = new MapLevel(STEP);
         }
 
         /// <summary>
@@ -105,12 +105,6 @@ namespace View.Game
                     }
 
                     if (obj.GetType() == typeof(Stairs))
-                    {
-                        image = Properties.Resources.stair;
-                        _bufer.Graphics.DrawImage(image, obj.X, obj.Y);
-                    }
-
-                    if (obj.GetType() == typeof(SubStairs))
                     {
                         image = Properties.Resources.stair;
                         _bufer.Graphics.DrawImage(image, obj.X, obj.Y);

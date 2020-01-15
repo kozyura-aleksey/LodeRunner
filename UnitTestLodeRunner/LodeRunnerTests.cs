@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Model.Game;
+using View;
 
 namespace UnitTestLodeRunner
 {
@@ -10,7 +11,7 @@ namespace UnitTestLodeRunner
         /// <summary>
         /// Экземпляр поля игры
         /// </summary>
-        MapLevel _mapLevel = new MapLevel();
+        MapLevel _mapLevel = new MapLevel(16);
 
         /// <summary>
         /// Тест на номер персонажа
@@ -75,7 +76,7 @@ namespace UnitTestLodeRunner
 
             int yH = y2 - y1;
 
-            int step = MapLevel.step;
+            int step = FormView.STEP;
 
             Assert.AreEqual(yH, step);
 

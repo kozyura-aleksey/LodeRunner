@@ -24,6 +24,11 @@ namespace View
         private static Form ViewForm { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public const int STEP = 16;
+
+        /// <summary>
         /// Свойство для формы игры
         /// </summary>
         public static Form viewform { get => ViewForm; set => ViewForm = value; }

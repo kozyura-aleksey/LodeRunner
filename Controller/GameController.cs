@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using View;
 using View.Game;
 
 namespace Controller.Game
@@ -55,7 +56,7 @@ namespace Controller.Game
         /// </summary>
         public GameController()
         {
-            _gameModel = new Model.ModelGame();
+            _gameModel = new Model.ModelGame(FormView.STEP);
             _viewGame = new View.Game.ViewGameForm(_gameModel);
             _gameModel.Move += DefineInteraction;
             _gameModel.EndGameEvent += _endGameMethod;
