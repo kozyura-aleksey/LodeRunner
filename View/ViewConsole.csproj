@@ -43,11 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game\FormView.cs" />
     <Compile Include="Game\KernelGraphics.cs" />
     <Compile Include="Game\ViewConsole.cs" />
     <Compile Include="Game\ViewGameConsole.cs" />
+    <Compile Include="Game\ViewGameForm.cs" />
     <Compile Include="Menu\ViewMenuConsole.cs" />
+    <Compile Include="Menu\ViewMenuForm.cs" />
     <Compile Include="Menu\ViewRecordsConsole.cs" />
+    <Compile Include="Menu\ViewRecordsForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
