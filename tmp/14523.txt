@@ -1,5 +1,0 @@
-if console.keyAvailable
-
-var key = console.readKey(false)
-
-keyDown.invoke = key
