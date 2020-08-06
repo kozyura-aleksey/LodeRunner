@@ -22,7 +22,7 @@ namespace Model.Game
         private static MapLevel mapLevel = null;
 
         /// <summary>
-        /// Массив линий
+        /// Массив линий;
         /// </summary>
         private static string[] lines;
 
