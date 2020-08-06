@@ -22,7 +22,6 @@ namespace Model.Game
         /// </summary>
         private static MapLevel mapLevel = null;
 
-
         private static string[] lines;
         private static String[,] num;
         private static List<Model.Game.Objects.GameObject> objects;
